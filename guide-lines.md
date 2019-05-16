@@ -1,6 +1,6 @@
 # ProductVisualization
 
-![Image from Ford Configurator, developed in three.js](images/ford-configurator.jpg)
+![Image from Ford Configurator, developed in three.js](assets/ford-configurator.jpg)
 
 READ CAREFULLY this document BEFORE you start!
 
