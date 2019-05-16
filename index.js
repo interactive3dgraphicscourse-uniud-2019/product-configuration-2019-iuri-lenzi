@@ -21,7 +21,6 @@ function Init() {
 	mesh = new THREE.Mesh( geometry, material );
 	scene.add( mesh );
 	InitCamera();
-	InitGround();
 	
 	window.addEventListener( 'resize', OnWindowResize, false );
 	
