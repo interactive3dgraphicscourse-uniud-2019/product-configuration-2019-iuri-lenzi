@@ -1,4 +1,4 @@
-# Product Visualization
+ # Product Visualization
 
 ![Image from Ford Configurator, developed in three.js](assets/ford-configurator.jpg)
 
