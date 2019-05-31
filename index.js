@@ -19,12 +19,30 @@ function Init() {
 	var material = new THREE.MeshBasicMaterial( );
 	material.color.setHex( 0xf0f0f0 );
 	mesh = new THREE.Mesh( geometry, material );
-	scene.add( mesh );
+	//scene.add( mesh );
+	LoadGLTF('assets/models/inner_structure/inner_structure.glb', 100);	
+	LoadGLTF( 'assets/models/acc_ring/acc_ring.glb', 50);	
+	LoadGLTF( 'assets/models/acc_coil/acc_coil.glb', 100);	
+	LoadGLTF( 'assets/models/chamber/chamber.glb', 100);	
+	LoadGLTF( 'assets/models/chamber_heatsink/chamber_heatsink.glb', 100);	
+	LoadGLTF( 'assets/models/chamber_rings/chamber_rings.glb', 100);	
+	LoadGLTF( 'assets/models/grid/grid.glb', 100);	
+	LoadGLTF( 'assets/models/inner_copper_rings/inner_copper_rings.glb', 100);	
+	LoadGLTF( 'assets/models/inner_structure/inner_structure.glb', 100);	
 	InitCamera();
 	
 	window.addEventListener( 'resize', OnWindowResize, false );
 	
 	InitRenderer();
+}
+
+function LoadGLTF(url, scale){
+	var loader = new THREE.GLTFLoader();
+	loader.load( url, function( gltf ) {
+		mesh = gltf.scene.children[ 0 ];
+		mesh.scale.set( scale, scale, scale );
+		scene.add( mesh );
+	} );
 }
 
 
