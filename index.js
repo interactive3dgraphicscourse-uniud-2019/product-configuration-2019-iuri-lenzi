@@ -4,7 +4,8 @@
 
 // Global variables and constants
 var camera, scene, renderer, controls, stats;
-
+var meshComponents = []
+var clock = new THREE.Clock();
 // Lights
 var hemiLight, dirLight;
 
@@ -53,16 +54,17 @@ function ParseArchitecture(csv)
 	csv.shift(); 
 	csv.pop();
 	csv.forEach(function(row) {
-		row = row.split(';');
+		row = row.split(',');
 			SetupMesh({
 				url: row[0], 
-				scale: row[1],
-				init_pos: new THREE.Vector3(row[2], row[3], row[4]),
-				init_rotation: new THREE.Vector3(row[5], row[6], row[7]),
-				final_pos: new THREE.Vector3(row[8], row[9], row[10]),
-				final_rotation:new THREE.Vector3(row[11], row[12], row[13]),	
-				repeat: row[14],
-				circ_radious: row[15]
+				scale: parseFloat(row[1]),
+				initPos: new THREE.Vector3(parseFloat(row[2]), parseFloat(row[3]), parseFloat(row[4])),
+				initRotation: new THREE.Vector3(parseFloat(row[5]), parseFloat(row[6]), parseFloat(row[7])),
+				finalPos: new THREE.Vector3(parseFloat(row[8]), parseFloat(row[9]), parseFloat(row[10])),
+				finalRotation:new THREE.Vector3(parseFloat(row[11]), parseFloat(row[12]), parseFloat(row[13])),	
+				repeat: parseInt(row[14]),
+				circRadious: parseFloat(row[15]),
+				effect: row[16]
 			});
 	});
 }
@@ -71,22 +73,24 @@ function ParseArchitecture(csv)
 function SetupMesh(mesh){
 	var loader = new THREE.GLTFLoader();
 	loader.load( mesh.url, function( gltf ) {
-		gltf_mesh = gltf.scene.children[ 0 ];
-		gltf_mesh.scale.set( mesh.scale, mesh.scale, mesh.scale );
-		gltf_mesh.rotation.set( mesh.init_rotation.x * 180/Math.PI, mesh.init_rotation.y* 180/Math.PI, mesh.init_rotation.z* 180/Math.PI );
-		gltf_mesh.position.set( mesh.init_pos.x, mesh.init_pos.y, mesh.init_pos.z );
+		gltfMesh = gltf.scene.children[ 0 ];
+		gltfMesh.scale.set( mesh.scale, mesh.scale, mesh.scale );
+		gltfMesh.rotation.set( mesh.initRotation.x * 180/Math.PI, mesh.initRotation.y* 180/Math.PI, mesh.initRotation.z* 180/Math.PI );
+		gltfMesh.position.set( mesh.initPos.x, mesh.initPos.y, mesh.initPos.z );
 		if(mesh.repeat == 0){
-			scene.add( gltf_mesh );
+			scene.add( gltfMesh );
+			meshComponents.push(new AnimatedMesh(gltfMesh, mesh.initPos, mesh.initRotation, mesh.finalPos, mesh.finalRotation, mesh.effect));
 		} else {
 			debugger;
 			var circ = new THREE.Group();
-			var tmp = new THREE.Group();
-			gltf_mesh.position.x += mesh.circ_radious;
-			tmp.add(gltf_mesh);
+			var component = new THREE.Group();
+			gltfMesh.position.x += mesh.circRadious;
+			component.add(gltfMesh);
 			for(var i = 0; i < mesh.repeat; i++){
-				var new_tmp = tmp.clone()
-				new_tmp.rotation.y += (2 * Math.PI * i) / 10;
-				circ.add(new_tmp);
+				var newComponent = component.clone()
+				newComponent.rotation.y += (2 * Math.PI * i) / 10;
+				circ.add(newComponent);
+				meshComponents.push(new AnimatedMesh(newComponent, mesh.initPos, mesh.initRotation, mesh.finalPos, mesh.finalRotation, mesh.effect));
 			}
 			scene.add(circ);
 		}
@@ -110,9 +114,80 @@ function LoadGLTF(url, scale){
 function Animate() {
 	stats.update();
 	controls.update();
+	RenderAnimation();
 	requestAnimationFrame( Animate );
 	renderer.render( scene, camera );
 }
+
+
+function RenderAnimation(){ }
+function RenderVoidAnimation(){ }
+
+
+function RenderExplosion(){
+	var speed = 10;
+	var delta = clock.getDelta() * speed;
+	var hasChanged = false;
+	var endAnimation = true;
+	meshComponents.forEach(function(component) {
+		debugger;
+		hasChanged = false;
+		if(component.mesh.position.x < component.finalPos.x){
+			component.mesh.position.x += delta;
+			hasChanged = true;
+		} 
+		if(component.mesh.position.y < component.finalPos.y){
+			component.mesh.position.y += delta;
+			hasChanged = true;
+		} 
+		if(component.mesh.position.z < component.finalPos.z){
+			component.mesh.position.z += delta;
+			hasChanged = true;
+		} 
+		if(!hasChanged){
+			component.mesh.position.set(component.finalPos.x, component.finalPos.y, component.finalPos.z)
+		} else {
+			endAnimation = false;
+		}
+	});
+	if(endAnimation){
+		RenderAnimation = RenderVoidAnimation;
+	}
+}
+
+
+function RenderImplosion(){
+	var speed = 10;
+	var delta = clock.getDelta() * speed;
+	var hasChanged = false;
+	var endAnimation = true;
+	meshComponents.forEach(function(component) {
+		debugger;
+		hasChanged = false;
+		if(component.mesh.position.x > component.initPos.x){
+			component.mesh.position.x -= delta;
+			hasChanged = true;
+		} 
+		if(component.mesh.position.y > component.initPos.y){
+			component.mesh.position.y -= delta;
+			hasChanged = true;
+		} 
+		if(component.mesh.position.z > component.initPos.z){
+			component.mesh.position.z -= delta;
+			hasChanged = true;
+		} 
+		if(!hasChanged){
+			component.mesh.position.set(component.initPos.x, component.initPos.y, component.initPos.z)
+		} else {
+			endAnimation = false;
+		}
+	});
+	if(endAnimation){
+		RenderAnimation = RenderVoidAnimation;
+	}
+}
+
+
 
 
 /*
