@@ -81,7 +81,6 @@ function SetupMesh(mesh){
 			scene.add( gltfMesh );
 			meshComponents.push(new AnimatedMesh(gltfMesh, mesh.initPos, mesh.initRotation, mesh.finalPos, mesh.finalRotation, mesh.effect));
 		} else {
-			debugger;
 			var circ = new THREE.Group();
 			var component = new THREE.Group();
 			gltfMesh.position.x += mesh.circRadious;
@@ -130,7 +129,6 @@ function RenderExplosion(){
 	var hasChanged = false;
 	var endAnimation = true;
 	meshComponents.forEach(function(component) {
-		debugger;
 		hasChanged = false;
 		if(component.mesh.position.x < component.finalPos.x){
 			component.mesh.position.x += delta;
@@ -162,7 +160,6 @@ function RenderImplosion(){
 	var hasChanged = false;
 	var endAnimation = true;
 	meshComponents.forEach(function(component) {
-		debugger;
 		hasChanged = false;
 		if(component.mesh.position.x > component.initPos.x){
 			component.mesh.position.x -= delta;
@@ -186,8 +183,6 @@ function RenderImplosion(){
 		RenderAnimation = RenderVoidAnimation;
 	}
 }
-
-
 
 
 /*
