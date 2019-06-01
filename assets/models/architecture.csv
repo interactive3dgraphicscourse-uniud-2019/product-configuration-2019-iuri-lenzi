@@ -1,11 +1,10 @@
-url,scale,init_pos_x,init_pos_y,init_pos_z,init_rotation_x,init_rotation_y,init_rotation_z,final_pos_x,final_pos_y,final_pos_z,final_rotation_x,final_rotation_y,final_rotation_z
-assets/models/acc_ring/acc_ring.glb,50,0,10,0,0,0,0,10,10,10,90,0,0
-assets/models/acc_coil/acc_coil.glb,100,0,0,0,0,0,0,10,10,10,90,0,0
-assets/models/chamber/chamber.glb ,100,0,0,0,0,0,0,10,10,10,90,0,0
-assets/models/chamber_heatsink/chamber_heatsink.glb ,100,0,0,0,0,0,0,10,10,10,90,0,0
-assets/models/chamber_rings/chamber_rings.glb ,100,0,0,0,0,0,0,10,10,10,90,0,0
-assets/models/grid/grid.glb,100,0,0,0,0,0,0,10,10,10,90,0,0
-assets/models/inner_copper_rings/inner_copper_rings.glb,100,0,0,0,0,0,0,10,10,10,90,0,0
-assets/models/inner_structure/inner_structure.glb,100,0,0,0,0,0,0,10,10,10,90,0,0
-assets/models/acc_coil/acc_coil.glb,100,50,0,0,0,180,0,10,10,10,90,0,0
-assets/models/acc_coil/acc_coil.glb,100,-50,0,0,0,0,0,10,10,10,90,0,0
+url;scale;init_pos_x;init_pos_y;init_pos_z;init_rotation_x;init_rotation_y;init_rotation_z;final_pos_x;final_pos_y;final_pos_z;final_rotation_x;final_rotation_y;final_rotation_z;repeat;circ_radious
+assets/models/acc_ring/acc_ring.glb;50;0;10;0;0;0;0;10;10;10;90;0;0;0;0
+assets/models/acc_coil/acc_coil.glb;100;0;0;0;0;0;0;10;10;10;90;0;0;0;0
+assets/models/chamber/chamber.glb ;100;0;0;0;0;0;0;10;10;10;90;0;0;0;0
+assets/models/chamber_heatsink/chamber_heatsink.glb ;100;0;0;0;0;0;0;10;10;10;90;0;0;0;0
+assets/models/chamber_rings/chamber_rings.glb ;100;0;0;0;0;0;0;10;10;10;90;0;0;0;0
+assets/models/grid/grid.glb;100;0;0;0;0;0;0;10;10;10;90;0;0;0;0
+assets/models/inner_copper_rings/inner_copper_rings.glb;100;0;0;0;0;0;0;10;10;10;90;0;0;0;0
+assets/models/inner_structure/inner_structure.glb;100;0;0;0;0;0;0;10;10;10;90;0;0;0;0
+assets/models/acc_coil/acc_coil.glb;100;0;10;0;0;3;0;10;10;10;90;0;0;10;44

@@ -53,27 +53,43 @@ function ParseArchitecture(csv)
 	csv.shift(); 
 	csv.pop();
 	csv.forEach(function(row) {
-  		row = row.split(',');
-		SetupMesh(
-			row[0], 
-			row[1],
-			new THREE.Vector3(row[2], row[3], row[4]),
-			new THREE.Vector3(row[5], row[6], row[7]),
-			new THREE.Vector3(row[8], row[9], row[10]),
-			new THREE.Vector3(row[11], row[12], row[13])	
-		);
+		row = row.split(';');
+			SetupMesh({
+				url: row[0], 
+				scale: row[1],
+				init_pos: new THREE.Vector3(row[2], row[3], row[4]),
+				init_rotation: new THREE.Vector3(row[5], row[6], row[7]),
+				final_pos: new THREE.Vector3(row[8], row[9], row[10]),
+				final_rotation:new THREE.Vector3(row[11], row[12], row[13]),	
+				repeat: row[14],
+				circ_radious: row[15]
+			});
 	});
 }
 
 
-function SetupMesh(url, scale, init_pos, init_rotation, final_pos, final_rotation){
+function SetupMesh(mesh){
 	var loader = new THREE.GLTFLoader();
-	loader.load( url, function( gltf ) {
-		mesh = gltf.scene.children[ 0 ];
-		mesh.scale.set( scale, scale, scale );
-		mesh.position.set( init_pos.x, init_pos.y, init_pos.z );
-		mesh.rotation.set( init_rotation.x* 180/Math.PI, init_rotation.y* 180/Math.PI, init_rotation.z* 180/Math.PI );
-		scene.add( mesh );
+	loader.load( mesh.url, function( gltf ) {
+		gltf_mesh = gltf.scene.children[ 0 ];
+		gltf_mesh.scale.set( mesh.scale, mesh.scale, mesh.scale );
+		gltf_mesh.rotation.set( mesh.init_rotation.x * 180/Math.PI, mesh.init_rotation.y* 180/Math.PI, mesh.init_rotation.z* 180/Math.PI );
+		gltf_mesh.position.set( mesh.init_pos.x, mesh.init_pos.y, mesh.init_pos.z );
+		if(mesh.repeat == 0){
+			scene.add( gltf_mesh );
+		} else {
+			debugger;
+			var circ = new THREE.Group();
+			var tmp = new THREE.Group();
+			gltf_mesh.position.x += mesh.circ_radious;
+			tmp.add(gltf_mesh);
+			for(var i = 0; i < mesh.repeat; i++){
+				var new_tmp = tmp.clone()
+				new_tmp.rotation.y += (2 * Math.PI * i) / 10;
+				circ.add(new_tmp);
+			}
+			scene.add(circ);
+		}
 	} );
 }
 
