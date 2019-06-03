@@ -22,10 +22,11 @@ function Init() {
 	mesh = new THREE.Mesh( geometry, material );
 	//scene.add( mesh );
 	readTextFile("assets/models/architecture.csv");
+	scene.add(group);
 	InitCamera();
 	
 	window.addEventListener( 'resize', OnWindowResize, false );
-	
+	window.addEventListener( "mousemove", onDocumentMouseMove, false );
 	InitRenderer();
 }
 
@@ -78,7 +79,7 @@ function SetupMesh(mesh){
 		gltfMesh.rotation.set( mesh.initRotation.x * 180/Math.PI, mesh.initRotation.y* 180/Math.PI, mesh.initRotation.z* 180/Math.PI );
 		gltfMesh.position.set( mesh.initPos.x, mesh.initPos.y, mesh.initPos.z );
 		if(mesh.repeat == 0){
-			scene.add( gltfMesh );
+			group.add( gltfMesh );
 			meshComponents.push(new AnimatedMesh(gltfMesh, mesh.initPos, mesh.initRotation, mesh.finalPos, mesh.finalRotation, mesh.effect));
 		} else {
 			var circ = new THREE.Group();
@@ -91,7 +92,7 @@ function SetupMesh(mesh){
 				circ.add(newComponent);
 				meshComponents.push(new AnimatedMesh(newComponent, mesh.initPos, mesh.initRotation, mesh.finalPos, mesh.finalRotation, mesh.effect));
 			}
-			scene.add(circ);
+			group.add(circ);
 		}
 	} );
 }
