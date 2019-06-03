@@ -5,15 +5,15 @@
 /*
 * Init camera and call camera control initialization
 */
-function InitCamera(){
+function initCamera(){
 	camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
-	InitControl()
+	initControl()
 }
 
 /*
 * Init Camera Control
 */
-function InitControl(){
+function initControl(){
 
 	controls = new THREE.OrbitControls( camera );
 	controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled

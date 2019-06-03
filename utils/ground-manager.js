@@ -2,7 +2,7 @@
 * Ground builder 
 */
 
-function InitGround(){
+function initGround(){
 	Coordinates.drawAllAxes();
 
 	// uncomment to render a base ground plane

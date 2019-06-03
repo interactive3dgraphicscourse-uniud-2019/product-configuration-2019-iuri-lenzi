@@ -1,0 +1,356 @@
+[
+    {
+        "url": "assets/models/acc_ring/acc_ring.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 50,
+                "position": {
+                    "x": 0,
+                    "y": 10,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/acc_coil/acc_coil.glb",
+        "repeat": 10,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 44,
+                    "y": 10,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 3,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 70,
+                "position": {
+                    "x": 20,
+                    "y": 20,
+                    "z": 20
+                },
+                "rotation": {
+                    "x": 130,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "flip"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/inner_structure/inner_structure.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 0,
+                    "y": -12,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/inner_copper_rings/inner_copper_rings.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 0,
+                    "y": -12,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/grid/grid.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 0,
+                    "y": -12,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/chamber/chamber.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 0,
+                    "y": -8,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/chamber/chamber.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 0,
+                    "y": -8,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/chamber_heatsink/chamber_heatsink.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 0,
+                    "y": -8,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/chamber_rings/chamber_rings.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 0,
+                    "y": -8,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    },
+    {
+        "url": "assets/models/structure/structure.glb",
+        "repeat": 0,
+        "frames": [
+            {        
+                "scale": 100,
+                "position": {
+                    "x": 0,
+                    "y": -8,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 10,
+                    "y": 10,
+                    "z": 10
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
+            }
+        ]
+    }
+]
