@@ -1,21 +1,21 @@
 /*
 * Define an event listener on the window resize event (in order to adjust the aspect ratio)
 */
-function OnWindowResize() {
+function onWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
 
-var selectedObject = null;
-var raycaster = new THREE.Raycaster();
-var mouseVector = new THREE.Vector3();
-var group = new THREE.Group();
-
+function onDocumentMouseClick( event ){
+	if(selectedObject != null && selectedObject != undefined){
+		alert("Inspect:" + selectedObject.parameters.url)
+	}
+}
 
 function onDocumentMouseMove( event ) {
-	console.log(event.layerX, event.layerY);
+	//console.log(event.layerX, event.layerY);
 	event.preventDefault();
 	if ( selectedObject ) {
 		selectedObject.material.color.set( '#69f' );

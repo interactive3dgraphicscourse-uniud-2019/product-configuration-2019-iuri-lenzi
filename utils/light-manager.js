@@ -5,7 +5,7 @@
 /*
 * Init an HemisphereLight
 */
-function CreateHemiLight(){
+function createHemiLight(){
 	var hemiLight = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 	hemiLight.position.set( 0.5, 1, 0.75 );
     return hemiLight;
@@ -14,7 +14,7 @@ function CreateHemiLight(){
 /*
 * Init a DirectionalLight
 */
-function CreateDirLight(){
+function createDirLight(){
     var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
 	dirLight.color.setHSL( 0.1, 1, 0.95 );
 	dirLight.position.set( -1, 1.75, 1 );
