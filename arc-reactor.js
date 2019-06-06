@@ -95,6 +95,7 @@ function initRenderer(){
 	renderer.gammaOutput = true;
 	renderer.gammaInput = true;
 	renderer.shadowMap.enabled = true;
+	//document.getElementById( 'arc-reactor' ).appendChild( renderer.domElement );
 	document.body.appendChild( renderer.domElement );
 }
 
