@@ -9,8 +9,8 @@ function onWindowResize() {
 
 
 function onDocumentMouseClick( event ){
-	if(selectedObject != null && selectedObject != undefined){
-		alert("Inspect:" + selectedObject.parameters.url)
+	if(selectedObject != null && selectedObject != undefined && !switchScene){
+		inspect( selectedObject );
 	}
 }
 
