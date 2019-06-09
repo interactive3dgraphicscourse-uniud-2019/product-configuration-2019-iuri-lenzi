@@ -136,7 +136,7 @@ function initScene(){
 function initInspectorScene()
 {
 	inspectorScene = new THREE.Scene();
-	inspectorScene.background = new THREE.Color( 0xffffff );
+	inspectorScene.background = new THREE.Color( 0xffffff	 );
 	inspectorHemiLight = createHemiLight();
 	inspectorDirectLight = createDirLight();
 }

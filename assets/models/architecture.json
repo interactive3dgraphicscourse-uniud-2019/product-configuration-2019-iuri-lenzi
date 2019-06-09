@@ -2,6 +2,7 @@
     {
         "url": "assets/models/acc_ring/acc_ring.glb",
         "repeat": 0,
+        "inspectorScale": 50,
         "frames": [
             {        
                 "scale": 50,
@@ -36,6 +37,7 @@
     {
         "url": "assets/models/acc_coil/acc_coil.glb",
         "repeat": 10,
+        "inspectorScale": 200,
         "frames": [
             {        
                 "scale": 100,
@@ -84,6 +86,7 @@
     {
         "url": "assets/models/inner_structure/inner_structure.glb",
         "repeat": 0,
+        "inspectorScale": 100,
         "frames": [
             {        
                 "scale": 100,
@@ -118,6 +121,7 @@
     {
         "url": "assets/models/inner_copper_rings/inner_copper_rings.glb",
         "repeat": 0,
+        "inspectorScale": 100,
         "frames": [
             {        
                 "scale": 100,
@@ -152,6 +156,7 @@
     {
         "url": "assets/models/grid/grid.glb",
         "repeat": 0,
+        "inspectorScale": 200,
         "frames": [
             {        
                 "scale": 100,
@@ -186,6 +191,7 @@
     {
         "url": "assets/models/chamber/chamber.glb",
         "repeat": 0,
+        "inspectorScale": 100,
         "frames": [
             {        
                 "scale": 100,
@@ -220,6 +226,7 @@
     {
         "url": "assets/models/chamber/chamber.glb",
         "repeat": 0,
+        "inspectorScale": 100,
         "frames": [
             {        
                 "scale": 100,
@@ -254,6 +261,7 @@
     {
         "url": "assets/models/chamber_heatsink/chamber_heatsink.glb",
         "repeat": 0,
+        "inspectorScale": 150,
         "frames": [
             {        
                 "scale": 100,
@@ -288,6 +296,7 @@
     {
         "url": "assets/models/chamber_rings/chamber_rings.glb",
         "repeat": 0,
+        "inspectorScale": 100,
         "frames": [
             {        
                 "scale": 100,
@@ -322,6 +331,7 @@
     {
         "url": "assets/models/structure/structure.glb",
         "repeat": 0,
+        "inspectorScale": 100,
         "frames": [
             {        
                 "scale": 100,
