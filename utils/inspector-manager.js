@@ -1,6 +1,6 @@
 function inspect(component){
     console.dir(component);
-    
+    description = component.parameters.url;
     //Empty old inspector scene
     emptyInspScene();
 
@@ -11,7 +11,7 @@ function inspect(component){
     switchScene = true;
 
     //Create close inspector button
-    $("#container").html("<div id=\"info\"><span style=\"font-size:20px\">[Second Course Project 2019 - Product Configuration]</span><br /><br /><span style=\"font-size:15px\">Team: Marco Iuri and Edoardo Lenzi</span></div>");
+    $("#container").html("<div id=\"info\"><span style=\"font-size:20px\">" + description +"</span></div>");
     $("#container").append("<button onclick=\"closeInspector()\">Close Inspector</button>");
 }
 
