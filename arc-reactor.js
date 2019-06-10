@@ -12,6 +12,12 @@ var raycaster = new THREE.Raycaster();
 var mouseVector = new THREE.Vector3();
 var selectedObject = null;
 
+//Inspector
+var inspectorScene;
+var inspectorHemiLight;
+var inspectorDirectLight;
+var switchScene = false;
+
 // Lights
 var hemiLight, dirLight;
 
@@ -22,6 +28,7 @@ var hemiLight, dirLight;
 function init() {
 	initStat();
 	initScene();
+	initInspectorScene();
 
 	loadArchitecture("assets/models/architecture.json");
 	scene.add(group);
@@ -81,7 +88,18 @@ function animate() {
 	controls.update();
 	renderAnimation();
 	requestAnimationFrame( animate );
-	renderer.render( scene, camera );
+	Render();
+}
+
+/*
+* Render function
+*/
+function Render()
+{
+	if(!switchScene)
+		renderer.render( scene, camera );
+	else
+		renderer.render( inspectorScene, camera );
 }
 
 
@@ -111,6 +129,17 @@ function initScene(){
 	dirLight = createDirLight();
     scene.add( hemiLight );  
 	scene.add( dirLight );  
+}
+
+/*
+* Inspector scene init
+*/
+function initInspectorScene()
+{
+	inspectorScene = new THREE.Scene();
+	inspectorScene.background = new THREE.Color( 0xffffff	 );
+	inspectorHemiLight = createHemiLight();
+	inspectorDirectLight = createDirLight();
 }
 
 

@@ -9,8 +9,8 @@ function onWindowResize() {
 
 
 function onDocumentMouseClick( event ){
-	if(selectedObject != null && selectedObject != undefined){
-		alert("Inspect:" + selectedObject.parameters.url)
+	if(selectedObject != null && selectedObject != undefined && !switchScene){
+		inspect( selectedObject );
 	}
 }
 
@@ -38,5 +38,15 @@ function getIntersects( x, y ) {
 	y = - ( y / window.innerHeight ) * 2 + 1;
 	mouseVector.set( x, y, 0.5 );
 	raycaster.setFromCamera( mouseVector, camera );
-	return raycaster.intersectObject( group, true );
+	if(!switchScene)
+		return raycaster.intersectObject( group, true );
+	else
+		return raycaster.intersectObject( inspectorScene, true );
+}
+
+function closeInspector()
+{
+	switchScene = false;
+	$("#container").html("<div id=\"info\"><!--<span style=\"font-size:20px\">[Second Course Project 2019 - Product Configuration]</span><br /><br /><span style=\"font-size:15px\">Team: Marco Iuri and Edoardo Lenzi</span>--></div>");
+    $("#container").append("<button onclick=\"renderAnimation = renderExplosion\">ExplodeMesh</button><button onclick=\"renderAnimation = renderImplosion\">ImplodeMesh</button>");
 }
