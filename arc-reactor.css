@@ -1,0 +1,16 @@
+html, body{
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	margin: 0;
+	overflow: hidden;
+	font-family: Arial;
+}
+
+#container{
+	position: absolute;
+	top:10px;
+	text-align:center;
+	z-index: 100;
+	display: block;
+}

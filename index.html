@@ -1,44 +1,120 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta name="author" content="Edoardo Lenzi">
-		<meta name="author" content="Marco Iuri">
-		<title>Product Configuration</title>
-		<link rel="stylesheet" type="text/css" href="index.css">
-		<link rel="shortcut icon" type="image/png" href="assets/favicon.ico"/>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-		<script src="libs/three.min.js"></script>
-		<script src="libs/stats.min.js"></script>
-		<script src="libs/Coordinates.js"></script>
-		<script src="libs/OrbitControls.js"></script>
-		<script src="libs/dat.gui.min.js"></script>
+    <title>Iurinzi - Product Configuration</title>
 
-		<script type="text/x-glsl" id="vertex">
-			TODO vertex shader
-		</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mondial Leader in wearable reactors">
+    <meta name="keywords" content="arc, stark, reactors, iurinzi">
+    <meta name="author" content="Edoardo Lenzi">
+    <meta name="author" content="Marco Iuri">
+    <meta http-equiv="content-language" content="en">
+    <link rel="shortcut icon" href="assets/favicon.ico">
 
-		<script type="text/x-glsl" id="fragment">
-			TODO fragment shader
-		</script>
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="./node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="node_modules/slicknav/dist/slicknav.css">
+    <link href="./index.css" rel="stylesheet" type="text/css">
+</head>
 
-	</head>
-	
-	<body>
+<body>
+    <ul id="menu">
+        <li><a href="#about" title="about">About</a></li>
+        <li><a href="#inspect" title="inspect">Inspect</a></li>
+        <li><a href="#other1" title="other1">Other1</a></li>
+        <li><a href="#other2" title="other2">Other2</a></li>
+        <li><a href="#other3" title="other3">Other3</a></li>
+    </ul>
+    
+    <div class="bg-black" id="intro">
+        
+        <h2 >Iurinzi</h2>
+        <p> Mondial leader for wearable reactors</p>
+        <p> Technology with you anytime, everywhere </p>
+    </div>
 
-		<div id="container">
-			<div id="info">
-				<span style="font-size:20px">[Second Course Project 2019 - Product Configuration]</span>
-				<br /><br />
-				<span style="font-size:15px">Team: Marco Iuri and Edoardo Lenzi</span>
-			</div>
-		</div>
-		
-		<script src="models/Product.js"></script>
+    <nav class="slicknav_menu2 navbar navbar-dark bg-dark navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#about">About <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#inspect">Inspect</a>
+                <a class="nav-item nav-link" href="#other1">Other1</a>
+                <a class="nav-item nav-link" href="#other2">Other2</a>
+                <a class="nav-item nav-link" href="#other3">Other3</a>
+            </div>
+        </div>
+    </nav>
 
-		<script src="utils/event-listeners.js"></script>
-		<script src="utils/gui-manager.js"></script>
-		<script src="utils/camera-manager.js"></script>
-		<script src="utils/light-manager.js"></script>
-		<!--<script src="utils/ground-manager.js"></script>-->
-		<script src="index.js"></script>
-	</body>
+
+    <article id="about" class="bg-purple">
+        <h2 >About us</h2>
+        <p> We are the current mondial leader in our fileds, after the acquisition of the Stark Corporation we design a new 
+            I-ARC reactor based on the first, heavy and unoptimized, ARK prototype designed by Stark Co. 
+        </p>
+        <p> Now our product is available and accessible for everyone!</p>
+
+        <div class="container">
+                <div class="row">
+                        <div class="col-md">
+                            Tom
+                            Fantastic it changed my life, now I can recharge any device 
+                            without powerbank.
+                        </div>
+                        <div class="col-md">
+                            Jake
+                            I'll take one for my friends too, I don't need lights for the 
+                            bike anymore and in the disco all the girls just look at my 
+                            bright chest!
+                        </div>
+                        <div class="col-md">
+                            Alan 
+                            all my life I had to change the batteries of the pacemaker, 
+                            this ingenious crock has solved the problem, 
+                            I recommend it to all the heart patients❤️.
+                        </div>
+                </div>
+        </div>
+    </article>
+
+    <article id="inspect" class="bg-green">
+        <h2 >Inspect your heart</h2>
+        <!--
+        <div style="height: 400px">Canvas</div>
+        -->
+        <div id="arc-reactor">
+            <iframe src="arc-reactor.html"></iframe>
+        </div>
+    </article>
+
+    <article id="other1" class="bg-orange">
+        Other1
+    </article>
+
+    <article id="other2" class="bg-blue">
+        Other2
+    </article>
+
+    <article id="other3" class="bg-red">
+        Other3
+    </article>
+
+    <footer>
+        Footer
+    </footer>
+    <!--Style Libs-->
+    <script src="libs/modernizr.custom.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/slicknav/jquery.slicknav.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#menu').slicknav({
+                'label': 'Iurinzi',
+                closeOnClick: true
+            })
+        });
+    </script>
+</body>
 </html>

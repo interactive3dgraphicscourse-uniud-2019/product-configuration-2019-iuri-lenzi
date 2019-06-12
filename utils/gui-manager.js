@@ -2,7 +2,7 @@
 * Simple script that init dat.gui interface and adds to checkboxes for  
 * light management
 */ 
-
+/*
 var gui = new dat.GUI();
 
 var settings = {
@@ -25,3 +25,4 @@ gui.add(settings, 'dirLight').onChange(function (value) {
         scene.remove( dirLight );  //creates shadows
     }
 }); 
+*/
