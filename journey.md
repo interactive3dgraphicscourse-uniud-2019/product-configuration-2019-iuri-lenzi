@@ -31,3 +31,13 @@ The process is the following:
 Below we can see the final result of the process:
 ![coilMaterial1](images/ArcBuild7.png)
 ![coilMaterial2](images/ArcBuild8.png)
+
+## (2). Inspector view
+Since we want the user to be able to select materials for all the single component of the models we thought about using a separate view, namely the inspector view, in order to give the user a better and more detailed visualization of the component he want to modify.
+
+In order to achieve this, we setted up a ray caster wich allow the user to click on a specific component of the mesh: the application will then recognize the selected component and switch the renderer form the original scene to a second scene (called inspectorScene) that contains only the element of interest.
+Thanks to the setupfile "architecture.json" we can specify the scale to apply to the element in order for it to be clearly visibile to the user (and to make all the elements look almost the same dimension when inspected).
+
+To return to the standard view the user must use the "close inspector" button.
+
+The next thing to do for this part of the project is to create an overlay with buttons for the selecton of the material to apply of the selected element.
