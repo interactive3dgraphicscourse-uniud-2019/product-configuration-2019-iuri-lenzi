@@ -21,12 +21,16 @@ var switchScene = false;
 // Lights
 var hemiLight, dirLight;
 
+// Materials
+var materialVector = new Array();
+
 
 /*
 * Init function
 */ 
 function init() {
 	initStat();
+	initMaterials();
 	initScene();
 	initInspectorScene();
 
