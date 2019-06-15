@@ -39,10 +39,53 @@ function initMaterials()
             fragmentShader: metal_mat_frag,
         }
     )
+    
+    var iron_rough = 0.7;
+    var iron = new THREE.ShaderMaterial(
+        {
+            uniforms: {
+                "baseColor": {type: "v3", value: new THREE.Vector3(0.562, 0.565, 0.578)},
+                "roughness": {type: "f",  value: iron_rough},
+                "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
+                "pointLightColor": {type: "v3", value: pointLightColor},
+                "envLightColor": {type: "v3", value: envLightColor},
+                "envMap": {type:"t", value: environmentMaps[Math.floor(iron_rough * 8)]}
+            },
+            vertexShader: metal_mat_vert,
+            fragmentShader: metal_mat_frag,
+        }
+    )
+
+    var coil_rough = 0.1;
+    var coil_r_map = loadTexture("assets/models/acc_coil/acc_coil_copper_RM.png");
+    var coil_d_map = loadTexture("assets/models/acc_coil/acc_coil_copper_D.png");
+    var coil_n_map = loadTexture("assets/models/acc_coil/acc_coil_copper_NM.png");
+    var AO_map = loadTexture("assets/models/acc_coil/acc_coil_copper_AO.png")
+    var coil_all_mat = new THREE.ShaderMaterial(
+        {
+            uniforms: {
+                "frameBaseColor": {type: "v3", value: new THREE.Vector3(0.913, 0.922, 0.924)},
+                "frameRoughness": {type: "f",  value: coil_rough},
+                "coilBaseColor": {type: "t", value: coil_d_map},
+                "coilRoughness": {type: "t", value: coil_r_map},
+                "coilNormalMap": {type: "t", value: coil_n_map},
+                "AOMap": {type: "t", value: AO_map},
+                "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
+                "pointLightColor": {type: "v3", value: pointLightColor},
+                "envLightColor": {type: "v3", value: envLightColor},
+                "envMap": {type:"t", value: environmentMaps[Math.floor(coil_rough * 8)]}
+            },
+            vertexShader: coil_mat_vert,
+            fragmentShader: coil_mat_frag,
+            vertexColors: THREE.VertexColors
+        }
+    )
 
     materialVector.push(blue_emissive);
     materialVector.push(red_emissive);
     materialVector.push(alluminium);
+    materialVector.push(iron);
+    materialVector.push(coil_all_mat);
 }
 
 function loadEnvMaps()
