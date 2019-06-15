@@ -1,6 +1,24 @@
 /*
 * Define an event listener on the window resize event (in order to adjust the aspect ratio)
 */
+
+/*
+* Support for IE8
+*/
+function bindEvent(element, eventName, eventHandler) {
+	if (element.addEventListener){
+		element.addEventListener(eventName, eventHandler, false);
+	} else if (element.attachEvent) {
+		element.attachEvent('on' + eventName, eventHandler);
+	}
+}
+
+
+function onMessage(event) {
+	alert(event.data);
+}
+
+
 function onWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
@@ -44,8 +62,7 @@ function getIntersects( x, y ) {
 		return raycaster.intersectObject( inspectorScene, true );
 }
 
-function closeInspector()
-{
+function closeInspector() {
 	switchScene = false;
 	$("#container").html("<div id=\"info\"><!--<span style=\"font-size:20px\">[Second Course Project 2019 - Product Configuration]</span><br /><br /><span style=\"font-size:15px\">Team: Marco Iuri and Edoardo Lenzi</span>--></div>");
     $("#container").append("<button onclick=\"renderAnimation = renderExplosion\">ExplodeMesh</button><button onclick=\"renderAnimation = renderImplosion\">ImplodeMesh</button>");

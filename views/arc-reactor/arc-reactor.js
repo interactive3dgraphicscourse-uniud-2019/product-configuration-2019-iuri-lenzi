@@ -30,39 +30,29 @@ function init() {
 	initScene();
 	initInspectorScene();
 
-	loadArchitecture("assets/models/architecture.json");
+	loadArchitecture("../../assets/models/architecture.json");
 	scene.add(group);
 	initCamera();
 	
-	window.addEventListener( 'resize', onWindowResize, false );
-	window.addEventListener( "mousemove", onDocumentMouseMove, false );
-	window.addEventListener( "click", onDocumentMouseClick, false );
+	bindEvent(window, "resize", onWindowResize );
+	bindEvent(window, "mousemove", onDocumentMouseMove );
+	bindEvent(window, "click", onDocumentMouseClick );
+	bindEvent(window, 'message', onMessage );
 	initRenderer();
 }
 
 
-function loadArchitecture(file)
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-				var architecture = JSON.parse(rawFile.responseText);   
-				architecture.forEach(function(component){
-					setupMesh(component);
-				});
-            }
-        }
-    }
-    rawFile.send(null);
+function loadArchitecture( file ) {
+	read(file, function(content){
+		var architecture = JSON.parse(content);   
+		architecture.forEach(function(component){
+			setupMesh(component);
+		});
+	})
 }
 
 
-function setupMesh(parameters){
+function setupMesh( parameters ) {
 	var loader = new THREE.GLTFLoader();
 	loader.load( parameters.url, function( gltf ) {
 		var gltfMesh = gltf.scene.children[ 0 ];
@@ -86,6 +76,9 @@ function setupMesh(parameters){
 function animate() {
 	stats.update();
 	controls.update();
+	if(switchScene){
+		renderFixedElements();
+	}
 	renderAnimation();
 	requestAnimationFrame( animate );
 	Render();
@@ -107,7 +100,7 @@ function Render()
 * Renderer init
 */
 function initRenderer(){
-	renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer = new THREE.WebGLRenderer( { alpha: true, antialias: true } );
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.gammaOutput = true;
