@@ -30,9 +30,9 @@ var materialVector = new Array();
 */ 
 function init() {
 	initStat();
-	initMaterials();
 	initScene();
 	initInspectorScene();
+	initMaterials();
 
 	loadArchitecture("assets/models/architecture.json");
 	scene.add(group);
@@ -127,7 +127,7 @@ function initRenderer(){
 */
 function initScene(){
 	scene = new THREE.Scene();
-	scene.background = new THREE.Color( 0xffffff );
+	scene.background = new THREE.Color( 0x000022 );
 	scene.fog = new THREE.Fog( 0xffffff, 0, 750 );
 	hemiLight = createHemiLight();
 	dirLight = createDirLight();
@@ -141,7 +141,7 @@ function initScene(){
 function initInspectorScene()
 {
 	inspectorScene = new THREE.Scene();
-	inspectorScene.background = new THREE.Color( 0xffffff	 );
+	inspectorScene.background = new THREE.Color( 0x000022 );
 	inspectorHemiLight = createHemiLight();
 	inspectorDirectLight = createDirLight();
 }

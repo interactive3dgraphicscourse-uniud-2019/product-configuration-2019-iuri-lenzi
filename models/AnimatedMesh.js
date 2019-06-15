@@ -1,7 +1,7 @@
 class AnimatedMesh extends THREE.Mesh{
 	constructor(mesh, params){
 
-		if(params.materials[0] == 0)
+		if(params.materials[0] != -1)
 			super(mesh.geometry, materialVector[params.materials[0]]);
 		else
 			super(mesh.geometry, mesh.material);
