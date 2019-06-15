@@ -1,6 +1,9 @@
-function inspect(component){
+var currentItem = null;
+
+function trigger(component){
     console.dir(component);
     description = component.parameters.url;
+    currentItem = description;
     //Empty old inspector scene
     emptyInspScene();
 
@@ -11,8 +14,7 @@ function inspect(component){
     switchScene = true;
 
     //Create close inspector button
-    $("#container").html("<div id=\"info\"><span style=\"font-size:20px\">" + description +"</span></div>");
-    $("#container").append("<button onclick=\"closeInspector()\">Close Inspector</button>");
+    applyTemplate( "../inspector/inspector.html", [ ["{description}", description] ] );
 }
 
 function emptyInspScene()

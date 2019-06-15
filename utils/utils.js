@@ -12,3 +12,12 @@ function read(filePath, callback){
     }
     client.send();
 }
+
+function applyTemplate(template, placeholders=[], tag = "#container"){
+	read(template, function(content){
+        placeholders.forEach(function(placeholder){
+            content = content.replace(placeholder[0], placeholder[1]);
+        });
+		$(tag).html(content);	
+	})
+}

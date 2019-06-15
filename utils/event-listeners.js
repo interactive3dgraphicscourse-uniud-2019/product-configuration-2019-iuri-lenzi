@@ -28,7 +28,7 @@ function onWindowResize() {
 
 function onDocumentMouseClick( event ){
 	if(selectedObject != null && selectedObject != undefined && !switchScene){
-		inspect( selectedObject );
+		trigger( selectedObject );
 	}
 }
 
@@ -64,6 +64,5 @@ function getIntersects( x, y ) {
 
 function closeInspector() {
 	switchScene = false;
-	$("#container").html("<div id=\"info\"><!--<span style=\"font-size:20px\">[Second Course Project 2019 - Product Configuration]</span><br /><br /><span style=\"font-size:15px\">Team: Marco Iuri and Edoardo Lenzi</span>--></div>");
-    $("#container").append("<button onclick=\"renderAnimation = renderExplosion\">ExplodeMesh</button><button onclick=\"renderAnimation = renderImplosion\">ImplodeMesh</button>");
+	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
 }
