@@ -18,11 +18,13 @@ void main()
 var metal_mat_vert = `
 varying vec3 vNormal;
 varying vec3 vViewPosition;
+varying vec3 vWorldPosition;
 
 void main()
 {
     vec4 viewPos = modelViewMatrix * vec4(position, 1.0);
     vViewPosition = viewPos.xyz;
+    vWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
     vNormal = normalMatrix * normal;
     gl_Position = projectionMatrix * viewPos;
 }
@@ -33,11 +35,13 @@ var metal_mat_frag = `
 
 varying vec3 vNormal;
 varying vec3 vViewPosition;
+varying vec3 vWorldPosition;
 uniform vec3 baseColor;
 uniform float roughness;
 uniform vec3 pointLightWorldPosition;
 uniform vec3 pointLightColor;
 uniform vec3 envLightColor;
+uniform sampler2D envMap;
 
 vec3 FSchlick(float lDoth) {
     return (baseColor + (vec3(1.0)-baseColor)*pow(1.0 - lDoth,5.0));
@@ -57,18 +61,33 @@ float GSmith(float nDotv, float nDotl, float k) {
         return G1(nDotl,k)*G1(nDotv,k);
 }
 
+vec3 inverseTransformDirection( in vec3 dir, in mat4 matrix ) {
+    return normalize( ( vec4( dir, 0.0 ) * matrix ).xyz );
+}
+
 void main()
 {
     vec4 pointLightViewPosition = viewMatrix * vec4(pointLightWorldPosition, 1.0);
 
+    //Direct light calculation
     vec3 l = normalize(pointLightViewPosition.xyz - vViewPosition.xyz);
     vec3 v = normalize(-vViewPosition);
     vec3 h = normalize(l + v);
     vec3 n = normalize(vNormal);
-
     float sqRoughness = roughness*roughness;
     vec3 directLightRadiance = pointLightColor * max(dot(n, l), EPS) * (FSchlick( max(dot(l, h), EPS)) * GSmith(max(dot(n, v), EPS), max(dot(n, l), EPS), sqRoughness) * DGGX(max(dot(n, h), EPS), sqRoughness)) / 4.0;
-    vec3 indirLightRadiance = envLightColor * baseColor;
+
+    //Indirect light calculation
+    vec3 worldV = vWorldPosition - cameraPosition;
+    vec3 worldN = inverseTransformDirection( n, viewMatrix );
+    vec3 r = normalize(reflect(worldV, worldN));
+    float den = 2.0 * sqrt(pow(r.x, 2.0) + pow(r.y, 2.0) + pow(r.z + 1.0, 2.0));
+    vec2 envUV = (r.xy / den) + 0.5;
+    vec3 F = FSchlick(max(dot(n, v), EPS));
+    int envLOD = int(floor(roughness * 8.0));
+    vec3 refEnvColor = texture2D(envMap, envUV).rgb * F;
+    vec3 indirLightRadiance = envLightColor * baseColor + refEnvColor;
+
     vec3 radiance = directLightRadiance + indirLightRadiance;
     gl_FragColor = vec4(pow(radiance, vec3(1.0/2.2)), 1.0);
 }
