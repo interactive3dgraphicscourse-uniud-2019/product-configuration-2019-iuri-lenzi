@@ -41,3 +41,34 @@ Thanks to the setupfile "architecture.json" we can specify the scale to apply to
 To return to the standard view the user must use the "close inspector" button.
 
 The next thing to do for this part of the project is to create an overlay with buttons for the selecton of the material to apply of the selected element.
+
+## (3). Material shaders
+The next step was the implementation of the shaders for the various material choices, we had to make 4 different shader:
+-   Emissive shader for the chamber and the acc_ring;
+-   Custom shader for the coils;
+-   Custom shader for the grid;
+-   Metal shader for the other;
+
+### Emissive shader
+This shader couple is very simple:
+-   The vertex shader is the basic vertex shader that outputs the position of the vertex in clip space;
+-   The fragment shader simply applies the emissive color to glFragColor (with gamma correction);
+
+Below we can see how the emissive material appears alone
+![emissiveShad](images/shaders1.png)
+
+and with the other parts (that here use the MeshPhongMaterial for now)
+![emissiveShad2](images/shaders2.png)
+
+And idea to improve the grafic rendering can be to use a post processing effect that bleeds the emissive color on the adiacent pixels.
+
+### Metal shader
+This shader is a standard microfacet shader with no lambertian component (since we are interested only in the specular component).
+Our implementation also support environment reflections (with adjustable blur according to the roughenss of the material) and takes into account the ambient light (in this case the hemilight from THREE.js).
+To obtain this we devided the computation on the fragment shader in two part:
+-   Direct light calculation: it implements the classic microfacet shader for a single point light (we don't nedd mor the one light for our scene);
+-   Indirect light calculation: it takes into consideration the ambient light term and the reflection term given by the environment map; a difficult problem was to obtain differt blurred versions of the envmap for different levels of roughness: since WebGL 1.0 doesn't support the access to mip map levels natively and, even with the extensions, this feature is still not supported on Android 6, the solution was to create 9 different texture images in GIMP, miming the mip map levels on the GPU, and assign the correct one to the uniforms of the material based on the roughness value.
+
+Here we can see the result at two different values of roughness:
+![metalShad](images/shaders3.png)
+![metalShad](images/shaders4.png)
