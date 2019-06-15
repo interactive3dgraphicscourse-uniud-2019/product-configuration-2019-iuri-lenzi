@@ -16,6 +16,7 @@ function trigger(component){
     //Create close inspector button
     applyTemplate( "../inspector/inspector.html", [ ["{description}", description] ] );
     bindEvent(window, "mousemove", sendRotation );
+    bindEvent(document, "touchmove", sendRotation );
 }
 
 function emptyInspScene()

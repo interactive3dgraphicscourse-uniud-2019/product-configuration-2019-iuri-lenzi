@@ -29,6 +29,7 @@ var materialVector = new Array();
 * Init function
 */ 
 function init() {
+	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
 	initStat();
 	initScene();
 	initInspectorScene();
@@ -39,9 +40,15 @@ function init() {
 	initCamera();
 	
 	bindEvent(window, "resize", onWindowResize );
+	// desktop
 	bindEvent(window, "mousemove", onDocumentMouseMove );
 	bindEvent(document, "mousedown", onMouseDown );
 	bindEvent(document, "mouseup", onMouseUp );
+	// touch screen
+	bindEvent(document, "touchmove", onDocumentMouseMove );
+	bindEvent(document, "touchstart", onMouseDown );
+	bindEvent(document, "touchend", onMouseUp );
+
 	bindEvent(window, "click", onDocumentMouseClick );
 	bindEvent(window, 'message', onMessage );
 	bindEvent(document, "loading-complete", function(){
@@ -50,6 +57,9 @@ function init() {
 	initRenderer();
 }
 
+function a( evt ){
+	console.log("asdfsdfdfdsf")
+}
 
 function loadArchitecture( file ) {
 	read(file, function(content){
@@ -112,7 +122,6 @@ function initRenderer(){
 	renderer.gammaOutput = true;
 	renderer.gammaInput = true;
 	renderer.shadowMap.enabled = true;
-	//document.getElementById( 'arc-reactor' ).appendChild( renderer.domElement );
 	document.body.appendChild( renderer.domElement );
 }
 
@@ -149,7 +158,7 @@ function initStat(){
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
 	stats.domElement.style.top = '0px';
-	document.body.appendChild( stats.domElement );
+	//document.body.appendChild( stats.domElement );
 }
 
 init();
