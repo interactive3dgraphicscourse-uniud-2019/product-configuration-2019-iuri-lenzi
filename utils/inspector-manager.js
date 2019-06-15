@@ -50,37 +50,12 @@ function loadComponent(component)
 	);
 }
 
-var fixed_cube;
 
 function createInspScene(elements)
 {
 	elements.forEach(element => {
         inspectorScene.add(element);
     });
-    var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
-    var material = new THREE.MeshBasicMaterial( );
-    material.color.setHex( 0x000 );
-    fixed_cube = new THREE.Mesh( geometry, material );
-    fixed_cube.position.z += 40;
-    inspectorScene.add( fixed_cube );
-}
-
-
-function renderFixedElements(){
-    var cam_dir = new THREE.Vector3();
-    camera.getWorldDirection( cam_dir );
-    var cam_pos = camera.position;
-    if(fixed_cube != undefined && fixed_cube!= null){
-        //fixed_cube.position.x -= 10;
-        //(
-            //cam_pos.x - ((cam_pos.x/100) * 50),
-            //cam_pos.y - ((cam_pos.y/100) * 50),
-            //cam_pos.z - ((cam_pos.z/100) * 50)
-            //cam_pos.x,
-            //cam_pos.y,
-            //cam_pos.z
-        //)
-    }
 }
 
 

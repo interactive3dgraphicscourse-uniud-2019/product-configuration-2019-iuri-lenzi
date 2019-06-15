@@ -66,3 +66,11 @@ function closeInspector() {
 	switchScene = false;
 	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
 }
+
+function onMouseDown( event ){
+	mouseDown = true
+}
+
+function onMouseUp( event ){
+	mouseDown = false
+}

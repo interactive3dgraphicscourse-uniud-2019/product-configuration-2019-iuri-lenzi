@@ -13,6 +13,7 @@ html, body{
 	text-align:center;
 	z-index: 100;
 	display: block;
+	touch-action: none;
 }
 
 .phumphy{

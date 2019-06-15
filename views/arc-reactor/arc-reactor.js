@@ -83,9 +83,6 @@ function setupMesh( parameters ) {
 function animate() {
 	stats.update();
 	controls.update();
-	if(switchScene){
-		renderFixedElements();
-	}
 	renderAnimation();
 	requestAnimationFrame( animate );
 	Render();
