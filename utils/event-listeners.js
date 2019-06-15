@@ -36,7 +36,7 @@ function onDocumentMouseMove( event ) {
 	//console.log(event.layerX, event.layerY);
 	event.preventDefault();
 	if ( selectedObject ) {
-		selectedObject.material.color.set( '#69f' );
+		//selectedObject.material.color.set( '#69f' );
 		selectedObject = null;
 	}
 	var intersects = getIntersects( event.layerX, event.layerY );
@@ -46,7 +46,7 @@ function onDocumentMouseMove( event ) {
 		} )[ 0 ];
 		if ( res && res.object ) {
 			selectedObject = res.object;
-			selectedObject.material.color.set( '#f00' );
+			//selectedObject.material.color.set( '#f00' );
 		}
 	}
 }

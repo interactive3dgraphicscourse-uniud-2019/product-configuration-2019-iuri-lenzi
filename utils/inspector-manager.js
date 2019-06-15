@@ -32,7 +32,13 @@ function loadComponent(component)
                  function( gltf ) {
                     var gltfMesh = gltf.scene.children[0];
 
-                    var elementToInsp = new THREE.Mesh(gltfMesh.geometry, new THREE.MeshPhongMaterial({ color: "#6699ff"}));
+                    var elementToInsp;
+
+                    if(params.materials[0] != -1)
+                        elementToInsp = new THREE.Mesh(gltfMesh.geometry, materialVector[params.materials[0]]);
+		            else
+                        elementToInsp = new THREE.Mesh(gltfMesh.geometry, new THREE.MeshPhongMaterial({ color: "#6699ff"}));
+                    
                     elementToInsp.scale.set(params.inspectorScale, params.inspectorScale, params.inspectorScale);
                     
                     //Create insp scene element object
