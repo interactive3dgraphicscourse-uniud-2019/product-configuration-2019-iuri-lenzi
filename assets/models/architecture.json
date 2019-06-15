@@ -155,7 +155,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[-1]
+        "materials":[6]
     },
     {
         "url": "assets/models/grid/grid.glb",
@@ -191,7 +191,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[-1]
+        "materials":[5]
     },
     {
         "url": "assets/models/chamber/chamber.glb",

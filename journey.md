@@ -72,3 +72,5 @@ To obtain this we devided the computation on the fragment shader in two part:
 Here we can see the result at two different values of roughness:
 ![metalShad](images/shaders3.png)
 ![metalShad](images/shaders4.png)
+
+Environment map from texturify.com
