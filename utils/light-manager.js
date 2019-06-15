@@ -6,7 +6,7 @@
 * Init an HemisphereLight
 */
 function createHemiLight(){
-	var hemiLight = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
+	var hemiLight = new THREE.HemisphereLight( 0x000022, 0x777788, 0.75 );
 	hemiLight.position.set( 0.5, 1, 0.75 );
     return hemiLight;
 }
