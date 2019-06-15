@@ -4,7 +4,7 @@ var mouseVector = new THREE.Vector3();
 var group = new THREE.Group();
 var switchScene = false;
 var p = window.parent;
-var mouseDown = false;
+
 
 function trigger(component){
 	alert("lasjlsjfddslkj")
@@ -14,8 +14,6 @@ function Start() {
 	raycaster = new THREE.Raycaster();
 	bindEvent(window, "mousemove", updateQuaternion );
 	//bindEvent(window, "click", updateQuaternion );
-	bindEvent(document, "mousedown", onMouseDown );
-	bindEvent(document, "mouseup", onMouseUp );
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 	renderer = new THREE.WebGLRenderer({alpha: true});
@@ -45,7 +43,7 @@ Update();
 
 
 bindEvent(window, 'message', function (event) {
-	alert(event.data);
+	updateQuaternion(event.data);
 });
 
 
@@ -54,12 +52,9 @@ function send_to_parent(){
 	//window.parent.postMessage("ciao padre sono tuo figlio", '*');
 }
 
-function updateQuaternion( event ){
-	if(mouseDown)
-	{
-		console.log("quaternion")
-		group.children.forEach(function(box){
-			box.rotation.set(camera.rotation._x, camera.rotation._y, camera.rotation._z)
-		})
-	}
+
+function updateQuaternion( rotation ){
+	group.children.forEach(function(box){
+		box.rotation.set(rotation._x, rotation._y, rotation._z)
+	})
 }

@@ -40,6 +40,8 @@ function init() {
 	
 	bindEvent(window, "resize", onWindowResize );
 	bindEvent(window, "mousemove", onDocumentMouseMove );
+	bindEvent(document, "mousedown", onMouseDown );
+	bindEvent(document, "mouseup", onMouseUp );
 	bindEvent(window, "click", onDocumentMouseClick );
 	bindEvent(window, 'message', onMessage );
 	bindEvent(document, "loading-complete", function(){

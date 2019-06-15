@@ -15,6 +15,7 @@ function trigger(component){
 
     //Create close inspector button
     applyTemplate( "../inspector/inspector.html", [ ["{description}", description] ] );
+    bindEvent(window, "mousemove", sendRotation );
 }
 
 function emptyInspScene()
@@ -50,10 +51,12 @@ function loadComponent(component)
 	);
 }
 
+var inspectedObject;
 
 function createInspScene(elements)
 {
 	elements.forEach(element => {
+        inspectedObject = element;
         inspectorScene.add(element);
     });
 }

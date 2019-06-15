@@ -14,6 +14,15 @@ function bindEvent(element, eventName, eventHandler) {
 }
 
 
+function unbindEvent(element, eventName, eventHandler) {
+	if (element.addEventListener){
+		element.removeEventListener(eventName, eventHandler, false);
+	} else if (element.attachEvent) {
+		element.detachEvent('on' + eventName, eventHandler);
+	}
+}
+
+
 function onMessage(event) {
 	alert(event.data);
 }
@@ -33,7 +42,6 @@ function onDocumentMouseClick( event ){
 }
 
 function onDocumentMouseMove( event ) {
-	//console.log(event.layerX, event.layerY);
 	event.preventDefault();
 	if ( selectedObject ) {
 		//selectedObject.material.color.set( '#69f' );
@@ -67,10 +75,21 @@ function closeInspector() {
 	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
 }
 
+
+var mouseDown = false;
+
 function onMouseDown( event ){
 	mouseDown = true
 }
 
 function onMouseUp( event ){
 	mouseDown = false
+}
+
+
+function sendRotation( event ){
+	if(mouseDown){
+		var inspectorControl = document.getElementById("inspector-controls");
+		inspectorControl.contentWindow.postMessage({_x: camera.rotation._x, _y: camera.rotation._y, _z: camera.rotation._z}, '*');
+	}
 }
