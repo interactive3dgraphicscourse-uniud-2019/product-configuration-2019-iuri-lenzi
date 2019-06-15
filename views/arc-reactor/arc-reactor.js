@@ -42,6 +42,9 @@ function init() {
 	bindEvent(window, "mousemove", onDocumentMouseMove );
 	bindEvent(window, "click", onDocumentMouseClick );
 	bindEvent(window, 'message', onMessage );
+	bindEvent(document, "loading-complete", function(){
+		console.log("Loading Complete");
+		animate();})
 	initRenderer();
 }
 
@@ -150,6 +153,4 @@ function initStat(){
 	document.body.appendChild( stats.domElement );
 }
 
-
 init();
-animate();

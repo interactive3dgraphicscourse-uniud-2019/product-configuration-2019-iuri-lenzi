@@ -21,3 +21,22 @@ function applyTemplate(template, placeholders=[], tag = "#container"){
 		$(tag).html(content);	
 	})
 }
+
+function loadGlsl(filePath){
+    read(filePath, function(content){
+        var tag = content.split("\n")[0]
+        tag = tag.substring(2, tag.length);
+        materialVector.forEach(function(element){
+            if(element.vertexShader == tag){
+                element.vertexShader = content;
+            }
+            if(element.fragmentShader == tag){
+                element.fragmentShader = content;
+            }
+        });
+        todo.delete(tag);
+        if(todo.size == 0){
+            document.dispatchEvent(new CustomEvent("loading-complete", { }));
+        }
+    })
+}
