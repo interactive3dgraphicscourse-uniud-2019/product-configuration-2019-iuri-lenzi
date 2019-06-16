@@ -14,3 +14,18 @@
     margin-right: 10vw;
     position: absolute;
 }
+
+.icon{
+	font-size: 30px; 
+	color: white;
+	justify-content: flex-end;
+	align-self: flex-end;
+	margin: 10px;
+}
+
+#buttons-bar{
+	width: 100%;
+	justify-content: flex-end;
+	align-self: flex-end;
+	display: flex;
+}
