@@ -1,7 +1,7 @@
 function initInnerRings(){
     //Material 23: rings copper 1
     var rings_rough = 0.7;
-    var all_rough = 0.1;
+    var all_rough = 0.7;
     rings_copp_1 = new THREE.ShaderMaterial(
         {
             uniforms: {
