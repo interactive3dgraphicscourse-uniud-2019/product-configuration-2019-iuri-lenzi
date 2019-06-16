@@ -100,9 +100,9 @@ function setupMesh( parameters ) {
 * Loop function
 */
 function animate() {
+	TWEEN.update();
 	stats.update();
 	controls.update();
-	renderAnimation();
 	requestAnimationFrame( animate );
 	Render();
 }

@@ -153,6 +153,20 @@
                     "z": 0
                 },
                 "effect": "linear"
+            },
+            {        
+                "scale": 60,
+                "position": {
+                    "x": 20,
+                    "y": 20,
+                    "z": 20
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 0,
+                    "z": 0
+                },
+                "effect": "linear"
             }
         ],
         "materials":[23, 24]
