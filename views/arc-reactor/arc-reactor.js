@@ -24,6 +24,10 @@ var hemiLight, dirLight;
 // Materials
 var materialVector = new Array();
 
+// Skybox
+var skyMesh;
+var skyMaterial;
+
 /*
 * Init function
 */ 
@@ -52,7 +56,14 @@ function init() {
 	bindEvent(window, 'message', onMessage );
 	bindEvent(document, "loading-complete", function(){
 		console.log("Loading Complete");
-		animate();})
+		
+		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);
+		skyMesh.rotation.y -= Math.PI/4;
+		scene.add(skyMesh);
+		animate();
+	})
+
+
 	initRenderer();
 }
 
@@ -144,6 +155,21 @@ function initInspectorScene()
 	inspectorScene.background = new THREE.Color( 0x000022 );
 	inspectorHemiLight = createHemiLight();
 	inspectorDirectLight = createDirLight();
+}
+
+/*
+* Skybox init
+*/
+function initSkyBox()
+{
+	skyMaterial = new THREE.ShaderMaterial(
+		{
+			vertexShader: 'sky-vertex',
+			fragmentShader: 'sky-fragment',
+			uniforms: {"skyMap": {type: "t", value: environmentMaps[0]}},
+			side: THREE.BackSide
+		}
+	)
 }
 
 
