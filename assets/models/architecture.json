@@ -33,7 +33,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[0]
+        "materials":[0, 1, 2, 3]
     },
     {
         "url": "../../assets/models/acc_coil/acc_coil.glb",

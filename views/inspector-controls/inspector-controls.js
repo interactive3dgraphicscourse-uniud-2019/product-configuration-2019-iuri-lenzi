@@ -8,7 +8,8 @@ var aspect = window.innerWidth / window.innerHeight * 2;
 var frustumSize = 4;
 
 function trigger(component){
-	alert(component.materialIndex);
+	//alert(component.materialIndex);
+	p.updateSceneMaterials(component.materialIndex)
 }
 
 function Start() {
