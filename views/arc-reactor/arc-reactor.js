@@ -24,10 +24,6 @@ var hemiLight, dirLight;
 // Materials
 var materialVector = new Array();
 
-// Textures
-var environmentMaps = new Array();
-
-
 /*
 * Init function
 */ 
