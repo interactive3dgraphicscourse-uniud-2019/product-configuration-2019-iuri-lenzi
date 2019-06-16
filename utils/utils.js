@@ -87,7 +87,7 @@ function explode(){
             child.explode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.explode()
+                c.explode(500)
             })
         }
     }) 
@@ -104,7 +104,7 @@ function implode(){
             child.implode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.implode()
+                c.implode(500)
             })
         }
     }) 

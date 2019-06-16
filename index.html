@@ -321,6 +321,16 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript">
 
+        $( "#arc-reactor" ).mouseover(function( event ) {
+			$('body').addClass('stop-scrolling')
+		});
+        $( "#arc-reactor" ).mouseout(function( event ) {
+			$('body').removeClass('stop-scrolling')
+		});
+		$( "#arc-reactor" ).bind("touchmove", function( event ) {
+			alert("asdf");
+			event.preventDefault()
+		});
         /*  
         * Slicknav script 
         */
