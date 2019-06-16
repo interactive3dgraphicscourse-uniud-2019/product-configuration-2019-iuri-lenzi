@@ -24,7 +24,8 @@ function applyTemplate(template, placeholders=[], tag = "#container"){
 
 function loadGlsl(filePath){
     read(filePath, function(content){
-        var tag = content.split("\n")[0]
+        var tag = content.split("\n")[0];
+        tag = tag.replace("\r", "");
         tag = tag.substring(2, tag.length);
         materialVector.forEach(function(element){
             if(element.vertexShader == tag){
