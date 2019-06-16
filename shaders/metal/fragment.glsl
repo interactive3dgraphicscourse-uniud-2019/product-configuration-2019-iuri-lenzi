@@ -49,6 +49,7 @@ void main()
     //Indirect light calculation
     vec3 worldV = vWorldPosition - cameraPosition;
     vec3 worldN = InverseTransformDirection( n, viewMatrix );
+    vec3 r = normalize(reflect(worldV, worldN));
     vec2 envUV;
     envUV.y = asin( clamp( r.y, - 1.0, 1.0 ) ) * RECIPROCAL_PI + 0.5;
     envUV.x = atan( r.z, r.x ) * RECIPROCAL_PI*RECIPROCAL_PI + 0.5;
