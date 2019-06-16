@@ -65,6 +65,10 @@ function updateSceneMaterials(materialIndex){
     group.children.forEach(function(child){
         if(child instanceof AnimatedMesh && child.parameters.url == inspectedObject.parameters.url){
             changeMaterial(child, materialIndex)
+        } else if(child instanceof AnimatedGroup && child.children[0].parameters.url == inspectedObject.parameters.url){
+            child.children.forEach(function(c){
+                changeMaterial(c, materialIndex)
+            })
         }
     })   
 }
