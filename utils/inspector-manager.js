@@ -1,18 +1,27 @@
-function inspect(component){
+var currentItem = null;
+var inspectedObject;
+
+function trigger(component){
     console.dir(component);
     description = component.parameters.url;
+    currentItem = description;
     //Empty old inspector scene
     emptyInspScene();
 
     //Load component and create inspector scene
+    inspectedObject = component.clone();
+    inspectedObject.position.set(0,0,0);
+    inspectedObject.rotation.set(0,0,0);
     loadComponent(component);
 
     //Switch Scene
     switchScene = true;
 
     //Create close inspector button
-    $("#container").html("<div id=\"info\"><span style=\"font-size:20px\">" + description +"</span></div>");
-    $("#container").append("<button onclick=\"closeInspector()\">Close Inspector</button>");
+    applyTemplate( "../inspector/inspector.html", [ ["{description}", description] ] );
+    bindEvent(window, "mousemove", sendRotation );
+    bindEvent(document, "touchmove", sendRotation );
+
 }
 
 function emptyInspScene()
@@ -24,36 +33,42 @@ function emptyInspScene()
 
 function loadComponent(component)
 {
-    var params = component.parameters;
-    var loader = new THREE.GLTFLoader();
-    loader.load( component.parameters.url, 
-                 function( gltf ) {
-                    var gltfMesh = gltf.scene.children[0];
+    elements = new Array(inspectorHemiLight, inspectorDirectLight, inspectedObject);
 
-                    var elementToInsp;
-                    
-                    var geom = gltfMesh.geometry;
-		            THREE.BufferGeometryUtils.computeTangents(geom);
-
-                    if(params.materials[0] != -1)
-                        elementToInsp = new THREE.Mesh(geom, materialVector[params.materials[0]]);
-		            else
-                        elementToInsp = new THREE.Mesh(geom, new THREE.MeshPhongMaterial({ color: "#6699ff"}));
-                    
-                    elementToInsp.scale.set(params.inspectorScale, params.inspectorScale, params.inspectorScale);
-                    
-                    //Create insp scene element object
-                    elements = new Array(inspectorHemiLight, inspectorDirectLight, elementToInsp);
-
-                    //Create new inspector scene
-                    createInspScene(elements);
-                 }
-	);
+    //Create new inspector scene
+    createInspScene(elements);
 }
+
 
 function createInspScene(elements)
 {
 	elements.forEach(element => {
         inspectorScene.add(element);
     });
+}
+
+
+function send_to_child(){
+    iframeEl.contentWindow.postMessage("ciao figlio sono tuo padre", '*');
+}
+
+
+function changeMaterial(mesh, materialIndex){
+    mesh.material = materialVector[materialIndex];
+    mesh.parameters.materials[mesh.parameters.materials.indexOf(materialIndex)] = mesh.parameters.materials[0];
+    mesh.parameters.materials[0] = materialIndex; 
+    mesh.material.needsUpdate = true;
+}
+
+function updateSceneMaterials(materialIndex){
+    changeMaterial(inspectedObject, materialIndex)
+    group.children.forEach(function(child){
+        if(child instanceof AnimatedMesh && child.parameters.url == inspectedObject.parameters.url){
+            changeMaterial(child, materialIndex)
+        } else if(child instanceof AnimatedGroup && child.children[0].parameters.url == inspectedObject.parameters.url){
+            child.children.forEach(function(c){
+                changeMaterial(c, materialIndex)
+            })
+        }
+    })   
 }

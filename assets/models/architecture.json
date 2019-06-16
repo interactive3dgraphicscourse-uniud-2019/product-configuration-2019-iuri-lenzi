@@ -1,6 +1,6 @@
 [
     {
-        "url": "assets/models/acc_ring/acc_ring.glb",
+        "url": "../../assets/models/acc_ring/acc_ring.glb",
         "repeat": 0,
         "inspectorScale": 50,
         "frames": [
@@ -33,10 +33,10 @@
                 "effect": "linear"
             }
         ],
-        "materials":[0]
+        "materials":[0, 1, 2]
     },
     {
-        "url": "assets/models/acc_coil/acc_coil.glb",
+        "url": "../../assets/models/acc_coil/acc_coil.glb",
         "repeat": 10,
         "inspectorScale": 200,
         "frames": [
@@ -83,10 +83,10 @@
                 "effect": "flip"
             }
         ],
-        "materials":[14]
+        "materials":[14, 15, 16, 17]
     },
     {
-        "url": "assets/models/inner_structure/inner_structure.glb",
+        "url": "../../assets/models/inner_structure/inner_structure.glb",
         "repeat": 0,
         "inspectorScale": 100,
         "frames": [
@@ -119,10 +119,10 @@
                 "effect": "linear"
             }
         ],
-        "materials":[6]
+        "materials":[6, 7, 8, 9]
     },
     {
-        "url": "assets/models/inner_copper_rings/inner_copper_rings.glb",
+        "url": "../../assets/models/inner_copper_rings/inner_copper_rings.glb",
         "repeat": 0,
         "inspectorScale": 100,
         "frames": [
@@ -155,10 +155,10 @@
                 "effect": "linear"
             }
         ],
-        "materials":[23]
+        "materials":[23, 24]
     },
     {
-        "url": "assets/models/grid/grid.glb",
+        "url": "../../assets/models/grid/grid.glb",
         "repeat": 0,
         "inspectorScale": 200,
         "frames": [
@@ -191,10 +191,10 @@
                 "effect": "linear"
             }
         ],
-        "materials":[22]
+        "materials":[22, 21, 20, 19]
     },
     {
-        "url": "assets/models/chamber/chamber.glb",
+        "url": "../../assets/models/chamber/chamber.glb",
         "repeat": 0,
         "inspectorScale": 100,
         "frames": [
@@ -227,10 +227,10 @@
                 "effect": "linear"
             }
         ],
-        "materials":[0]
+        "materials":[0, 1, 2]
     },
     {
-        "url": "assets/models/chamber_heatsink/chamber_heatsink.glb",
+        "url": "../../assets/models/chamber_heatsink/chamber_heatsink.glb",
         "repeat": 0,
         "inspectorScale": 150,
         "frames": [
@@ -263,10 +263,10 @@
                 "effect": "linear"
             }
         ],
-        "materials":[7]
+        "materials":[7, 6]
     },
     {
-        "url": "assets/models/chamber_rings/chamber_rings.glb",
+        "url": "../../assets/models/chamber_rings/chamber_rings.glb",
         "repeat": 0,
         "inspectorScale": 100,
         "frames": [
@@ -299,10 +299,10 @@
                 "effect": "linear"
             }
         ],
-        "materials":[6]
+        "materials":[6, 7, 8, 9]
     },
     {
-        "url": "assets/models/structure/structure.glb",
+        "url": "../../assets/models/structure/structure.glb",
         "repeat": 0,
         "inspectorScale": 100,
         "frames": [
@@ -335,6 +335,6 @@
                 "effect": "linear"
             }
         ],
-        "materials":[6]
+        "materials":[6, 7, 8, 9]
     }
 ]

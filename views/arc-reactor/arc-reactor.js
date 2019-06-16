@@ -24,52 +24,50 @@ var hemiLight, dirLight;
 // Materials
 var materialVector = new Array();
 
-// Textures
-var environmentMaps = new Array();
-
-
 /*
 * Init function
 */ 
 function init() {
+	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
 	initStat();
 	initScene();
 	initInspectorScene();
 	initMaterials();
 
-	loadArchitecture("assets/models/architecture.json");
+	loadArchitecture("../../assets/models/architecture.json");
 	scene.add(group);
 	initCamera();
 	
-	window.addEventListener( 'resize', onWindowResize, false );
-	window.addEventListener( "mousemove", onDocumentMouseMove, false );
-	window.addEventListener( "click", onDocumentMouseClick, false );
+	bindEvent(window, "resize", onWindowResize );
+	// desktop
+	bindEvent(window, "mousemove", onDocumentMouseMove );
+	bindEvent(document, "mousedown", onMouseDown );
+	bindEvent(document, "mouseup", onMouseUp );
+	// touch screen
+	bindEvent(document, "touchmove", onDocumentMouseMove );
+	bindEvent(document, "touchstart", onMouseDown );
+	bindEvent(document, "touchend", onMouseUp );
+
+	bindEvent(window, "click", onDocumentMouseClick );
+	bindEvent(window, 'message', onMessage );
+	bindEvent(document, "loading-complete", function(){
+		console.log("Loading Complete");
+		animate();})
 	initRenderer();
 }
 
 
-function loadArchitecture(file)
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-				var architecture = JSON.parse(rawFile.responseText);   
-				architecture.forEach(function(component){
-					setupMesh(component);
-				});
-            }
-        }
-    }
-    rawFile.send(null);
+function loadArchitecture( file ) {
+	read(file, function(content){
+		var architecture = JSON.parse(content);   
+		architecture.forEach(function(component){
+			setupMesh(component);
+		});
+	})
 }
 
 
-function setupMesh(parameters){
+function setupMesh( parameters ) {
 	var loader = new THREE.GLTFLoader();
 	loader.load( parameters.url, function( gltf ) {
 		var gltfMesh = gltf.scene.children[ 0 ];
@@ -114,13 +112,12 @@ function Render()
 * Renderer init
 */
 function initRenderer(){
-	renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer = new THREE.WebGLRenderer( { alpha: true, antialias: true } );
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.gammaOutput = true;
 	renderer.gammaInput = true;
 	renderer.shadowMap.enabled = true;
-	//document.getElementById( 'arc-reactor' ).appendChild( renderer.domElement );
 	document.body.appendChild( renderer.domElement );
 }
 
@@ -157,9 +154,7 @@ function initStat(){
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
 	stats.domElement.style.top = '0px';
-	document.body.appendChild( stats.domElement );
+	//document.body.appendChild( stats.domElement );
 }
 
-
 init();
-animate();

@@ -15,9 +15,9 @@ The model is composed by 9 parts:
 9.  **structure**: finally this is tha main structure of the reactor which contains all the other parts.
 
 Down here we can see some pictures of the final model (all parts together, the first pictures is a test to see how the 10 coils stands together):
-![reactorView1](images/ArcBuild4.png)
-![reactorView2](images/ArcBuild5.png)
-![reactorView3](images/ArcBuild6.png)
+![reactorView1](assets/images/ArcBuild4.png)
+![reactorView2](assets/images/ArcBuild5.png)
+![reactorView3](assets/images/ArcBuild6.png)
 
 The next thing to do was the creation of a custom material for the coils to give the impresion of a real copper coil (it would have been very difficult and unefficient to model the single copper wires): to achieve that we use two softare tools, namely ShaderMap and Substance Painter, to create a set of texture for a copper coil and to apply it to the model in order to obtain the final textures to be used in threejs.
 
@@ -29,8 +29,8 @@ The process is the following:
 5.  Export the texture from Substance Painter;
 
 Below we can see the final result of the process:
-![coilMaterial1](images/ArcBuild7.png)
-![coilMaterial2](images/ArcBuild8.png)
+![coilMaterial1](assets/images/ArcBuild7.png)
+![coilMaterial2](assets/images/ArcBuild8.png)
 
 ## (2). Inspector view
 Since we want the user to be able to select materials for all the single component of the models we thought about using a separate view, namely the inspector view, in order to give the user a better and more detailed visualization of the component he want to modify.
@@ -55,10 +55,10 @@ This shader couple is very simple:
 -   The fragment shader simply applies the emissive color to glFragColor (with gamma correction);
 
 Below we can see how the emissive material appears alone
-![emissiveShad](images/shaders1.png)
+![emissiveShad](assets/images/shaders1.png)
 
 and with the other parts (that here use the MeshPhongMaterial for now)
-![emissiveShad2](images/shaders2.png)
+![emissiveShad2](assets/images/shaders2.png)
 
 And idea to improve the grafic rendering can be to use a post processing effect that bleeds the emissive color on the adiacent pixels.
 
@@ -70,7 +70,7 @@ To obtain this we devided the computation on the fragment shader in two part:
 -   Indirect light calculation: it takes into consideration the ambient light term and the reflection term given by the environment map; a difficult problem was to obtain differt blurred versions of the envmap for different levels of roughness: since WebGL 1.0 doesn't support the access to mip map levels natively and, even with the extensions, this feature is still not supported on Android 6, the solution was to create 9 different texture images in GIMP, miming the mip map levels on the GPU, and assign the correct one to the uniforms of the material based on the roughness value.
 
 Here we can see the result at two different values of roughness:
-![metalShad](images/shaders3.png)
-![metalShad](images/shaders4.png)
+![metalShad](assets/images/shaders3.png)
+![metalShad](assets/images/shaders4.png)
 
 Environment map from texturify.com

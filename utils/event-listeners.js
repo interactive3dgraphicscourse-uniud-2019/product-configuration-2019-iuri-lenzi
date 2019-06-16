@@ -1,6 +1,33 @@
 /*
 * Define an event listener on the window resize event (in order to adjust the aspect ratio)
 */
+
+/*
+* Support for IE8
+*/
+function bindEvent(element, eventName, eventHandler) {
+	if (element.addEventListener){
+		element.addEventListener(eventName, eventHandler, false);
+	} else if (element.attachEvent) {
+		element.attachEvent('on' + eventName, eventHandler);
+	}
+}
+
+
+function unbindEvent(element, eventName, eventHandler) {
+	if (element.addEventListener){
+		element.removeEventListener(eventName, eventHandler, false);
+	} else if (element.attachEvent) {
+		element.detachEvent('on' + eventName, eventHandler);
+	}
+}
+
+
+function onMessage(event) {
+	alert(event.data);
+}
+
+
 function onWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
@@ -10,12 +37,11 @@ function onWindowResize() {
 
 function onDocumentMouseClick( event ){
 	if(selectedObject != null && selectedObject != undefined && !switchScene){
-		inspect( selectedObject );
+		trigger( selectedObject );
 	}
 }
 
 function onDocumentMouseMove( event ) {
-	//console.log(event.layerX, event.layerY);
 	event.preventDefault();
 	if ( selectedObject ) {
 		//selectedObject.material.color.set( '#69f' );
@@ -44,9 +70,26 @@ function getIntersects( x, y ) {
 		return raycaster.intersectObject( inspectorScene, true );
 }
 
-function closeInspector()
-{
+function closeInspector() {
 	switchScene = false;
-	$("#container").html("<div id=\"info\"><!--<span style=\"font-size:20px\">[Second Course Project 2019 - Product Configuration]</span><br /><br /><span style=\"font-size:15px\">Team: Marco Iuri and Edoardo Lenzi</span>--></div>");
-    $("#container").append("<button onclick=\"renderAnimation = renderExplosion\">ExplodeMesh</button><button onclick=\"renderAnimation = renderImplosion\">ImplodeMesh</button>");
+	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
+}
+
+
+var mouseDown = false;
+
+function onMouseDown( event ){
+	mouseDown = true
+}
+
+function onMouseUp( event ){
+	mouseDown = false
+}
+
+
+function sendRotation( event ){
+	var inspectorControl = document.getElementById("inspector-controls");
+	if(mouseDown && inspectorControl != null){
+		inspectorControl.contentWindow.postMessage({_x: camera.rotation._x, _y: camera.rotation._y, _z: camera.rotation._z}, '*');
+	}
 }
