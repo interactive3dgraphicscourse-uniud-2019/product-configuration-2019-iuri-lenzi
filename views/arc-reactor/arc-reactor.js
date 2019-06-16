@@ -60,9 +60,6 @@ function init() {
 	initRenderer();
 }
 
-function a( evt ){
-	console.log("asdfsdfdfdsf")
-}
 
 function loadArchitecture( file ) {
 	read(file, function(content){

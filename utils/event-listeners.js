@@ -88,8 +88,8 @@ function onMouseUp( event ){
 
 
 function sendRotation( event ){
-	if(mouseDown){
-		var inspectorControl = document.getElementById("inspector-controls");
+	var inspectorControl = document.getElementById("inspector-controls");
+	if(mouseDown && inspectorControl != null){
 		inspectorControl.contentWindow.postMessage({_x: camera.rotation._x, _y: camera.rotation._y, _z: camera.rotation._z}, '*');
 	}
 }

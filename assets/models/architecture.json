@@ -33,7 +33,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[0, 1, 2, 3]
+        "materials":[0, 1, 2]
     },
     {
         "url": "../../assets/models/acc_coil/acc_coil.glb",
@@ -83,7 +83,7 @@
                 "effect": "flip"
             }
         ],
-        "materials":[14]
+        "materials":[14, 15, 16, 17]
     },
     {
         "url": "../../assets/models/inner_structure/inner_structure.glb",
@@ -119,7 +119,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[6]
+        "materials":[6, 7, 8, 9]
     },
     {
         "url": "../../assets/models/inner_copper_rings/inner_copper_rings.glb",
@@ -155,7 +155,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[23]
+        "materials":[23, 24]
     },
     {
         "url": "../../assets/models/grid/grid.glb",
@@ -191,7 +191,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[22]
+        "materials":[22, 21, 20, 19]
     },
     {
         "url": "../../assets/models/chamber/chamber.glb",
@@ -227,7 +227,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[0]
+        "materials":[0, 1, 2]
     },
     {
         "url": "../../assets/models/chamber_heatsink/chamber_heatsink.glb",
@@ -263,7 +263,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[7]
+        "materials":[7, 6]
     },
     {
         "url": "../../assets/models/chamber_rings/chamber_rings.glb",
@@ -299,7 +299,7 @@
                 "effect": "linear"
             }
         ],
-        "materials":[6]
+        "materials":[6, 7, 8, 9]
     },
     {
         "url": "../../assets/models/structure/structure.glb",
@@ -335,6 +335,6 @@
                 "effect": "linear"
             }
         ],
-        "materials":[6]
+        "materials":[6, 7, 8, 9]
     }
 ]
