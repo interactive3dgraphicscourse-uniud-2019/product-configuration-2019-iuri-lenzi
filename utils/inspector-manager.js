@@ -33,7 +33,7 @@ function emptyInspScene()
 
 function loadComponent(component)
 {
-    elements = new Array(inspectorHemiLight, inspectorDirectLight, inspectedObject);
+    elements = new Array(skyMesh, inspectorHemiLight, inspectorDirectLight, inspectedObject);
 
     //Create new inspector scene
     createInspScene(elements);

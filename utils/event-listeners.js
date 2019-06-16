@@ -73,6 +73,7 @@ function getIntersects( x, y ) {
 function closeInspector() {
 	switchScene = false;
 	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
+	scene.add(skyMesh);
 }
 
 
