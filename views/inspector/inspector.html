@@ -1,0 +1,19 @@
+
+<link rel="stylesheet" type="text/css" href="../inspector/inspector.css">
+<div id="container">
+    <div id="info">
+        <span style="font-size:20px; color: white">
+            {description}
+        </span>
+        <button onclick="closeInspector()">Close Inspector</button>
+    </div>
+
+        <iframe id="inspector-controls" class="transparent" onLoad="autoResize();" src="../inspector-controls/inspector-controls.html"></iframe>
+</div>
+
+<script language="javaScript">
+    function autoResize(){
+        $('#inspector-controls').height($('#inspector-controls').contents().height());
+        $('#inspector-controls').width($('#inspector-controls').contents().width());
+    }
+</script>

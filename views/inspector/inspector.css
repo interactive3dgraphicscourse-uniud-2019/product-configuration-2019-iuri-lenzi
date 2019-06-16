@@ -1,0 +1,16 @@
+#container{
+	width:100%;
+	height: 100%;
+	text-align:center;
+	display: flex;
+	position: absolute;
+}
+
+#inspector-controls{
+    width: 80vw;
+    height: 20vh;
+    margin-top: 80vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    position: absolute;
+}

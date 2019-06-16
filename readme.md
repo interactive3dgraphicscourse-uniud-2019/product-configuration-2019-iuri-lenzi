@@ -1,6 +1,14 @@
  # Product Visualization
 
-![Image from Ford Configurator, developed in three.js](assets/ford-configurator.jpg)
+![Image from Ford Configurator, developed in three.js](assets/images/ford-configurator.jpg)
+
+## Get Started
+
+In order to get the reqired libraries launch the command in the project root folder:
+
+```
+    npm install
+```
 
 
 ## The Baseline
