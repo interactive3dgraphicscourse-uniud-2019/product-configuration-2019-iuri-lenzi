@@ -47,6 +47,7 @@ The next step was the implementation of the shaders for the various material cho
 -   Emissive shader for the chamber and the acc_ring;
 -   Custom shader for the coils;
 -   Custom shader for the grid;
+-   Custom shader for inner_rings model;
 -   Metal shader for the other;
 
 ### Emissive shader
@@ -74,3 +75,13 @@ Here we can see the result at two different values of roughness:
 ![metalShad](assets/images/shaders4.png)
 
 Environment map from texturify.com
+
+### Other shaders
+For the other shader there isn't much more to say:
+-   the shader for the coils implements the same BRDF as the metal one with the difference that it uses vertex colors to determine which part of the model requires the use of the adequated textures and which part not: in particular for the vertex color **green** it uses basiccaly the metal shader with the roughness and base color specified in the uniforms, while for the other color (**red**) it uses the textures (diffuse map, roughness map and normal map) of the copper coil material we created with Substance Painter; notice that reflections work only for the "green" part since it was impossible to access the correct "mipmap level" of the environment map on the "red" part (since the roughness vary according to the roughness map pixel per pixel);
+-   the shader for the grids implements the same BRDF as the metal one, the only difference is that it uses the metal map texture as a mask to determine which pixels are part of the grid and which are inside the holes: the ones inside the holes are discarded;
+-   the shader for the inner rings also uses the same BRDF as the others but with different parameters for the vertex color **blue** (which is always an rough alluminum) and the vertex color **purple** (which is configurable via uniforms);
+
+Here below we can se the final result (the model with all the shaders applied and the env map as background):
+![shaders1](assets/images/shaders5.png)
+![shaders2](assets/images/shaders6.png)
