@@ -1,4 +1,5 @@
 var currentItem = null;
+var inspectedObject;
 
 function trigger(component){
     console.dir(component);
@@ -17,6 +18,8 @@ function trigger(component){
     applyTemplate( "../inspector/inspector.html", [ ["{description}", description] ] );
     bindEvent(window, "mousemove", sendRotation );
     bindEvent(document, "touchmove", sendRotation );
+
+    inspectedObject = component;
 }
 
 function emptyInspScene()
@@ -55,12 +58,10 @@ function loadComponent(component)
 	);
 }
 
-var inspectedObject;
 
 function createInspScene(elements)
 {
 	elements.forEach(element => {
-        inspectedObject = element;
         inspectorScene.add(element);
     });
 }

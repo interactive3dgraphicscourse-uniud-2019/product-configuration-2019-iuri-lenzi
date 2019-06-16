@@ -19,7 +19,7 @@ function Start() {
 	renderer = new THREE.WebGLRenderer({alpha: true});
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
-	var materials = [0, 2, 3, 6, 5];
+	var materials = p.inspectedObject.parameters.materials;
 
 	materials.forEach(function(material, i){
 		group.add( new BoxMaterial(material, new THREE.Vector3(

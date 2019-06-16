@@ -4,7 +4,14 @@ var todo = new Set([
     "emissive-vertex", 
     "emissive-fragment",
     "metal-vertex",
-    "metal-fragment"]);
+    "metal-fragment",
+    "coil-vertex",
+    "coil-fragment",
+    "grid-vertex",
+    "grid-fragment",
+    "inner-rings-vertex",
+    "inner-rings-fragment"
+]);
 
 function initMaterials()
 {
