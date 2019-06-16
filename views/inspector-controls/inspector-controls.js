@@ -36,9 +36,9 @@ function Start() {
 	var plane = new THREE.Mesh(new THREE.BoxBufferGeometry(15,0.2,3), new THREE.MeshBasicMaterial( { color: 0x00ff00 } ))
 	plane.position.set(-1,-1.5,0);
 	plane.rotation.x += 0.2;
-	scene.add( plane );
+	//scene.add( plane );
 	scene.add( group );
-	initControl(0, 10);
+	//initControl(0, 10);
 	scene.add(createDirLight())
 	camera.position.set(-1, 0, 2);	
 }
