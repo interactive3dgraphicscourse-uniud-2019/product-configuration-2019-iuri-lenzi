@@ -328,9 +328,11 @@
 			$('body').removeClass('stop-scrolling')
 		});
 		$( "#arc-reactor" ).bind("touchmove", function( event ) {
-			alert("asdf");
 			event.preventDefault()
 		});
+
+		$('body').unbind('touchmove');
+		
         /*  
         * Slicknav script 
         */
