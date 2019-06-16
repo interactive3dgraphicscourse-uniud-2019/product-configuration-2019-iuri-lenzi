@@ -28,3 +28,30 @@ iframe{
 canvas{
 	width: 50%
 }
+
+.grow { transition: all .0s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+
+.icon{
+	font-size: 30px; 
+	color: white;
+	justify-content: flex-end;
+	align-self: flex-end;
+	margin: 10px;
+}
+
+#buttons-bar{
+	width: 100%;
+	justify-content: flex-end;
+	align-self: flex-end;
+	display: flex;
+}
+
+.visible{
+	display: block;
+}
+
+
+.invisible{
+	display: none;
+}
