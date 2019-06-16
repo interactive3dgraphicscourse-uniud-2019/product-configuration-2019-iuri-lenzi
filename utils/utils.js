@@ -76,17 +76,35 @@ function closeFullscreen() {
 }
 
 function explode(){
-    renderAnimation = renderExplosion;
     $("#implode").removeClass("invisible");
     $("#implode").addClass("visible");
     $("#explode").removeClass("visible");
     $("#explode").addClass("invisible");
+
+    group.children.forEach(function(child){
+        if(child instanceof AnimatedMesh){
+            child.explode();
+        } else if(child instanceof AnimatedGroup){
+            child.children.forEach(function(c){
+                c.explode()
+            })
+        }
+    }) 
 }
 
 function implode(){
-    renderAnimation = renderImplosion;
     $("#explode").removeClass("invisible");
     $("#explode").addClass("visible");
     $("#implode").removeClass("visible");
     $("#implode").addClass("invisible");
+
+    group.children.forEach(function(child){
+        if(child instanceof AnimatedMesh){
+            child.implode();
+        } else if(child instanceof AnimatedGroup){
+            child.children.forEach(function(c){
+                c.implode()
+            })
+        }
+    }) 
 }
