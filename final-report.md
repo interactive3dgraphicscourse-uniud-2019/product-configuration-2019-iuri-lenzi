@@ -1,6 +1,6 @@
 # Final Report
 
-# Journey
+The aim of this report is to describe in detail the main interesting aspects of our implementation. 
 
 ## **1**. Assets creation: 3D Model and first material
 In order to practice in **3D modeling** and in the use of tools like 
