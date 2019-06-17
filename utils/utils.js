@@ -110,12 +110,15 @@ function implode(){
     }) 
 }
 
+var sceneLocked = false;
+
 function lock(){
     $("#unlock").removeClass("invisible");
     $("#unlock").addClass("visible");
     $("#lock").removeClass("visible");
     $("#lock").addClass("invisible");
     window.parent.document.body.className += " stop-scrolling"
+    sceneLocked = true;
 }
 
 function unlock(){
@@ -123,5 +126,6 @@ function unlock(){
     $("#lock").addClass("visible");
     $("#unlock").removeClass("visible");
     $("#unlock").addClass("invisible");
-    window.parent.document.body.className = window.parent.document.body.className.replace("stop-scrolling", "");
+    window.parent.document.body.className = window.parent.document.body.className.replace(/stop-scrolling/g, "");
+    sceneLocked = false;
 }

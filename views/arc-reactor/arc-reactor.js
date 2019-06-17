@@ -1,5 +1,5 @@
 /*
-* Entry point script for renderer and scene management and initializations
+* Entry point script for renderer, scene management and initializations
 */
 
 // Global variables and constants
@@ -37,9 +37,9 @@ function init() {
 	initScene();
 	initInspectorScene();
 	initMaterials();
+	initCamera();
 
 	loadArchitecture("../../assets/models/architecture.json");
-	initCamera();
 	group.rotation.z += Math.PI / 4
 	group.rotation.y += Math.PI / 2
 	camera.position.set(150,0,150)
