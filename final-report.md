@@ -182,8 +182,6 @@ for each view (stored in the [views](views/) folder) and integrate them using an
 <strong>Image 8</strong> - <em>The final site architecture is the following</em></div>
 <br/><br/>
 
-TODO descrizione sito
-
 
 ## Future improvements
 
