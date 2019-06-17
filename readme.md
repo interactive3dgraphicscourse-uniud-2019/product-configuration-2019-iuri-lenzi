@@ -138,4 +138,13 @@ Every asset used was made manually by the team exept for:
 * three.min.js
 * stats.min.js
 * OrbitControls.js
-* TODO
+* BufferGeometryUtils.js
+* GLTFLoader.js
+* Tween.js
+
+#### npm dependencies
+
+* Modernizr
+* Bootstrap 4
+* JQuery
+* FontAwesome

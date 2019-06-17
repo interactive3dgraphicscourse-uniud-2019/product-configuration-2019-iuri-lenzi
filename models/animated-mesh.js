@@ -1,3 +1,13 @@
+/*
+* Mesh extension that keeps some parameters as instance variables and 
+* apply autonomously any transition animation using TweenJs 
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
 class AnimatedMesh extends THREE.Mesh{
 	constructor(mesh, params){
 
@@ -14,36 +24,58 @@ class AnimatedMesh extends THREE.Mesh{
 		this.parameters = params;
 	}
 
+
+	/*
+	* Mesh.clone() override to preserve the parameters
+	*/
 	clone(){
 		return new AnimatedMesh(
 			new THREE.Mesh(this.geometry, this.material), 
 			this.parameters);
 	}
 
-	explode(speed = 1000){
+
+	/*
+	* Start the explosion animation 
+	* (accordingly with the vector of frames defined in parameters.frames)
+	*/
+	Explode(speed = 1000){
 		var frames = this.parameters.frames
-		var firstTween = this.tweenTo(frames[1].position, speed)
+		var firstTween = this.TweenTo(frames[1].position, speed)
 		if(frames.length > 2){
 			for(var i = 2; i < frames.length; i++){
-				firstTween.chain(this.tweenTo(frames[i].position, speed))
+				firstTween.chain(this.TweenTo(frames[i].position, speed))
 			}
 		}
 		firstTween.start();
 	}
 
-	implode(speed = 1000){
+
+	/*
+	* Implosion is the inversion of the Explosion() method
+	*/
+	Implode(speed = 1000){
 		this.parameters.frames.reverse();
-		this.explode(speed);
+		this.Explode(speed);
 		this.parameters.frames.reverse();
 	}
 
-	tweenTo(nextPosition, speed){
+
+	/*
+	* Tween to the next frame 
+	*/
+	TweenTo(nextPosition, speed){
 		var tween = new TWEEN.Tween(this.position).to(nextPosition, speed);
 		tween.easing(TWEEN.Easing.Elastic.InOut)
 		return tween;
 	}
 }
 
+
+/*
+* The analogy of AnimatedMesh for groups of mesh
+* (used for the coil group)
+*/
 class AnimatedGroup extends THREE.Group{
 	constructor(mesh, rotation){
 		super()

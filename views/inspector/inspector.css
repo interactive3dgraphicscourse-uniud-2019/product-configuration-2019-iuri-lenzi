@@ -6,6 +6,7 @@
 	position: absolute;
 }
 
+
 #inspector-controls{
     width: 80vw;
     height: 20vh;
@@ -15,6 +16,7 @@
     position: absolute;
 }
 
+
 .icon{
 	font-size: 30px; 
 	color: white;
@@ -22,6 +24,7 @@
 	align-self: flex-end;
 	margin: 10px;
 }
+
 
 #buttons-bar{
 	width: 100%;

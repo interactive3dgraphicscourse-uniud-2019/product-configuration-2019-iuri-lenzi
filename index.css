@@ -2,7 +2,7 @@
 * General style
 */
 html, body{
-    width: 100%;
+    width: 100vw;
     background-color: black;
 }
 
@@ -60,6 +60,11 @@ html, body{
 }
 
 
+.card{
+    color: black; 
+}
+
+
 article{
     border-bottom: 10px solid;
     border-color: black;
@@ -68,9 +73,6 @@ article{
     padding: 10%;
 }
 
-.card{
-    color: black;
-}
 
 #parallax{
     margin:0;
@@ -102,6 +104,7 @@ article{
     }
 }
 
+
 /*
 * Large devices
 */
@@ -123,16 +126,43 @@ article{
     }
 }
 
+
 #inspector{
     display: flex;
     justify-content: center;
 }
+
 
 iframe{
     width: 100%;
     height: 100%;
     border-style: none;
 }
+
+
+.toast{
+    position:fixed;
+    bottom: 5px;
+    right: 5px;
+}
+
+
+.footer{
+    color: white;
+    text-align: center;
+}
+
+
+#arc-reactor{
+    height:50vh;
+}
+
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
 
 /*
 * Colors
@@ -141,46 +171,32 @@ iframe{
     color: #cccccc;
 }
 
+
 .bg-black{
     background-color: #4d4d4d;
 }
+
 
 .bg-purple{
     background-color: #96255e;
 }
 
+
 .bg-green{
     background-color: #8fac43;
 }
+
 
 .bg-orange{
     background-color: #f29d43;
 }
 
+
 .bg-blue{
     background-color: #00739e;
 }
 
+
 .bg-red{
     background-color: #e5503b;
-}
-
-.toast{
-    position:fixed;
-    bottom: 5px;
-    right: 5px;
-}
-
-.footer{
-    color: white;
-    text-align: center;
-}
-
-#arc-reactor{
-    height:50vh;
-}
-
-.stop-scrolling {
-    height: 100%;
-    overflow: hidden;
 }

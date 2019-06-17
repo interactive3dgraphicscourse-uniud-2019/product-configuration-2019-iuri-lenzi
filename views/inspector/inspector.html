@@ -1,27 +1,15 @@
-
+<meta name="author" content="Edoardo Lenzi">
+<meta name="author" content="Marco Iuri">
+<meta name="license" content="GPL-3.0">
 <link rel="stylesheet" type="text/css" href="../inspector/inspector.css">
 <div id="container">
-    <div id="info">
-        <span style="font-size:20px; color: white">
-            {description}
+    <div id="buttons-bar">
+        <span class="icon" data-toggle="tooltip" title="Close inspector">
+            <i class="grow fa fa-times"></i>
         </span>
     </div>
-            <div id="buttons-bar">
-                <span id="explode" class="icon" onclick="closeInspector()" data-toggle="tooltip" title="Close inspector">
-                    <i class="grow fa fa-times"></i>
-                </span>
-            </div>
-
-    <iframe id="inspector-controls" class="transparent" onLoad="autoResize();" src="../inspector-controls/inspector-controls.html"></iframe>
+    <iframe id="inspector-controls" class="transparent" onLoad="AutoResize();" src="../inspector-controls/inspector-controls.html"></iframe>
 </div>
-
-<script language="javaScript">
-    function autoResize(){
-        $('#inspector-controls').height($('#inspector-controls').contents().height());
-        $('#inspector-controls').width($('#inspector-controls').contents().width());
-    }
-</script>
-
+<script src="../inspector/inspector.js"></script>
 <link href="../../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
