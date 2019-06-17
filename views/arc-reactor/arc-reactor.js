@@ -37,31 +37,27 @@ function init() {
 	initScene();
 	initInspectorScene();
 	initMaterials();
-	initCamera();
+	InitCamera();
 
 	loadArchitecture("../../assets/models/architecture.json");
-<<<<<<< HEAD
-	InitCamera();
-=======
->>>>>>> dc2334b530f7c241a0203265b6fa0702ea610264
 	group.rotation.z += Math.PI / 4
 	group.rotation.y += Math.PI / 2
 	camera.position.set(150,0,150)
 	scene.add(group);
 	
-	bindEvent(window, "resize", onWindowResize );
+	BindEvent(window, "resize", OnWindowResize );
 	// desktop
-	bindEvent(window, "mousemove", onDocumentMouseMove );
-	bindEvent(document, "mousedown", onMouseDown );
-	bindEvent(document, "mouseup", onMouseUp );
+	BindEvent(window, "mousemove", OnDocumentMouseMove );
+	BindEvent(document, "mousedown", OnMouseDown );
+	BindEvent(document, "mouseup", OnMouseUp );
 	// touch screen
-	bindEvent(document, "touchmove", onDocumentMouseMove );
-	bindEvent(document, "touchstart", onMouseDown );
-	bindEvent(document, "touchend", onMouseUp );
+	BindEvent(document, "touchmove", OnDocumentMouseMove );
+	BindEvent(document, "touchstart", OnMouseDown );
+	BindEvent(document, "touchend", OnMouseUp );
 
-	bindEvent(window, "click", onDocumentMouseClick );
-	bindEvent(window, 'message', onMessage );
-	bindEvent(document, "loading-complete", function(){
+	BindEvent(window, "click", OnDocumentMouseClick );
+	BindEvent(window, 'message', OnMessage );
+	BindEvent(document, "loading-complete", function(){
 		console.log("Loading Complete");
 		
 		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);

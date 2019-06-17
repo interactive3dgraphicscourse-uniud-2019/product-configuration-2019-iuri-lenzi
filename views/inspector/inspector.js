@@ -4,6 +4,6 @@ function autoResize(){
 }
 
 $('#buttons-bar').on("mousedown", function(e){
-    closeInspector();
+    CloseInspector();
     e.preventDefault();
 })

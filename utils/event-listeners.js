@@ -5,7 +5,7 @@
 /*
 * Support for IE8
 */
-function bindEvent(element, eventName, eventHandler) {
+function BindEvent(element, eventName, eventHandler) {
 	if (element.addEventListener){
 		element.addEventListener(eventName, eventHandler, false);
 	} else if (element.attachEvent) {
@@ -14,7 +14,7 @@ function bindEvent(element, eventName, eventHandler) {
 }
 
 
-function unbindEvent(element, eventName, eventHandler) {
+function UnbindEvent(element, eventName, eventHandler) {
 	if (element.addEventListener){
 		element.removeEventListener(eventName, eventHandler, false);
 	} else if (element.attachEvent) {
@@ -23,25 +23,25 @@ function unbindEvent(element, eventName, eventHandler) {
 }
 
 
-function onMessage(event) {
+function OnMessage(event) {
 	alert(event.data);
 }
 
 
-function onWindowResize() {
+function OnWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
 
-function onDocumentMouseClick( event ){
+function OnDocumentMouseClick( event ){
 	if(selectedObject != null && selectedObject != undefined && !switchScene){
 		trigger( selectedObject );
 	}
 }
 
-function onDocumentMouseMove( event ) {
+function OnDocumentMouseMove( event ) {
 	event.preventDefault();
 	if ( selectedObject ) {
 		selectedObject = null;
@@ -78,11 +78,11 @@ function CloseInspector() {
 
 var mouseDown = false;
 
-function onMouseDown( event ){
+function OnMouseDown( event ){
 	mouseDown = true
 }
 
-function onMouseUp( event ){
+function OnMouseUp( event ){
 	mouseDown = false
 }
 

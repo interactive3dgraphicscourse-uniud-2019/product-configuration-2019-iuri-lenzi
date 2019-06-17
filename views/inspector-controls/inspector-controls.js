@@ -49,9 +49,9 @@ function Update() {
 Start();
 Update();
 
-bindEvent(window, "click", onDocumentMouseClick)
-bindEvent(window, "mousemove", onDocumentMouseMove)
-bindEvent(window, 'message', function (event) {
+BindEvent(window, "click", OnDocumentMouseClick)
+BindEvent(window, "mousemove", OnDocumentMouseMove)
+BindEvent(window, 'message', function (event) {
 	updateQuaternion(event.data);
 });
 

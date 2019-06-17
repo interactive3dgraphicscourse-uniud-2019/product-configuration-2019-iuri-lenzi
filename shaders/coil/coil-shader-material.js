@@ -1,10 +1,10 @@
 function InitCoil(){
     //Material 14: coil alluminum 1
     var coilRough = 0.1;
-    var coilRMap = loadTexture("../../assets/models/acc_coil/acc_coil_copper_RM.png");
-    var coilDMap = loadTexture("../../assets/models/acc_coil/acc_coil_copper_D.png");
-    var coilNMap = loadTexture("../../assets/models/acc_coil/acc_coil_copper_NM.png");
-    var aoMap = loadTexture("../../assets/models/acc_coil/acc_coil_copper_AO.png");
+    var coilRMap = LoadTexture("../../assets/models/acc_coil/acc_coil_copper_RM.png");
+    var coilDMap = LoadTexture("../../assets/models/acc_coil/acc_coil_copper_D.png");
+    var coilNMap = LoadTexture("../../assets/models/acc_coil/acc_coil_copper_NM.png");
+    var aoMap = LoadTexture("../../assets/models/acc_coil/acc_coil_copper_AO.png");
     coilAll1 = new THREE.ShaderMaterial(
         {
             uniforms: {

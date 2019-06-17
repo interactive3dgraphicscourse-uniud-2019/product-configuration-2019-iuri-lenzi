@@ -25,7 +25,7 @@ var envLightColor = new THREE.Vector3();
 function initMaterials()
 {
     //Environment map loading
-    loadEnvMaps();
+    LoadEnvMaps();
     pointLightColor = new THREE.Vector3(dirLight.color.r*dirLight.intensity, dirLight.color.g*dirLight.intensity, dirLight.color.b*dirLight.intensity);
     envLightColor = new THREE.Vector3(hemiLight.color.r*hemiLight.intensity, hemiLight.color.g*hemiLight.intensity, hemiLight.color.b*hemiLight.intensity);
     
@@ -77,17 +77,17 @@ function initMaterials()
     loadGlsl("../../shaders/skybox/fragment.glsl");
 }
 
-function loadEnvMaps()
+function LoadEnvMaps()
 {
     for(var i = 0; i <= 8; i++)
     {
         var filename = "../../assets/textures/envmap_mip" + String(i) + ".png";
-        var thisTex = loadTexture(filename);
+        var thisTex = LoadTexture(filename);
         environmentMaps.push(thisTex);
     }
 }
 
-function loadTexture(filename)
+function LoadTexture(filename)
 {
     var result = new THREE.TextureLoader().load(filename, function(texture)
     {
