@@ -14,8 +14,8 @@ var p = window.parent;
 /*
 * handler for mouse click on a cube event
 */
-function trigger(component){
-	p.updateSceneMaterials(component.materialIndex)
+function Trigger(component){
+	p.UpdateSceneMaterials(component.materialIndex)
 }
 
 
@@ -51,13 +51,13 @@ function Start() {
 		)));
 	})
 	scene.add( group );
-	scene.add(createDirLight());
+	scene.add(CreateDirLight());
 
 	// setup event listeners
 	BindEvent(window, "click", OnDocumentMouseClick);
 	BindEvent(window, "mousemove", OnDocumentMouseMove);
 	BindEvent(window, 'message', function (event) {
-		updateQuaternion(event.data);
+		UpdateQuaternion(event.data);
 	});
 	
 }
@@ -75,7 +75,7 @@ function Update() {
 /*
 * Apply an arbitrary rotation on the cubes
 */
-function updateQuaternion( rotation ){
+function UpdateQuaternion( rotation ){
 	group.children.forEach(function(box){
 		box.rotation.set(rotation._x, rotation._y, rotation._z);
 	})

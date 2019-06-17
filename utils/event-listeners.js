@@ -1,8 +1,5 @@
 /*
-* Define an event listener on the window resize event (in order to adjust the aspect ratio)
-*/
-
-/*
+* Bind an event with an event handler
 * Support for IE8
 */
 function BindEvent(element, eventName, eventHandler) {
@@ -14,6 +11,10 @@ function BindEvent(element, eventName, eventHandler) {
 }
 
 
+/*
+* Unbind an event and an event handler
+* Support for IE8
+*/
 function UnbindEvent(element, eventName, eventHandler) {
 	if (element.addEventListener){
 		element.removeEventListener(eventName, eventHandler, false);
@@ -23,11 +24,9 @@ function UnbindEvent(element, eventName, eventHandler) {
 }
 
 
-function OnMessage(event) {
-	alert(event.data);
-}
-
-
+/*
+* Define an event listener on the window resize event (in order to adjust the aspect ratio)
+*/
 function OnWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
@@ -35,12 +34,19 @@ function OnWindowResize() {
 }
 
 
+/*
+* Ray-caster triggers an action (handler can change depending on the current view)
+*/
 function OnDocumentMouseClick( event ){
 	if(selectedObject != null && selectedObject != undefined && !switchScene){
-		trigger( selectedObject );
+		Trigger( selectedObject );
 	}
 }
 
+
+/*
+* Ray-caster code, see THREE.js documentation
+*/
 function OnDocumentMouseMove( event ) {
 	event.preventDefault();
 	if ( selectedObject ) {
@@ -57,6 +63,10 @@ function OnDocumentMouseMove( event ) {
 	}
 }
 
+
+/*
+* Ray-caster code, see THREE.js documentation
+*/
 function GetIntersects( x, y ) {
 	x = ( x / window.innerWidth ) * 2 - 1;
 	y = - ( y / window.innerHeight ) * 2 + 1;
@@ -68,14 +78,21 @@ function GetIntersects( x, y ) {
 		return raycaster.intersectObject( inspectorScene, true );
 }
 
+
+/*
+* Close inspector view
+*/
 function CloseInspector() {
 	switchScene = false;
-	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
+	ApplyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
 	scene.add(skyMesh);
 	switchScene = false;
 }
 
 
+/*
+* Mouse events used to know if mouse or touch focus is on the iframe
+*/
 var mouseDown = false;
 
 function OnMouseDown( event ){
@@ -87,6 +104,9 @@ function OnMouseUp( event ){
 }
 
 
+/*
+* Bind between inspector camera rotation and boxes rotation 
+*/
 function SendRotation( event ){
 	var inspectorControl = document.getElementById("inspector-controls");
 	if(mouseDown && inspectorControl != null){

@@ -1,45 +1,49 @@
 var inspectedObject;
 
-function trigger(component){
-    console.dir(component);
-    description = "";
+
+/*
+* Init inspector scene
+*/
+function Trigger(component){
+    
     //Empty old inspector scene
-    emptyInspScene();
+    EmptyInspScene();
 
     //Load component and create inspector scene
     inspectedObject = component.clone();
     inspectedObject.position.set(0,0,0);
     inspectedObject.scale.set(inspectedObject.parameters.inspectorScale, inspectedObject.parameters.inspectorScale, inspectedObject.parameters.inspectorScale);
     inspectedObject.rotation.set(0,0,0);
-    loadComponent(component);
+    
+    //Create new inspector scene
+    var elements = new Array(skyMesh, inspectorHemiLight, inspectorDirectLight, inspectedObject);
+    CreateInspScene(elements);
 
     //Switch Scene
     switchScene = true;
 
     //Create close inspector button
-    applyTemplate( "../inspector/inspector.html", [ ["{description}", description] ] );
+    ApplyTemplate( "../inspector/inspector.html" );
     BindEvent(window, "mousemove", SendRotation );
     BindEvent(document, "touchmove", SendRotation );
-
 }
 
-function emptyInspScene()
+
+/*
+* Clean old scene
+*/
+function EmptyInspScene()
 {
     inspectorScene.children.forEach(child => {
         inspectorScene.remove(child);
     })
 }
 
-function loadComponent(component)
-{
-    elements = new Array(skyMesh, inspectorHemiLight, inspectorDirectLight, inspectedObject);
 
-    //Create new inspector scene
-    createInspScene(elements);
-}
-
-
-function createInspScene(elements)
+/*
+* Setup inspector scene
+*/
+function CreateInspScene(elements)
 {
 	elements.forEach(element => {
         inspectorScene.add(element);
@@ -47,26 +51,29 @@ function createInspScene(elements)
 }
 
 
-function send_to_child(){
-    iframeEl.contentWindow.postMessage("ciao figlio sono tuo padre", '*');
-}
-
-
-function changeMaterial(mesh, materialIndex){
+/*
+* Apply to the mesh the material with index materialIndex (defined in the materialVector)
+*/
+function ChangeMaterial(mesh, materialIndex){
     mesh.material = materialVector[materialIndex];
     mesh.parameters.materials[mesh.parameters.materials.indexOf(materialIndex)] = mesh.parameters.materials[0];
     mesh.parameters.materials[0] = materialIndex; 
     mesh.material.needsUpdate = true;
 }
 
-function updateSceneMaterials(materialIndex){
-    changeMaterial(inspectedObject, materialIndex)
+
+/*
+* Update every mesh with the same url parameter of the inspected one, 
+* applying the material indexed with materialIndex
+*/
+function UpdateSceneMaterials(materialIndex){
+    ChangeMaterial(inspectedObject, materialIndex)
     group.children.forEach(function(child){
         if(child instanceof AnimatedMesh && child.parameters.url == inspectedObject.parameters.url){
-            changeMaterial(child, materialIndex)
+            ChangeMaterial(child, materialIndex)
         } else if(child instanceof AnimatedGroup && child.children[0].parameters.url == inspectedObject.parameters.url){
             child.children.forEach(function(c){
-                changeMaterial(c, materialIndex)
+                ChangeMaterial(c, materialIndex)
             })
         }
     })   

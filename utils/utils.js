@@ -1,4 +1,8 @@
-function read(filePath, callback){
+
+/*
+* read any file and launch the callback funcion on the content
+*/
+function Read(filePath, callback){
     var client = new XMLHttpRequest();
     client.open('GET', filePath);
     client.onreadystatechange = function() {
@@ -13,8 +17,12 @@ function read(filePath, callback){
     client.send();
 }
 
-function applyTemplate(template, placeholders=[], tag = "#container"){
-	read(template, function(content){
+
+/*
+* Inject a view in the current page
+*/
+function ApplyTemplate(template, placeholders=[], tag = "#container"){
+	Read(template, function(content){
         placeholders.forEach(function(placeholder){
             content = content.replace(placeholder[0], placeholder[1]);
         });
@@ -22,8 +30,12 @@ function applyTemplate(template, placeholders=[], tag = "#container"){
 	})
 }
 
-function loadGlsl(filePath){
-    read(filePath, function(content){
+
+/*
+* Load shader definition from a glsl file
+*/
+function LoadGlsl(filePath){
+    Read(filePath, function(content){
         var tag = content.split("\n")[0];
         tag = tag.replace("\r", "");
         tag = tag.substring(2, tag.length);
@@ -42,7 +54,11 @@ function loadGlsl(filePath){
     })
 }
 
-function openFullscreen(id) {
+
+/*
+* Start fullscreen mode
+*/
+function OpenFullscreen(id) {
     var elem = window.parent.document.getElementById(id);
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
@@ -59,8 +75,11 @@ function openFullscreen(id) {
     $("#expand").addClass("invisible");
 }
 
-/* Close fullscreen */
-function closeFullscreen() {
+
+/*
+* End fullscreen mode
+*/
+function CloseFullscreen() {
     if (window.parent.document.exitFullscreen) {
         window.parent.document.exitFullscreen();
     } else if (window.parent.document.mozCancelFullScreen) { /* Firefox */
@@ -76,6 +95,10 @@ function closeFullscreen() {
     $("#compress").addClass("invisible");
 }
 
+
+/*
+* Start the explosion animation
+*/
 function Explode(){
     $("#implode").removeClass("invisible");
     $("#implode").addClass("visible");
@@ -93,6 +116,10 @@ function Explode(){
     }) 
 }
 
+
+/*
+* Start the implosion animation
+*/
 function Implode(){
     $("#explode").removeClass("invisible");
     $("#explode").addClass("visible");
@@ -110,9 +137,15 @@ function Implode(){
     }) 
 }
 
+
+/*
+* Scene lock algorithm
+*/
+
 var sceneLocked = false;
 
-function lock(){
+
+function Lock(){
     $("#unlock").removeClass("invisible");
     $("#unlock").addClass("visible");
     $("#lock").removeClass("visible");
@@ -121,7 +154,8 @@ function lock(){
     sceneLocked = true;
 }
 
-function unlock(){
+
+function Unlock(){
     $("#lock").removeClass("invisible");
     $("#lock").addClass("visible");
     $("#unlock").removeClass("visible");

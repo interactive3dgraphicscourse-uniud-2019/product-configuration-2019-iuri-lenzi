@@ -31,18 +31,18 @@ var skyMaterial;
 /*
 * Init function
 */ 
-function init() {
+function Init() {
 
 	// loads arc-reactor-controls view
-	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
-	initStat();
-	initScene();
-	initInspectorScene();
-	initMaterials();
+	ApplyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
+	InitStat();
+	InitScene();
+	InitInspectorScene();
+	InitMaterials();
 	InitCamera();
 
 	// load architecture.json and add to the scene the components
-	loadArchitecture("../../assets/models/architecture.json");
+	LoadArchitecture("../../assets/models/architecture.json");
 
 	// init scene and camera pose
 	group.rotation.z += Math.PI / 4
@@ -61,26 +61,25 @@ function init() {
 	// general events
 	BindEvent(window, "resize", OnWindowResize );
 	BindEvent(window, "click", OnDocumentMouseClick );
-	BindEvent(window, 'message', OnMessage );
 	// custom event triggered once the shader loading is completed
 	BindEvent(document, "loading-complete", function(){
 		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);
 		scene.add(skyMesh);
-		animate();
+		Animate();
 	})
 
-	initRenderer();
+	InitRenderer();
 }
 
 
 /*
 * deserialize the json content and setup each component defined
 */ 
-function loadArchitecture( file ) {
-	read(file, function(content){
+function LoadArchitecture( file ) {
+	Read(file, function(content){
 		var architecture = JSON.parse(content);   
 		architecture.forEach(function(component){
-			setupMesh(component);
+			SetupMesh(component);
 		});
 	})
 }
@@ -89,7 +88,7 @@ function loadArchitecture( file ) {
 /*
 * Given a component definition loads the component and add it to the scene
 */ 
-function setupMesh( parameters ) {
+function SetupMesh( parameters ) {
 	var loader = new THREE.GLTFLoader();
 	loader.load( parameters.url, function( gltf ) {
 		var gltfMesh = gltf.scene.children[ 0 ];
@@ -110,11 +109,11 @@ function setupMesh( parameters ) {
 /*
 * Loop function
 */
-function animate() {
+function Animate() {
 	TWEEN.update();
 	stats.update();
 	controls.update();
-	requestAnimationFrame( animate );
+	requestAnimationFrame( Animate );
 	Render();
 }
 
@@ -134,7 +133,7 @@ function Render()
 /*
 * Renderer init
 */
-function initRenderer(){
+function InitRenderer(){
 	renderer = new THREE.WebGLRenderer( { alpha: true, antialias: true } );
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
@@ -148,12 +147,12 @@ function initRenderer(){
 /*
 * Scene init
 */
-function initScene(){
+function InitScene(){
 	scene = new THREE.Scene();
 	scene.background = new THREE.Color( 0x000022 );
 	scene.fog = new THREE.Fog( 0xffffff, 0, 750 );
-	hemiLight = createHemiLight();
-	dirLight = createDirLight();
+	hemiLight = CreateHemiLight();
+	dirLight = CreateDirLight();
     scene.add( hemiLight );  
 	scene.add( dirLight );  
 }
@@ -162,12 +161,12 @@ function initScene(){
 /*
 * Inspector scene init
 */
-function initInspectorScene()
+function InitInspectorScene()
 {
 	inspectorScene = new THREE.Scene();
 	inspectorScene.background = new THREE.Color( 0x000022 );
-	inspectorHemiLight = createHemiLight();
-	inspectorDirectLight = createDirLight();
+	inspectorHemiLight = CreateHemiLight();
+	inspectorDirectLight = CreateDirLight();
 }
 
 
@@ -190,7 +189,7 @@ function InitSkyBox()
 /*
 * Stat init
 */
-function initStat(){
+function InitStat(){
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
 	stats.domElement.style.top = '0px';
@@ -200,4 +199,4 @@ function initStat(){
 
 
 // entry-point call
-init();
+Init();
