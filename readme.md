@@ -128,7 +128,7 @@ We mainly take inspiration by the following `THREE.js` examples:
 
 Every asset used was made manually by the team exept for:
 * the assets finded at fork time 
-* the environment map
+* the environment map taken from [texturify.com](texturify.com)
 
 
 ### Libraries

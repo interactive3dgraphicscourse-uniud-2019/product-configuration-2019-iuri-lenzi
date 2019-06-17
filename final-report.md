@@ -2,7 +2,7 @@
 
 The aim of this report is to describe in detail the main interesting aspects of our implementation. 
 
-## **1**. Assets creation: 3D Model and first material
+## **1** &thinsp; Assets creation: 3D Model and first material
 In order to practice in **3D modeling** and in the use of tools like 
 [Blender](https://www.blender.org/) and [Substance Painter](https://www.substance3d.com/), 
 we choose to create our own 3D model (and materials) of the first iteration of the 
@@ -37,7 +37,7 @@ this is mainly a test to see how the final result must look like
 
 ![reactorView2](assets/images/ArcBuild2.png)
 <div style="text-align: center;"><strong>Image 2</strong> - <em>The first model (splitted in the 9 components) with a single coil</em></div>
-<br/><br/>
+<br/>
 
 The next thing to do was the creation of a **custom material** for the coils to give the 
 impresion of a real copper coil (it would have been very difficult and unefficient to model 
@@ -67,7 +67,7 @@ The process is, basically, the following:
 <br/><br/>
 
 ---
-## **2**. Inspector view
+## **2** &thinsp; Inspector view
 > Since we want to provide to the user an interface for the **material selection** for any  
 single component of the model we thought about using a separate view, called the `inspector 
 view`. In that view the users have a better and more detailed visualization of the component to edit.
@@ -83,7 +83,7 @@ The next thing to do, for this part of the project, is to create an **overlay wi
 <br/><br/>
 
 ---
-## **3**. Material shaders
+## **3** &thinsp; Material shaders
 
 The next step was the implementation of the **shaders** for the various material choice, we had to make 4 different shaders:
 -   **Emissive shader** for the chamber and the acc_ring;
@@ -93,7 +93,7 @@ The next step was the implementation of the **shaders** for the various material
 -   **Metal shader** for the other;
 <br/><br/>
 
-### **3.1** Emissive shader
+### **3.1**&thinsp; Emissive shader
 This shader couple is very simple:
 -   The **vertex shader** is the basic vertex shader that outputs the position of the vertex in `clip space`;
 -   The **fragment shader** simply applies the emissive color to `glFragColor` (with **gamma correction**);
@@ -109,7 +109,7 @@ This shader couple is very simple:
 An idea to improve the grafic rendering can be to use a post processing effect that bleeds the emissive color on the adiacent pixels.
 <br/><br/>
 
-### **3.2** Metal shader
+### **3.2** &thinsp; Metal shader
 
 This shader is a **standard microfacet shader** with no lambertian component (since **we are interested only in the specular component**).
 Our implementation also support environment reflections (with adjustable blur according to the roughenss of the material) and takes into account the ambient light (in this case the `hemilight` from `THREE.js`).
@@ -122,10 +122,8 @@ To obtain this we have divided the computation on the fragment shader in two par
 <div style="text-align: center;"><strong>Image 7</strong> - <em>Here we can see the result at two different values of roughness</em></div>
 <br/><br/>
 
-Environment map from [texturify.com](texturify.com)
-<br/><br/>
 
-### **3.3** Other shaders
+### **3.3** &thinsp; Other shaders
 For the other shaders there isn't much more to say:
 
 -   **coil shader** implements the same **BRDF** as the **metal** one with the difference that **it uses vertex colors to determine which part of the model requires the use of the adequated textures and which part not**: in particular for the vertex color **green** it uses basically the metal shader with the `roughness` and `base color` specified in the `uniforms`, while for the other color (**red**) it uses the textures (`diffuse map`, `roughness map` and `normal map`) of the **copper coil material** we created with Substance Painter; note that reflections work only for the `green` part since it was impossible to access the correct `mipmap level` of the `environment map` on the `red` part (since the `roughness` vary according to the `roughness map` pixel per pixel);
@@ -137,4 +135,48 @@ For the other shaders there isn't much more to say:
 ![shaders1](assets/images/shaders5.png)
 ![shaders2](assets/images/shaders6.png)
 <div style="text-align: center;"><strong>Image 8</strong> - <em>Final result, the model with all the shaders applied and the env map as background</em></div>
+<br/><br/>
+
+## **4** &thinsp; Mesh architecture and animations
+
+The mesh architecture is specified in the [`architecture.json`](assets/models/architecture.json) file and stores an array of component metadata/properties:
+
+```{json}
+{
+    "url": "../../assets/models/inner_structure/inner_structure.glb",
+    "repeat": 0,
+    "inspectorScale": 100,
+    "frames": [
+        {        
+            "scale": 100,
+            "position": {
+                "x": 0,
+                "y": -12,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+        },
+        {        
+            ...
+        }
+    ],
+    "materials":[6, 7, 8, 9]
+}
+```
+
+* `frames` is a vector of states used to specify the initial position of the component (`frames[0]`) and the following steps for the explosion animation (realized using `tween.js`). 
+* `materials` is a vector of indices of an array called `materialVector`, that contains the definitions of every `shaderMaterial` used in the application. 
+
+<br/><br/>
+
+## **4** &thinsp; Views
+
+In order to manage the increasing complexity of some views with a different `THREE.js` canvas for each one we have created a separate file (stored in the [views](views/) folder)for each view and integrate them using an `<iframe>` tag.
+
+![views-architecure](assets/images/views.png)
+<div style="text-align: center;"><strong>Image 8</strong> - <em>The final site architecture is the following</em></div>
 <br/><br/>
