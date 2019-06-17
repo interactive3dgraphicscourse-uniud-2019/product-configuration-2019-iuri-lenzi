@@ -1,18 +1,17 @@
-var currentItem = null;
 var inspectedObject;
 
 function trigger(component){
     console.dir(component);
-    description = component.parameters.url;
-    currentItem = description;
+    description = "";
     //Empty old inspector scene
     emptyInspScene();
 
     //Load component and create inspector scene
     inspectedObject = component.clone();
     inspectedObject.position.set(0,0,0);
-    inspectedObject.rotation.set(0,0,0);
-    loadComponent(component);
+        inspectedObject.scale.set(inspectedObject.parameters.inspectorScale,inspectedObject.parameters.inspectorScale, inspectedObject.parameters.inspectorScale);
+        inspectedObject.rotation.set(0,0,0);
+        loadComponent(component);
 
     //Switch Scene
     switchScene = true;
@@ -33,7 +32,7 @@ function emptyInspScene()
 
 function loadComponent(component)
 {
-    elements = new Array(inspectorHemiLight, inspectorDirectLight, inspectedObject);
+    elements = new Array(skyMesh, inspectorHemiLight, inspectorDirectLight, inspectedObject);
 
     //Create new inspector scene
     createInspScene(elements);

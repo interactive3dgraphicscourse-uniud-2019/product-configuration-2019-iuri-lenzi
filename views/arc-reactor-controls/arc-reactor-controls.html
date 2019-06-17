@@ -1,4 +1,32 @@
-<div>
+<!--
+<div> 
     <button onclick="renderAnimation = renderExplosion">ExplodeMesh</button>
     <button onclick="renderAnimation = renderImplosion">ImplodeMesh</button>
 </div>
+-->
+<div id="container">
+    <div id="buttons-bar">
+        <span id="lock" class="icon" onclick="lock()" data-toggle="tooltip" title="Lock scene">
+            <i class="grow fa fa-lock"></i>
+        </span>
+        <span id="unlock" class="invisible icon" onclick="unlock()" data-toggle="tooltip" title="Unlock scene">
+            <i class="grow fa fa-unlock"></i>
+        </span>
+        <span id="explode" class="icon" onclick="explode()" data-toggle="tooltip" title="Explode Mesh">
+            <i class="grow fa fa-bomb"></i>
+        </span>
+        <span id="implode" class="invisible icon" onclick="implode()" data-toggle="tooltip" title="Implode Mesh">
+            <i class="grow fa fa-undo"></i>
+        </span>
+        <span id="expand" class="icon" onclick="openFullscreen('arc-reactor')" data-toggle="tooltip" title="Full Screen">
+            <i class="grow fa fa-expand"></i>
+        </span>
+        <span id="compress" class="invisible icon" onclick="closeFullscreen()" data-toggle="tooltip" title="Exit Full Screen">
+            <i class="grow fa fa-compress"></i>
+        </span>
+    </div>
+</div>
+
+<link href="../../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

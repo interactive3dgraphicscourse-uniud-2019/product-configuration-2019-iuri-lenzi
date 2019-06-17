@@ -19,6 +19,29 @@ class AnimatedMesh extends THREE.Mesh{
 			new THREE.Mesh(this.geometry, this.material), 
 			this.parameters);
 	}
+
+	explode(speed = 1000){
+		var frames = this.parameters.frames
+		var firstTween = this.tweenTo(frames[1].position, speed)
+		if(frames.length > 2){
+			for(var i = 2; i < frames.length; i++){
+				firstTween.chain(this.tweenTo(frames[i].position, speed))
+			}
+		}
+		firstTween.start();
+	}
+
+	implode(speed = 1000){
+		this.parameters.frames.reverse();
+		this.explode(speed);
+		this.parameters.frames.reverse();
+	}
+
+	tweenTo(nextPosition, speed){
+		var tween = new TWEEN.Tween(this.position).to(nextPosition, speed);
+		tween.easing(TWEEN.Easing.Elastic.InOut)
+		return tween;
+	}
 }
 
 class AnimatedGroup extends THREE.Group{

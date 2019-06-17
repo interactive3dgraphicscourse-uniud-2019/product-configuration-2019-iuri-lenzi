@@ -1,5 +1,6 @@
 //metal-fragment
 #define EPS 0.000001
+#define RECIPROCAL_PI 0.318309886
 
 varying vec3 vNormal;
 varying vec3 vViewPosition;
@@ -49,10 +50,11 @@ void main()
     vec3 worldV = vWorldPosition - cameraPosition;
     vec3 worldN = InverseTransformDirection( n, viewMatrix );
     vec3 r = normalize(reflect(worldV, worldN));
-    float den = 2.0 * sqrt(pow(r.x, 2.0) + pow(r.y, 2.0) + pow(r.z + 1.0, 2.0));
-    vec2 envUV = (r.xy / den) + 0.5;
+    vec2 envUV;
+    envUV.y = asin( clamp( r.y, - 1.0, 1.0 ) ) * RECIPROCAL_PI + 0.5;
+    envUV.x = atan( r.z, r.x ) * RECIPROCAL_PI*0.5 + 0.5;
     vec3 F = FSchlick(max(dot(n, v), EPS));
-    vec3 refEnvColor = texture2D(envMap, envUV).rgb * F;
+    vec3 refEnvColor = pow(texture2D(envMap, envUV).rgb, vec3(2.2)) * F;
     vec3 indirLightRadiance = envLightColor * baseColor + refEnvColor;
 
     vec3 radiance = directLightRadiance + indirLightRadiance;
