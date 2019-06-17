@@ -14,7 +14,7 @@ class AnimatedMesh extends THREE.Mesh{
 		this.parameters = params;
 	}
 
-	Clone(){
+	clone(){
 		return new AnimatedMesh(
 			new THREE.Mesh(this.geometry, this.material), 
 			this.parameters);

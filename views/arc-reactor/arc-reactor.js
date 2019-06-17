@@ -88,7 +88,7 @@ function setupMesh( parameters ) {
 			var component = new THREE.Group();
 			component.add(new AnimatedMesh(gltfMesh, parameters));
 			for(var i = 0; i < parameters.repeat; i++){
-				var new_component = component.Clone();
+				var new_component = component.clone();
 				group.add(new AnimatedGroup(new_component, ((2 * Math.PI * i) / 10)));
 			}
 		} else {
