@@ -39,8 +39,11 @@ function init() {
 	initMaterials();
 
 	loadArchitecture("../../assets/models/architecture.json");
-	scene.add(group);
 	initCamera();
+	group.rotation.z += Math.PI / 4
+	group.rotation.y += Math.PI / 2
+	camera.position.set(150,0,150)
+	scene.add(group);
 	
 	bindEvent(window, "resize", onWindowResize );
 	// desktop

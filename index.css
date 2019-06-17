@@ -179,3 +179,8 @@ iframe{
 #arc-reactor{
     height:50vh;
 }
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
