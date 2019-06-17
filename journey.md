@@ -8,7 +8,7 @@ The aim of this section is to track periodically the development state from the 
 
 ---
 ## **Sprint 1** (from May 16th to May 23rd) 
-In this initial phase we **set-up the repository** and decide **best practices** 
+In this initial phase we **set-up the repository** and decided **best practices** 
 (branching strategy, code style, solution architecture, etc.).
 
 We made a **feasibility study** for our initial idea (**baseline**) which was: 
@@ -22,7 +22,7 @@ We made a **feasibility study** for our initial idea (**baseline**) which was:
 <br/>
 
 * Create a **basic scene** in `THREE.js` loading the model with an `orbit control` applied on the camera, in order to visualize the mesh
-* Using the `vector colors` in order to (select) change a specific component of the mesh **applying different shaders**
+* Using the `vertex colors` in order to (select) change a specific component of the mesh **applying different shaders**
     * Create a simple **command bar** in order to **change the component material**
 * Embed the scene in a **simple web page**
 
@@ -36,7 +36,7 @@ Blender the mesh. A first issue was the **reduction of the number of triangles**
 
 We noticed that the mesh could be decomposed properly in some component with exactly one homogeneous material (emissive materials or metals).
 
-Soon we also have realized that using vertex color for component identification wasn't the best choice so we ahve decided to **split the mesh in 9 components** and load each one independently in the sceene. This decomposition reminded us of the idea of creating a command to explode the mesh and inspect any single component in a separate view.
+Soon we also have realized that using vertex color for component identification wasn't the best choice so we have decided to **split the mesh in 9 components** and load each one independently in the scene. This decomposition reminded us of the idea of creating a command to explode the mesh and inspect any single component in a separate view.
 
 Finally we encounter an issue cause the arc-reactor presents 10 coils and each one is made by a copper wire rolled around a metal structure; for its nature this component cannot (easily) be decomposed in two separated meshes so we decided to set two different `vertex colors` (`red` and `green`) in order to be able to recognize the two parts in the shading process.
 
@@ -49,7 +49,7 @@ Finally we encounter an issue cause the arc-reactor presents 10 coils and each o
 
 Mesh decomposition carries the burden to set up the position of every component manually in the scene; the first idea to manage that was to use a `.csv` 
 file where storing initial and final state of each mesh (for state we means `rotation`, `position` and `scale` properties). Initial state represent
-the initial position of the component and final state the final position 
+the initial pose of the component and final state the final pose 
 (once **explosion animation** ends).
 
 Soon we realize that `.csv` was a format too static and uncomfortable 
@@ -69,11 +69,19 @@ Finally we have studied a way to integrate the scene in a web page and soon we u
 In this sprint we have implemented a **switch** in order to **change scene** once a component was inspected. The main problem here was to solve **event overlap** 
 of the hidden scene on the displayed one (`orbit control`, `ray casting`, etc.).
 
+```{js}
+if(!switchScene)
+	return raycaster.intersectObject( group, true );
+else
+	return raycaster.intersectObject( inspectorScene, true );
+```
+*The easyest solution was to switch the event target of the raycaster to the current displayed mesh group (with a global boolean variable called `switchScene`)*
+
 Moreover we realize that every self-respecting website must have an **high responsiveness** and can be used on smartphone, tablets and huge screens interchangebly. So we focus on a **fluid layout** of the web site using some famous libraries:
 * **[Bootstrap 4](https://getbootstrap.com/docs/4.3/layout/overview/)** for its grid system and css classes for the main interactive components (buttons, modals, toast, navbar, tables, tooltips, etc.)
 * **[Font Awesome](https://fontawesome.com/)** mainly for icons
-* **[Slick Nav](https://slicknav.io/)** for the creation of the mobile
-* **[JQuery](https://api.jquery.com/id-selector/)** for a fast retrieval of the `html` 
+* **[Slick Nav](https://slicknav.io/)** for the creation of the mobile navbar
+* **[JQuery](https://api.jquery.com/id-selector/)** for a fast retrieval of the `html` components/tags
 
 Finally we have **updated some meshes** cause, when inspected, they didn't look well 
 (some open faces in particular).
@@ -83,7 +91,7 @@ Finally we have **updated some meshes** cause, when inspected, they didn't look 
 ---
 ## **Sprint 5** (from June 14th to June 17th) 
 
-In this last sprint **we have implemented our own shaders** taking inspiration by **metal BRDF** and **microfacet model** studied in the course.
+In this last sprint **we have implemented our own shaders** taking inspiration by **microfacet model** studied in the course (avioding to consider the diffuse component since we use only metals).
 
 Moreover we change our first idea for material selection form a static **control pannel** to 
 a **new scene with some cubes each one dressed with a different material**; this way seems more beautiful aesthetically and also more user friendly. 
@@ -107,6 +115,6 @@ decided to use the **environment map** as scene background.
 <br/>
 
 ---
-## **Last day** (from June 14th to June 17th) 
+## **Last day**
 
 As in every real agile development the last day is used for **code refactoring/documentation** and think about the entire process (things well done and those go wrong).

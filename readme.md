@@ -41,7 +41,7 @@ Once you get all the required libraries the project is ready to start, the entry
 ---
 ## Application Work-Flow
 
-The entry point `index.html` contains the definition of a responsive web site with an embedded `THREE.js` canvas in the middle (called `main view` or arc`-reactor view`).
+The entry point `index.html` contains the definition of a responsive web site with an embedded `THREE.js` canvas in the middle (called `main view` or `arc-reactor view`).
 
 ![site1](assets/images/site1.png)
 
@@ -66,7 +66,7 @@ Moreover the canvas has an integrated `orbit-control` that allows to **rotate an
 
 <em>Once a component is inspected a second scene will appear</em></div>
 
-Under the inspected components 2 or more cubes with different materials will appear; click on a cube in order to change the inspected object material (the update is persistent an will affect also the main view once the inspecto scene will be closed with the "`X`" icon)
+Under the inspected components 2 or more cubes with different materials will appear; click on a cube in order to change the inspected object material (the update is persistent and will affect also the main view once the inspector scene will be closed with the "`X`" icon)
 
 <br/><br/>
 
@@ -124,11 +124,13 @@ object oriented paradigm, where possible.
 ## Credits
 
 We mainly take inspiration by the following `THREE.js` examples:
-* TODO
+* [webgl materials envmaps](https://threejs.org/examples/?q=map#webgl_materials_envmaps)
+* [webgl raycast sprite](https://threejs.org/examples/?q=cast#webgl_raycast_sprite)
 
 Every asset used was made manually by the team exept for:
 * the assets finded at fork time 
 * the environment map taken from [texturify.com](texturify.com)
+* the [base texture](https://ak3.picdn.net/shutterstock/videos/5049173/thumb/1.jpg) for the coils
 
 
 ### Libraries
