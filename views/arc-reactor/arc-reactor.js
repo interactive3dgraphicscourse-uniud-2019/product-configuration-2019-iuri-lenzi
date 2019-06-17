@@ -58,7 +58,6 @@ function init() {
 		console.log("Loading Complete");
 		
 		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);
-		skyMesh.rotation.y -= Math.PI/4;
 		scene.add(skyMesh);
 		animate();
 	})

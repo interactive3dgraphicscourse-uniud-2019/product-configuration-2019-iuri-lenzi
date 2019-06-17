@@ -4,6 +4,6 @@ uniform sampler2D skyMap;
 
 void main()
 {
-    vec3 skyColor = texture2D(skyMap, vUV).rgb;
-    gl_FragColor = vec4(pow(skyColor, vec3(1.0/2.2)), 1.0);
+    vec3 skyColor = texture2D(skyMap, vec2(1.0 - vUV.x, vUV.y)).rgb;
+    gl_FragColor = vec4(skyColor, 1.0);
 }
