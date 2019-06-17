@@ -1,18 +1,23 @@
 /*
-* Entry point script for renderer and scene management and initializations
+* Arc-reactor view script
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
 */
+
 
 // Global variables and constants
 var camera, scene, renderer, controls, stats;
 var clock = new THREE.Clock();
 
-//Raycast
+// Raycast
 var group = new THREE.Group();
 var raycaster = new THREE.Raycaster();
 var mouseVector = new THREE.Vector3();
 var selectedObject = null;
 
-//Inspector
+// Inspector
 var inspectorScene;
 var inspectorHemiLight;
 var inspectorDirectLight;
@@ -31,56 +36,64 @@ var skyMaterial;
 /*
 * Init function
 */ 
-function init() {
-	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
-	initStat();
-	initScene();
-	initInspectorScene();
-	initMaterials();
+function Init() {
 
-	loadArchitecture("../../assets/models/architecture.json");
-	initCamera();
+	// loads arc-reactor-controls view
+	ApplyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
+	InitStat();
+	InitScene();
+	InitInspectorScene();
+	InitMaterials();
+	InitCamera();
+
+	// load architecture.json and add to the scene the components
+	LoadArchitecture("../../assets/models/architecture.json");
+
+	// init scene and camera pose
 	group.rotation.z += Math.PI / 4
 	group.rotation.y += Math.PI / 2
 	camera.position.set(150,0,150)
 	scene.add(group);
-	
-	bindEvent(window, "resize", onWindowResize );
-	// desktop
-	bindEvent(window, "mousemove", onDocumentMouseMove );
-	bindEvent(document, "mousedown", onMouseDown );
-	bindEvent(document, "mouseup", onMouseUp );
-	// touch screen
-	bindEvent(document, "touchmove", onDocumentMouseMove );
-	bindEvent(document, "touchstart", onMouseDown );
-	bindEvent(document, "touchend", onMouseUp );
-
-	bindEvent(window, "click", onDocumentMouseClick );
-	bindEvent(window, 'message', onMessage );
-	bindEvent(document, "loading-complete", function(){
-		console.log("Loading Complete");
 		
+	// desktop events
+	BindEvent(window, "mousemove", OnDocumentMouseMove );
+	BindEvent(document, "mousedown", OnMouseDown );
+	BindEvent(document, "mouseup", OnMouseUp );
+	// touch screen events
+	BindEvent(document, "touchmove", OnDocumentMouseMove );
+	BindEvent(document, "touchstart", OnMouseDown );
+	BindEvent(document, "touchend", OnMouseUp );
+	// general events
+	BindEvent(window, "resize", OnWindowResize );
+	BindEvent(window, "click", OnDocumentMouseClick );
+	// custom event triggered once the shader loading is completed
+	BindEvent(document, "loading-complete", function(){
 		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);
 		scene.add(skyMesh);
-		animate();
+		Animate();
 	})
 
-
-	initRenderer();
+	InitRenderer();
 }
 
 
-function loadArchitecture( file ) {
-	read(file, function(content){
+/*
+* deserialize the json content and setup each component defined
+*/ 
+function LoadArchitecture( file ) {
+	Read(file, function(content){
 		var architecture = JSON.parse(content);   
 		architecture.forEach(function(component){
-			setupMesh(component);
+			SetupMesh(component);
 		});
 	})
 }
 
 
-function setupMesh( parameters ) {
+/*
+* Given a component definition loads the component and add it to the scene
+*/ 
+function SetupMesh( parameters ) {
 	var loader = new THREE.GLTFLoader();
 	loader.load( parameters.url, function( gltf ) {
 		var gltfMesh = gltf.scene.children[ 0 ];
@@ -101,13 +114,14 @@ function setupMesh( parameters ) {
 /*
 * Loop function
 */
-function animate() {
+function Animate() {
 	TWEEN.update();
 	stats.update();
 	controls.update();
-	requestAnimationFrame( animate );
+	requestAnimationFrame( Animate );
 	Render();
 }
+
 
 /*
 * Render function
@@ -124,7 +138,7 @@ function Render()
 /*
 * Renderer init
 */
-function initRenderer(){
+function InitRenderer(){
 	renderer = new THREE.WebGLRenderer( { alpha: true, antialias: true } );
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
@@ -138,31 +152,33 @@ function initRenderer(){
 /*
 * Scene init
 */
-function initScene(){
+function InitScene(){
 	scene = new THREE.Scene();
 	scene.background = new THREE.Color( 0x000022 );
 	scene.fog = new THREE.Fog( 0xffffff, 0, 750 );
-	hemiLight = createHemiLight();
-	dirLight = createDirLight();
+	hemiLight = CreateHemiLight();
+	dirLight = CreateDirLight();
     scene.add( hemiLight );  
 	scene.add( dirLight );  
 }
 
+
 /*
 * Inspector scene init
 */
-function initInspectorScene()
+function InitInspectorScene()
 {
 	inspectorScene = new THREE.Scene();
 	inspectorScene.background = new THREE.Color( 0x000022 );
-	inspectorHemiLight = createHemiLight();
-	inspectorDirectLight = createDirLight();
+	inspectorHemiLight = CreateHemiLight();
+	inspectorDirectLight = CreateDirLight();
 }
+
 
 /*
 * Skybox init
 */
-function initSkyBox()
+function InitSkyBox()
 {
 	skyMaterial = new THREE.ShaderMaterial(
 		{
@@ -178,11 +194,14 @@ function initSkyBox()
 /*
 * Stat init
 */
-function initStat(){
+function InitStat(){
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
 	stats.domElement.style.top = '0px';
+	// uncomment for debugging purpose only in order to see rendering stats
 	//document.body.appendChild( stats.domElement );
 }
 
-init();
+
+// entry-point call
+Init();

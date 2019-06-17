@@ -1,21 +1,30 @@
-function initGrid(){
+/*
+* Grid shader material defition
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
+function InitGrid(){
     //Material 19: grid aluminum 1
-    var grid_rough = 0.1;
-    var grid_m_map = loadTexture("../../assets/models/grid/grid_alum_Metal.png");
-    var grid_n_map = loadTexture("../../assets/models/grid/grid_alum_NM.png");
-    var grid_AO_map = loadTexture("../../assets/models/grid/grid_alum_AO.png");
-    grid_all_1 = new THREE.ShaderMaterial(
+    var gridRough = 0.1;
+    var gridMMap = LoadTexture("../../assets/models/grid/grid_alum_Metal.png");
+    var gridNMap = LoadTexture("../../assets/models/grid/grid_alum_NM.png");
+    var gridAOMap = LoadTexture("../../assets/models/grid/grid_alum_AO.png");
+    gridAll1 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.913, 0.922, 0.924)},
-                "roughness": {type: "f",  value: grid_rough},
-                "normalMap": {type: "t", value: grid_n_map},
-                "metalMap": {type: "t", value: grid_m_map},
-                "AOMap": {type: "t", value: grid_AO_map},
+                "roughness": {type: "f",  value: gridRough},
+                "normalMap": {type: "t", value: gridNMap},
+                "metalMap": {type: "t", value: gridMMap},
+                "AOMap": {type: "t", value: gridAOMap},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(grid_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -23,19 +32,19 @@ function initGrid(){
     )
 
     //Material 20: grid aluminum 2
-    grid_rough = 0.4;
-    grid_all_2 = new THREE.ShaderMaterial(
+    gridRough = 0.4;
+    gridAll2 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.913, 0.922, 0.924)},
-                "roughness": {type: "f",  value: grid_rough},
-                "normalMap": {type: "t", value: grid_n_map},
-                "metalMap": {type: "t", value: grid_m_map},
-                "AOMap": {type: "t", value: grid_AO_map},
+                "roughness": {type: "f",  value: gridRough},
+                "normalMap": {type: "t", value: gridNMap},
+                "metalMap": {type: "t", value: gridMMap},
+                "AOMap": {type: "t", value: gridAOMap},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(grid_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -43,19 +52,19 @@ function initGrid(){
     )
 
     //Material 21: grid gold 1
-    grid_rough = 0.1;
-    grid_gold_1 = new THREE.ShaderMaterial(
+    gridRough = 0.1;
+    gridGold1 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(1.0, 0.782, 0.344)},
-                "roughness": {type: "f",  value: grid_rough},
-                "normalMap": {type: "t", value: grid_n_map},
-                "metalMap": {type: "t", value: grid_m_map},
-                "AOMap": {type: "t", value: grid_AO_map},
+                "roughness": {type: "f",  value: gridRough},
+                "normalMap": {type: "t", value: gridNMap},
+                "metalMap": {type: "t", value: gridMMap},
+                "AOMap": {type: "t", value: gridAOMap},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(grid_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -63,19 +72,19 @@ function initGrid(){
     )
 
     //Material 22: grid gold 2
-    grid_rough = 0.4;
-    grid_gold_2 = new THREE.ShaderMaterial(
+    gridRough = 0.4;
+    gridGold2 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(1.0, 0.782, 0.344)},
-                "roughness": {type: "f",  value: grid_rough},
-                "normalMap": {type: "t", value: grid_n_map},
-                "metalMap": {type: "t", value: grid_m_map},
-                "AOMap": {type: "t", value: grid_AO_map},
+                "roughness": {type: "f",  value: gridRough},
+                "normalMap": {type: "t", value: gridNMap},
+                "metalMap": {type: "t", value: gridMMap},
+                "AOMap": {type: "t", value: gridAOMap},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(grid_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'

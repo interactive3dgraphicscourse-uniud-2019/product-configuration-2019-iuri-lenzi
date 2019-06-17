@@ -1,4 +1,16 @@
-function read(filePath, callback){
+/*
+* General purpose funtions
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
+/*
+* read any file and launch the callback funcion on the content
+*/
+function Read(filePath, callback){
     var client = new XMLHttpRequest();
     client.open('GET', filePath);
     client.onreadystatechange = function() {
@@ -13,8 +25,12 @@ function read(filePath, callback){
     client.send();
 }
 
-function applyTemplate(template, placeholders=[], tag = "#container"){
-	read(template, function(content){
+
+/*
+* Inject a view in the current page
+*/
+function ApplyTemplate(template, placeholders=[], tag = "#container"){
+	Read(template, function(content){
         placeholders.forEach(function(placeholder){
             content = content.replace(placeholder[0], placeholder[1]);
         });
@@ -22,8 +38,12 @@ function applyTemplate(template, placeholders=[], tag = "#container"){
 	})
 }
 
-function loadGlsl(filePath){
-    read(filePath, function(content){
+
+/*
+* Load shader definition from a glsl file
+*/
+function LoadGlsl(filePath){
+    Read(filePath, function(content){
         var tag = content.split("\n")[0];
         tag = tag.replace("\r", "");
         tag = tag.substring(2, tag.length);
@@ -42,7 +62,11 @@ function loadGlsl(filePath){
     })
 }
 
-function openFullscreen(id) {
+
+/*
+* Start fullscreen mode
+*/
+function OpenFullscreen(id) {
     var elem = window.parent.document.getElementById(id);
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
@@ -59,8 +83,11 @@ function openFullscreen(id) {
     $("#expand").addClass("invisible");
 }
 
-/* Close fullscreen */
-function closeFullscreen() {
+
+/*
+* End fullscreen mode
+*/
+function CloseFullscreen() {
     if (window.parent.document.exitFullscreen) {
         window.parent.document.exitFullscreen();
     } else if (window.parent.document.mozCancelFullScreen) { /* Firefox */
@@ -76,7 +103,11 @@ function closeFullscreen() {
     $("#compress").addClass("invisible");
 }
 
-function explode(){
+
+/*
+* Start the explosion animation
+*/
+function Explode(){
     $("#implode").removeClass("invisible");
     $("#implode").addClass("visible");
     $("#explode").removeClass("visible");
@@ -84,16 +115,20 @@ function explode(){
 
     group.children.forEach(function(child){
         if(child instanceof AnimatedMesh){
-            child.explode();
+            child.Explode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.explode(500)
+                c.Explode(500)
             })
         }
     }) 
 }
 
-function implode(){
+
+/*
+* Start the implosion animation
+*/
+function Implode(){
     $("#explode").removeClass("invisible");
     $("#explode").addClass("visible");
     $("#implode").removeClass("visible");
@@ -101,27 +136,38 @@ function implode(){
 
     group.children.forEach(function(child){
         if(child instanceof AnimatedMesh){
-            child.implode();
+            child.Implode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.implode(500)
+                c.Implode(500)
             })
         }
     }) 
 }
 
-function lock(){
+
+/*
+* Scene lock algorithm
+*/
+
+var sceneLocked = false;
+
+
+function Lock(){
     $("#unlock").removeClass("invisible");
     $("#unlock").addClass("visible");
     $("#lock").removeClass("visible");
     $("#lock").addClass("invisible");
     window.parent.document.body.className += " stop-scrolling"
+    sceneLocked = true;
 }
 
-function unlock(){
+
+function Unlock(){
     $("#lock").removeClass("invisible");
     $("#lock").addClass("visible");
     $("#unlock").removeClass("visible");
     $("#unlock").addClass("invisible");
-    window.parent.document.body.className = window.parent.document.body.className.replace("stop-scrolling", "");
+    window.parent.document.body.className = window.parent.document.body.className.replace(/stop-scrolling/g, "");
+    sceneLocked = false;
 }

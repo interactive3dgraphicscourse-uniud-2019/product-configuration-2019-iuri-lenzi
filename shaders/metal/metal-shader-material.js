@@ -1,15 +1,24 @@
-function initMetal(){
+/*
+* Metal shader material defition
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
+function InitMetal(){
     //Material 3: alluminum 1
-    var all_rough = 0.1;
-    alluminium_1 = new THREE.ShaderMaterial(
+    var allRough = 0.1;
+    alluminium1 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.913, 0.922, 0.924)},
-                "roughness": {type: "f",  value: all_rough},
+                "roughness": {type: "f",  value: allRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(all_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]}
             },
             vertexShader: 'metal-vertex',
             fragmentShader: 'metal-fragment',
@@ -17,16 +26,16 @@ function initMetal(){
     )
 
     //Material 4: alluminum 2
-    all_rough = 0.4;
-    alluminium_2 = new THREE.ShaderMaterial(
+    allRough = 0.4;
+    alluminium2 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.913, 0.922, 0.924)},
-                "roughness": {type: "f",  value: all_rough},
+                "roughness": {type: "f",  value: allRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(all_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]}
             },
             vertexShader: 'metal-vertex',
             fragmentShader: "metal-fragment",
@@ -34,16 +43,16 @@ function initMetal(){
     )
 
     //Material 5: alluminum 3
-    all_rough = 0.7;
-    alluminium_3 = new THREE.ShaderMaterial(
+    allRough = 0.7;
+    alluminium3 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.913, 0.922, 0.924)},
-                "roughness": {type: "f",  value: all_rough},
+                "roughness": {type: "f",  value: allRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(all_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -51,16 +60,16 @@ function initMetal(){
     )
     
     //Material 6: dark iron 1
-    var iron_rough = 0.4;
-    iron_1 = new THREE.ShaderMaterial(
+    var ironRough = 0.4;
+    iron1 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.112, 0.113, 0.116)},
-                "roughness": {type: "f",  value: iron_rough},
+                "roughness": {type: "f",  value: ironRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(iron_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(ironRough * 8)]}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -68,16 +77,16 @@ function initMetal(){
     )
 
     //Material 7: dark iron 2
-    iron_rough = 0.8;
-    iron_2 = new THREE.ShaderMaterial(
+    ironRough = 0.8;
+    iron2 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.112, 0.113, 0.116)},
-                "roughness": {type: "f",  value: iron_rough},
+                "roughness": {type: "f",  value: ironRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(iron_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(ironRough * 8)]}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -85,16 +94,16 @@ function initMetal(){
     )
 
     //Material 8: gold 1
-    var gold_rough = 0.1;
-    gold_1 = new THREE.ShaderMaterial(
+    var goldRough = 0.1;
+    gold1 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(1.0, 0.782, 0.344)},
-                "roughness": {type: "f",  value: gold_rough},
+                "roughness": {type: "f",  value: goldRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(gold_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -102,16 +111,16 @@ function initMetal(){
     )
 
     //Material 9: gold 2
-    gold_rough = 0.4;
-    gold_2 = new THREE.ShaderMaterial(
+    goldRough = 0.4;
+    gold2 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(1.0, 0.782, 0.344)},
-                "roughness": {type: "f",  value: gold_rough},
+                "roughness": {type: "f",  value: goldRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(gold_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -119,16 +128,16 @@ function initMetal(){
     )
 
     //Material 10: gold 3
-    gold_rough = 0.7;
-    gold_3 = new THREE.ShaderMaterial(
+    goldRough = 0.7;
+    gold3 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(1.0, 0.782, 0.344)},
-                "roughness": {type: "f",  value: gold_rough},
+                "roughness": {type: "f",  value: goldRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(gold_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -136,16 +145,16 @@ function initMetal(){
     )
 
     //Material 11: copper 1
-    var copper_rough = 0.1;
-    copper_1 = new THREE.ShaderMaterial(
+    var copperRough = 0.1;
+    copper1 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.955, 0.638, 0.538)},
-                "roughness": {type: "f",  value: copper_rough},
+                "roughness": {type: "f",  value: copperRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(copper_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -153,16 +162,16 @@ function initMetal(){
     )
 
     //Material 12: copper 2
-    copper_rough = 0.4;
-    copper_2 = new THREE.ShaderMaterial(
+    copperRough = 0.4;
+    copper2 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.955, 0.638, 0.538)},
-                "roughness": {type: "f",  value: copper_rough},
+                "roughness": {type: "f",  value: copperRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(copper_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -170,16 +179,16 @@ function initMetal(){
     )
 
     //Material 13: copper 3
-    copper_rough = 0.7;
-    copper_3 = new THREE.ShaderMaterial(
+    copperRough = 0.7;
+    copper3 = new THREE.ShaderMaterial(
         {
             uniforms: {
                 "baseColor": {type: "v3", value: new THREE.Vector3(0.955, 0.638, 0.538)},
-                "roughness": {type: "f",  value: copper_rough},
+                "roughness": {type: "f",  value: copperRough},
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(copper_rough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]}
             },
             vertexShader: 'metal-vertex',
             fragmentShader: 'metal-fragment'

@@ -15,22 +15,14 @@
                     "x": 0,
                     "y": 0,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 0,
                     "y": 100,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 0,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             }
         ],
         "materials":[0, 1, 2]
@@ -51,22 +43,14 @@
                     "x": 0,
                     "y": 0,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 0,
                     "y": 58,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 90,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             }
         ],
         "materials":[6, 7, 8, 9]
@@ -87,22 +71,14 @@
                     "x": 0,
                     "y": 0,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 0,
                     "y": 38,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 90,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             }
         ],
         "materials":[23, 24]
@@ -123,22 +99,14 @@
                     "x": 0,
                     "y": 0,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 0,
                     "y": 18,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 90,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             }
         ],
         "materials":[22, 21, 20, 19]
@@ -159,22 +127,14 @@
                     "x": 0,
                     "y": 0,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 0,
                     "y": 22,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 90,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             }
         ],
         "materials":[7, 6]
@@ -195,22 +155,14 @@
                     "x": 0,
                     "y": 0,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 0,
                     "y": 2,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 90,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             }
         ],
         "materials":[0, 1, 2]
@@ -231,22 +183,14 @@
                     "x": 0,
                     "y": 0,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 0,
                     "y": -28,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 90,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             }
         ],
         "materials":[6, 7, 8, 9]
@@ -267,22 +211,14 @@
                     "x": 0,
                     "y": 0,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 0,
                     "y": -88,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 90,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             }
         ],
         "materials":[6, 7, 8, 9]
@@ -303,36 +239,21 @@
                     "x": 0,
                     "y": 3,
                     "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 60,
                 "position": {
                     "x": 44,
                     "y": 100,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 90,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "linear"
+                }
             },
             {        
-                "scale": 70,
                 "position": {
                     "x": 80,
                     "y": 100,
                     "z": 0
-                },
-                "rotation": {
-                    "x": 130,
-                    "y": 0,
-                    "z": 0
-                },
-                "effect": "flip"
+                }
             }
         ],
         "materials":[14, 15, 16, 17]
