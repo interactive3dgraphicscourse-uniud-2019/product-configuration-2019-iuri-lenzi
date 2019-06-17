@@ -1,6 +1,11 @@
 /*
-* Light manager
+* Light manager script
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
 */
+
 
 /*
 * Init an HemisphereLight
@@ -10,6 +15,7 @@ function CreateHemiLight(){
 	hemiLight.position.set( 0.5, 1, 0.75 );
     return hemiLight;
 }
+
 
 /*
 * Init a DirectionalLight

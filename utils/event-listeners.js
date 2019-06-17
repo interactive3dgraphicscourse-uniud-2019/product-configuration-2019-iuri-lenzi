@@ -1,4 +1,13 @@
 /*
+* Event listeners definitions
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
+/*
 * Bind an event with an event handler
 * Support for IE8
 */

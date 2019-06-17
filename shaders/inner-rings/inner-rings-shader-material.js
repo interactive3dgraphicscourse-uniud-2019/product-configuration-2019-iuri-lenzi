@@ -1,3 +1,12 @@
+/*
+* Inner rings shader material defition
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
 function InitInnerRings(){
     //Material 23: rings copper 1
     var ringsRough = 0.7;

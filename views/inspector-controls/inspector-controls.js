@@ -1,3 +1,12 @@
+/*
+* Inspector-controls view script
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
 // global variables
 var scene, renderer, camera, stats, cube, raycaster; 
 var group = new THREE.Group();

@@ -1,3 +1,11 @@
+/*
+* General purpose funtions
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
 
 /*
 * read any file and launch the callback funcion on the content

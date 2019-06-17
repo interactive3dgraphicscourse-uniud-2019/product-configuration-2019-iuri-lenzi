@@ -1,3 +1,12 @@
+/*
+* Grid shader material defition
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
 function InitGrid(){
     //Material 19: grid aluminum 1
     var gridRough = 0.1;

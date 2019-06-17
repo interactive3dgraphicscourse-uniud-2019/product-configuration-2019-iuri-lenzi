@@ -1,3 +1,11 @@
+/*
+* Coil shader material defition
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
 function InitCoil(){
     //Material 14: coil alluminum 1
     var coilRough = 0.1;

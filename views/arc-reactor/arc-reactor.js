@@ -1,6 +1,11 @@
 /*
-* Entry point script for renderer, scene management and initializations
+* Arc-reactor view script
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
 */
+
 
 // Global variables and constants
 var camera, scene, renderer, controls, stats;

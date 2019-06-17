@@ -1,3 +1,12 @@
+/*
+* Emissive shader material defition
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
 function InitEmissive(){    
     //Material 0: blue emissive
     blueEmissive = new THREE.ShaderMaterial(

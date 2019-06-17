@@ -1,4 +1,13 @@
 /*
+* Inspector view script
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
+/*
 * autoresize the iframe content in order to avoid th comparison of the scroll bars
 */
 function AutoResize(){

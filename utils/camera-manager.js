@@ -1,6 +1,11 @@
 /*
-* Camera management class
+* Camera management script
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
 */
+
 
 /*
 * Init camera and call camera control initialization
@@ -9,6 +14,7 @@ function InitCamera(){
 	camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
 	InitControl()
 }
+
 
 /*
 * Init Camera Control

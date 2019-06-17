@@ -1,3 +1,12 @@
+/*
+* Material management script
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
 //Creates materials
 var blueEmissive, redEmissive, greenEmissive, alluminium1, alluminium2, alluminium3, 
 iron1, iron2, gold1, gold2, gold3, copper1, copper2, copper3, coilAll1, coilAll2, coilGold1, 

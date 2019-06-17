@@ -1,3 +1,12 @@
+/*
+* Inspector management script
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
 var inspectedObject;
 
 

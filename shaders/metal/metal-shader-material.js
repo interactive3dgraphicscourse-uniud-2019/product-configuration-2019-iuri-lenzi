@@ -1,3 +1,12 @@
+/*
+* Metal shader material defition
+*
+* author = 'Marco Iuri, Edoardo Lenzi'
+* version = '1.0'
+* license = 'GPL-3.0'
+*/
+
+
 function InitMetal(){
     //Material 3: alluminum 1
     var allRough = 0.1;
