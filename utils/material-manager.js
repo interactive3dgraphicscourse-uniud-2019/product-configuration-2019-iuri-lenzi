@@ -1,5 +1,5 @@
 //Creates materia, 
-var blue_emissive, red_emissive, green_emissive, alluminium_1, alluminium_2, alluminium_3, iron_1, iron_2, gold_1, gold_2, gold_3, copper_1, copper_2, copper_3, coil_all_1, coil_all_2, coil_gold_1, coil_gold_2, coil_iron_1, grid_all_1, grid_all_2, grid_gold_1, grid_gold_2, rings_copp_1, rings_gold_1
+var blue_emissive, red_emissive, green_emissive, alluminium_1, alluminium_2, alluminium_3, iron_1, iron_2, gold_1, gold_2, gold_3, copper_1, copper_2, copper_3, coilAll1, coilAll2, coilGold1, coilGold2, coilIron1, grid_all_1, grid_all_2, grid_gold_1, grid_gold_2, rings_copp_1, rings_gold_1
 
 // Textures
 var environmentMaps = new Array();
@@ -29,7 +29,7 @@ function initMaterials()
     pointLightColor = new THREE.Vector3(dirLight.color.r*dirLight.intensity, dirLight.color.g*dirLight.intensity, dirLight.color.b*dirLight.intensity);
     envLightColor = new THREE.Vector3(hemiLight.color.r*hemiLight.intensity, hemiLight.color.g*hemiLight.intensity, hemiLight.color.b*hemiLight.intensity);
     
-    initCoil();
+    InitCoil();
     initEmissive();
     initGrid();
     initInnerRings();
@@ -50,11 +50,11 @@ function initMaterials()
     materialVector.push(copper_1);       //11
     materialVector.push(copper_2);       //12
     materialVector.push(copper_3);       //13
-    materialVector.push(coil_all_1);     //14
-    materialVector.push(coil_all_2);     //15
-    materialVector.push(coil_gold_1);    //16
-    materialVector.push(coil_gold_2);    //17
-    materialVector.push(coil_iron_1);    //18
+    materialVector.push(coilAll1);     //14
+    materialVector.push(coilAll2);     //15
+    materialVector.push(coilGold1);    //16
+    materialVector.push(coilGold2);    //17
+    materialVector.push(coilIron1);    //18
     materialVector.push(grid_all_1);     //19
     materialVector.push(grid_all_2);     //20
     materialVector.push(grid_gold_1);    //21

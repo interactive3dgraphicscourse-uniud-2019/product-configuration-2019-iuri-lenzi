@@ -15,7 +15,7 @@ uniform float frameRoughness;
 uniform sampler2D coilBaseColor;
 uniform sampler2D coilRoughness;
 uniform sampler2D coilNormalMap;
-uniform sampler2D AOMap;
+uniform sampler2D aoMap;
 uniform vec3 pointLightWorldPosition;
 uniform vec3 pointLightColor;
 uniform vec3 envLightColor;
@@ -84,10 +84,10 @@ void main()
         envUV.y = asin( clamp( r.y, - 1.0, 1.0 ) ) * RECIPROCAL_PI + 0.5;
         envUV.x = atan( r.z, r.x ) * RECIPROCAL_PI*0.5 + 0.5;
 
-        vec3 F = FSchlick(max(dot(n, v), EPS), baseColor);
-        refEnvColor = pow(texture2D(envMap, envUV).rgb, vec3(2.2)) * F;
+        vec3 f = FSchlick(max(dot(n, v), EPS), baseColor);
+        refEnvColor = pow(texture2D(envMap, envUV).rgb, vec3(2.2)) * f;
     }
-    vec3 indirLightRadiance = envLightColor * baseColor * texture2D(AOMap, vUV).rgb + refEnvColor;
+    vec3 indirLightRadiance = envLightColor * baseColor * texture2D(aoMap, vUV).rgb + refEnvColor;
 
     vec3 radiance = directLightRadiance + indirLightRadiance;
     gl_FragColor = vec4(pow(radiance, vec3(1.0/2.2)), 1.0);
