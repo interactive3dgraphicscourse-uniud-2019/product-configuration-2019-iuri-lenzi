@@ -87,7 +87,7 @@ function explode(){
             child.explode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.explode()
+                c.explode(500)
             })
         }
     }) 
@@ -104,8 +104,24 @@ function implode(){
             child.implode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.implode()
+                c.implode(500)
             })
         }
     }) 
+}
+
+function lock(){
+    $("#unlock").removeClass("invisible");
+    $("#unlock").addClass("visible");
+    $("#lock").removeClass("visible");
+    $("#lock").addClass("invisible");
+    window.parent.document.body.className += " stop-scrolling"
+}
+
+function unlock(){
+    $("#lock").removeClass("invisible");
+    $("#lock").addClass("visible");
+    $("#unlock").removeClass("visible");
+    $("#unlock").addClass("invisible");
+    window.parent.document.body.className = window.parent.document.body.className.replace("stop-scrolling", "");
 }
