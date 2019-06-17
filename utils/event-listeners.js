@@ -44,22 +44,20 @@ function onDocumentMouseClick( event ){
 function onDocumentMouseMove( event ) {
 	event.preventDefault();
 	if ( selectedObject ) {
-		//selectedObject.material.color.set( '#69f' );
 		selectedObject = null;
 	}
-	var intersects = getIntersects( event.layerX, event.layerY );
+	var intersects = GetIntersects( event.layerX, event.layerY );
 	if ( intersects.length > 0 ) {
 		var res = intersects.filter( function ( res ) {
 			return res && res.object;
 		} )[ 0 ];
 		if ( res && res.object ) {
 			selectedObject = res.object;
-			//selectedObject.material.color.set( '#f00' );
 		}
 	}
 }
 
-function getIntersects( x, y ) {
+function GetIntersects( x, y ) {
 	x = ( x / window.innerWidth ) * 2 - 1;
 	y = - ( y / window.innerHeight ) * 2 + 1;
 	mouseVector.set( x, y, 0.5 );
@@ -70,7 +68,7 @@ function getIntersects( x, y ) {
 		return raycaster.intersectObject( inspectorScene, true );
 }
 
-function closeInspector() {
+function CloseInspector() {
 	switchScene = false;
 	applyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
 	scene.add(skyMesh);
@@ -88,7 +86,7 @@ function onMouseUp( event ){
 }
 
 
-function sendRotation( event ){
+function SendRotation( event ){
 	var inspectorControl = document.getElementById("inspector-controls");
 	if(mouseDown && inspectorControl != null){
 		inspectorControl.contentWindow.postMessage({_x: camera.rotation._x, _y: camera.rotation._y, _z: camera.rotation._z}, '*');

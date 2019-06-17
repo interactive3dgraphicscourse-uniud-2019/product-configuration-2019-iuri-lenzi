@@ -39,7 +39,7 @@ function init() {
 	initMaterials();
 
 	loadArchitecture("../../assets/models/architecture.json");
-	initCamera();
+	InitCamera();
 	group.rotation.z += Math.PI / 4
 	group.rotation.y += Math.PI / 2
 	camera.position.set(150,0,150)
