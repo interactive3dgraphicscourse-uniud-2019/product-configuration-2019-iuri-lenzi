@@ -14,30 +14,30 @@ class AnimatedMesh extends THREE.Mesh{
 		this.parameters = params;
 	}
 
-	clone(){
+	Clone(){
 		return new AnimatedMesh(
 			new THREE.Mesh(this.geometry, this.material), 
 			this.parameters);
 	}
 
-	explode(speed = 1000){
+	Explode(speed = 1000){
 		var frames = this.parameters.frames
-		var firstTween = this.tweenTo(frames[1].position, speed)
+		var firstTween = this.TweenTo(frames[1].position, speed)
 		if(frames.length > 2){
 			for(var i = 2; i < frames.length; i++){
-				firstTween.chain(this.tweenTo(frames[i].position, speed))
+				firstTween.chain(this.TweenTo(frames[i].position, speed))
 			}
 		}
 		firstTween.start();
 	}
 
-	implode(speed = 1000){
+	Implode(speed = 1000){
 		this.parameters.frames.reverse();
-		this.explode(speed);
+		this.Explode(speed);
 		this.parameters.frames.reverse();
 	}
 
-	tweenTo(nextPosition, speed){
+	TweenTo(nextPosition, speed){
 		var tween = new TWEEN.Tween(this.position).to(nextPosition, speed);
 		tween.easing(TWEEN.Easing.Elastic.InOut)
 		return tween;

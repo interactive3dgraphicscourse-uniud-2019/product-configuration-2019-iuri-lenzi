@@ -7,7 +7,7 @@ function trigger(component){
     emptyInspScene();
 
     //Load component and create inspector scene
-    inspectedObject = component.clone();
+    inspectedObject = component.Clone();
     inspectedObject.position.set(0,0,0);
         inspectedObject.scale.set(inspectedObject.parameters.inspectorScale,inspectedObject.parameters.inspectorScale, inspectedObject.parameters.inspectorScale);
         inspectedObject.rotation.set(0,0,0);

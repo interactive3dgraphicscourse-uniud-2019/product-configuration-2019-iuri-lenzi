@@ -76,7 +76,7 @@ function closeFullscreen() {
     $("#compress").addClass("invisible");
 }
 
-function explode(){
+function Explode(){
     $("#implode").removeClass("invisible");
     $("#implode").addClass("visible");
     $("#explode").removeClass("visible");
@@ -84,16 +84,16 @@ function explode(){
 
     group.children.forEach(function(child){
         if(child instanceof AnimatedMesh){
-            child.explode();
+            child.Explode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.explode(500)
+                c.Explode(500)
             })
         }
     }) 
 }
 
-function implode(){
+function Implode(){
     $("#explode").removeClass("invisible");
     $("#explode").addClass("visible");
     $("#implode").removeClass("visible");
@@ -101,10 +101,10 @@ function implode(){
 
     group.children.forEach(function(child){
         if(child instanceof AnimatedMesh){
-            child.implode();
+            child.Implode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.implode(500)
+                c.Implode(500)
             })
         }
     }) 
