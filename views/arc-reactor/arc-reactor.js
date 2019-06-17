@@ -162,7 +162,7 @@ function initInspectorScene()
 /*
 * Skybox init
 */
-function initSkyBox()
+function InitSkyBox()
 {
 	skyMaterial = new THREE.ShaderMaterial(
 		{
