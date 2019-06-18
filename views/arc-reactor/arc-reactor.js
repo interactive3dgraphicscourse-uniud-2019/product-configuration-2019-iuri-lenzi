@@ -159,30 +159,36 @@ function Render()
 
 function RenderPass1()
 {
+	renderer.setRenderTarget( renderTarget1 );
+
+	//Reset material
+	RenderAllMaterial();
+
 	//Render scene to first render target
 	if(!switchScene)
-		renderer.render( scene, camera, renderTarget1 );
+		renderer.render( scene, camera );
 	else
-		renderer.render( inspectorScene, camera, renderTarget1 );	
+		renderer.render( inspectorScene, camera );	
 }
 
 function RenderPass2()
 {
+	renderer.setRenderTarget( renderTarget2 );
+
 	//Modify materials
 	RenderEmissiveOnly();
 
 	//Render scene to second render target
 	if(!switchScene)
-		renderer.render( scene, camera, renderTarget2 );
+		renderer.render( scene, camera);
 	else
-		renderer.render( inspectorScene, camera, renderTarget2 );
-	
-	//Reset material
-	RenderAllMaterial();
+		renderer.render( inspectorScene, camera);
 }
 
 function RenderPass3()
 {
+	renderer.setRenderTarget( null );
+
 	//Render post processing scene
 	renderer.render( postScene, postCamera);
 }
@@ -198,7 +204,6 @@ function InitRenderer(){
 	renderer.gammaOutput = true;
 	renderer.gammaInput = true;
 	renderer.shadowMap.enabled = true;
-	renderer.autoClear = true;
 	document.body.appendChild( renderer.domElement );
 }
 
@@ -217,7 +222,7 @@ function InitPostProcessing()
 	renderTarget1.texture.magFilter = THREE.NearestFilter;
 	renderTarget1.texture.generateMipmaps = false;
 	renderTarget1.stencilBuffer = false;
-	renderTarget1.depthBuffer = false;
+	renderTarget1.depthBuffer = true;
 
 	renderTarget2 = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight);
 	renderTarget2.texture.format = THREE.RGBAFormat;
@@ -225,7 +230,7 @@ function InitPostProcessing()
 	renderTarget2.texture.magFilter = THREE.NearestFilter;
 	renderTarget2.texture.generateMipmaps = false;
 	renderTarget2.stencilBuffer = false;
-	renderTarget2.depthBuffer = false;
+	renderTarget2.depthBuffer = true;
 }
 
 

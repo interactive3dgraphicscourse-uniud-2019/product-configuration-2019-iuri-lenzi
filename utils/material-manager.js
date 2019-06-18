@@ -144,6 +144,7 @@ function RenderEmissiveOnly()
 {
     materialVector.forEach(mat =>{
         mat.uniforms.diffOnly = 1.0;
+        mat.uniforms.needsUpdate = true;
     })
 }
 
@@ -151,5 +152,6 @@ function RenderAllMaterial()
 {
     materialVector.forEach(mat =>{
         mat.uniforms.diffOnly = 0.0;
+        mat.uniforms.needsUpdate = true;
     })
 }

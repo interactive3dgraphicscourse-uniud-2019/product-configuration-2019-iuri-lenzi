@@ -7,6 +7,6 @@ uniform float diffOnly;
 
 void main()
 {
-    vec3 color = texture2D(tDiffuseScene, vUV).rgb;
-    gl_FragColor = vec4(pow(color, vec3(1.0/2.2)), 1.0);
+    vec3 color = texture2D(tDiffuseEmi, vUV).rgb;
+    gl_FragColor = vec4(color, 1.0);
 }
