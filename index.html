@@ -107,7 +107,12 @@
 			<h2 >INSPECT YOUR HEART</h2>
 			<br/>
 			<div id="arc-reactor">
-				<iframe src="views/arc-reactor/arc-reactor.html"></iframe>
+				<div id="loading-spinner">
+					<div class="spinner-border" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+				<iframe id="arc-reactor-view" src="views/arc-reactor/arc-reactor.html" onload="onFrameLoad(this)"></iframe>
 			</div>
 		</article>
 		<!--Statistics section-->

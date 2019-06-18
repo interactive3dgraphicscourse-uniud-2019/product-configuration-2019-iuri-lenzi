@@ -101,6 +101,8 @@ function InitMaterials()
 /*
 * Load environment map
 */
+var loadedMipmaps = 0;
+
 function LoadEnvMaps()
 {
     for(var i = 0; i <= 8; i++)
@@ -121,7 +123,12 @@ function LoadTexture(filename)
     {
         texture.minFilter = THREE.LinearMipMapLinearFilter;
         texture.magFilter = THREE.LinearFilter;
-        texture.needsUpdate = true;
+        texture.needsUpdate = true;    
+        loadedMipmaps++;
+        if(loadedMipmaps == 15){
+            envmapLoaded = true;
+            CheckLoadingState();
+        }
     });
 
     return result;

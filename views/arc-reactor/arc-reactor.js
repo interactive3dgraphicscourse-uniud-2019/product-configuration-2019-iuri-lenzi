@@ -33,6 +33,11 @@ var materialVector = new Array();
 var skyMesh;
 var skyMaterial;
 
+// Loading state
+var loadedComponents = 0;
+var architecture;
+var glbLoaded = false, envmapLoaded = false, glslLoaded = false;
+
 /*
 * Init function
 */ 
@@ -71,6 +76,8 @@ function Init() {
 		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);
 		scene.add(skyMesh);
 		Animate();
+		glslLoaded = true;
+		CheckLoadingState();
 	})
 
 	InitRenderer();
@@ -82,7 +89,7 @@ function Init() {
 */ 
 function LoadArchitecture( file ) {
 	Read(file, function(content){
-		var architecture = JSON.parse(content);   
+		architecture = JSON.parse(content);   
 		architecture.forEach(function(component){
 			SetupMesh(component);
 		});
@@ -106,6 +113,12 @@ function SetupMesh( parameters ) {
 			}
 		} else {
 			group.add(new AnimatedMesh(gltfMesh, parameters));
+		}
+
+		loadedComponents ++;
+		if(loadedComponents == architecture.length - 1){
+			glbLoaded = true;
+			CheckLoadingState();
 		}
 	});
 }
@@ -188,6 +201,16 @@ function InitSkyBox()
 			side: THREE.BackSide
 		}
 	)
+}
+
+
+/*
+* Check if every heavy asset is properly loaded
+*/
+function CheckLoadingState(){
+	if(glbLoaded && glslLoaded && envmapLoaded){
+		window.parent.document.getElementById("loading-spinner").className += " invisible";
+	}
 }
 
 
