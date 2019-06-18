@@ -93,8 +93,8 @@ function GetIntersects( x, y ) {
 */
 function CloseInspector() {
 	switchScene = false;
-	ApplyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
-	scene.add(skyMesh);
+	ApplyTemplate( '../arc-reactor-controls/arc-reactor-controls.html' );
+	scene.add( skyMesh );
 	switchScene = false;
 }
 
@@ -105,11 +105,11 @@ function CloseInspector() {
 var mouseDown = false;
 
 function OnMouseDown( event ){
-	mouseDown = true
+	mouseDown = true;
 }
 
 function OnMouseUp( event ){
-	mouseDown = false
+	mouseDown = false;
 }
 
 
@@ -117,8 +117,8 @@ function OnMouseUp( event ){
 * Bind between inspector camera rotation and boxes rotation 
 */
 function SendRotation( event ){
-	var inspectorControl = document.getElementById("inspector-controls");
-	if(mouseDown && inspectorControl != null){
-		inspectorControl.contentWindow.postMessage({_x: camera.rotation._x, _y: camera.rotation._y, _z: camera.rotation._z}, '*');
+	var inspectorControl = document.getElementById( 'inspector-controls' );
+	if( mouseDown && inspectorControl != null ){
+		inspectorControl.contentWindow.postMessage( { _x: camera.rotation._x, _y: camera.rotation._y, _z: camera.rotation._z }, '*' );
 	}
 }

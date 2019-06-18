@@ -16,18 +16,18 @@ coilGold2, coilIron1, gridAll1, gridAll2, gridGold1, gridGold2, ringsCopp1, ring
 var environmentMaps = new Array();
 
 var todo = new Set([
-    "emissive-vertex", 
-    "emissive-fragment",
-    "metal-vertex",
-    "metal-fragment",
-    "coil-vertex",
-    "coil-fragment",
-    "grid-vertex",
-    "grid-fragment",
-    "inner-rings-vertex",
-    "inner-rings-fragment",
-    "sky-vertex",
-    "sky-fragment"
+    'emissive-vertex', 
+    'emissive-fragment',
+    'metal-vertex',
+    'metal-fragment',
+    'coil-vertex',
+    'coil-fragment',
+    'grid-vertex',
+    'grid-fragment',
+    'inner-rings-vertex',
+    'inner-rings-fragment',
+    'sky-vertex',
+    'sky-fragment'
 ]);
 
 var pointLightColor = new THREE.Vector3();
@@ -83,18 +83,18 @@ function InitMaterials()
     materialVector.push(skyMaterial);   // Sky map
 
     // Load glsl shaders from file
-    LoadGlsl("../../shaders/coil/vertex.glsl");
-    LoadGlsl("../../shaders/coil/fragment.glsl");
-    LoadGlsl("../../shaders/emissive/vertex.glsl");
-    LoadGlsl("../../shaders/emissive/fragment.glsl");
-    LoadGlsl("../../shaders/grid/vertex.glsl");
-    LoadGlsl("../../shaders/grid/fragment.glsl");
-    LoadGlsl("../../shaders/inner-rings/vertex.glsl");
-    LoadGlsl("../../shaders/inner-rings/fragment.glsl");
-    LoadGlsl("../../shaders/metal/vertex.glsl");
-    LoadGlsl("../../shaders/metal/fragment.glsl");
-    LoadGlsl("../../shaders/skybox/vertex.glsl");
-    LoadGlsl("../../shaders/skybox/fragment.glsl");
+    LoadGlsl('../../shaders/coil/vertex.glsl');
+    LoadGlsl('../../shaders/coil/fragment.glsl');
+    LoadGlsl('../../shaders/emissive/vertex.glsl');
+    LoadGlsl('../../shaders/emissive/fragment.glsl');
+    LoadGlsl('../../shaders/grid/vertex.glsl');
+    LoadGlsl('../../shaders/grid/fragment.glsl');
+    LoadGlsl('../../shaders/inner-rings/vertex.glsl');
+    LoadGlsl('../../shaders/inner-rings/fragment.glsl');
+    LoadGlsl('../../shaders/metal/vertex.glsl');
+    LoadGlsl('../../shaders/metal/fragment.glsl');
+    LoadGlsl('../../shaders/skybox/vertex.glsl');
+    LoadGlsl('../../shaders/skybox/fragment.glsl');
 }
 
 
@@ -105,11 +105,11 @@ var loadedMipmaps = 0;
 
 function LoadEnvMaps()
 {
-    for(var i = 0; i <= 8; i++)
+    for( var i = 0; i <= 8; i++ )
     {
-        var filename = "../../assets/textures/envmap_mip" + String(i) + ".png";
-        var thisTex = LoadTexture(filename);
-        environmentMaps.push(thisTex);
+        var filename = '../../assets/textures/envmap_mip' + String(i) + '.png';
+        var thisTex = LoadTexture( filename );
+        environmentMaps.push( thisTex );
     }
 }
 
@@ -117,15 +117,15 @@ function LoadEnvMaps()
 /*
 * Load texture
 */
-function LoadTexture(filename)
+function LoadTexture( filename )
 {
-    var result = new THREE.TextureLoader().load(filename, function(texture)
+    var result = new THREE.TextureLoader().load( filename, function( texture )
     {
         texture.minFilter = THREE.LinearMipMapLinearFilter;
         texture.magFilter = THREE.LinearFilter;
         texture.needsUpdate = true;    
         loadedMipmaps++;
-        if(loadedMipmaps == 15){
+        if( loadedMipmaps == 15 ){
             envmapLoaded = true;
             CheckLoadingState();
         }
