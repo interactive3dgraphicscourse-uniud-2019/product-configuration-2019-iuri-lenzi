@@ -107,6 +107,8 @@ function CloseFullscreen() {
 /*
 * Start the explosion animation
 */
+var isExploded = false;
+
 function Explode(){
     $("#implode").removeClass("invisible");
     $("#implode").addClass("visible");
@@ -118,10 +120,11 @@ function Explode(){
             child.Explode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.Explode(500)
-            })
+                c.Explode(500);
+            });
         }
-    }) 
+    }); 
+    isExploded = true;
 }
 
 
@@ -139,10 +142,11 @@ function Implode(){
             child.Implode();
         } else if(child instanceof AnimatedGroup){
             child.children.forEach(function(c){
-                c.Implode(500)
-            })
+                c.Implode(500);
+            });
         }
-    }) 
+    });
+    isExploded = false; 
 }
 
 
