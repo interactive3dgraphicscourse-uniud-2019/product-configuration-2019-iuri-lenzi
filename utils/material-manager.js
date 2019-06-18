@@ -142,16 +142,18 @@ function LoadTexture(filename)
 
 function RenderEmissiveOnly()
 {
-    materialVector.forEach(mat =>{
-        mat.uniforms.diffOnly = 1.0;
-        mat.uniforms.needsUpdate = true;
-    })
+    for(var i = 0; i < materialVector.length; i++)
+    {
+        materialVector[i].uniforms.diffOnly.value = 1.0;
+        materialVector[i].uniforms.needsUpdate = true;
+    }
 }
 
 function RenderAllMaterial()
 {
-    materialVector.forEach(mat =>{
-        mat.uniforms.diffOnly = 0.0;
-        mat.uniforms.needsUpdate = true;
-    })
+    for(var i = 0; i < materialVector.length; i++)
+    {
+        materialVector[i].uniforms.diffOnly.value = 0.0;
+        materialVector[i].uniforms.needsUpdate = true;
+    }
 }

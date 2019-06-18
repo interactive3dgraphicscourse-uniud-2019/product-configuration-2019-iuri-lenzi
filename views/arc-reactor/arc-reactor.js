@@ -269,7 +269,10 @@ function InitSkyBox()
 		{
 			vertexShader: 'sky-vertex',
 			fragmentShader: 'sky-fragment',
-			uniforms: {"skyMap": {type: "t", value: environmentMaps[0]}},
+			uniforms: {
+				"skyMap": {type: "t", value: environmentMaps[0]},
+				"diffOnly": {type: "f", value: 0.0}
+			},
 			side: THREE.BackSide
 		}
 	)
@@ -280,6 +283,8 @@ function InitSkyBox()
 */
 function InitPostMaterial()
 {
+	var gaussianKernel = [0.0625, 0.125, 0.0625, 0.125, 0.25, 0.125, 0.0625, 0.125, 0.0625];
+
 	postMaterial = new THREE.ShaderMaterial(
 		{
 			vertexShader: "post-vertex",
@@ -287,7 +292,11 @@ function InitPostMaterial()
 			uniforms: {
 				"tDiffuseScene": {type: "t", value: renderTarget1.texture},
 				"tDiffuseEmi": {type: "t", value: renderTarget2.texture},
-				"diffOnly": {type: "f", value: 0.0}
+				"width": {type: "f", value: window.innerWidth},
+				"height": {type: "f", value: window.innerHeight},
+				"bloomRadius": {type: "i", value: 10},
+				"kernel": {type: "fv", value: gaussianKernel},
+				"diffOnly": {type: "f", value: 0.0},
 			}
 
 		}
