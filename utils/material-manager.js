@@ -27,7 +27,9 @@ var todo = new Set([
     "inner-rings-vertex",
     "inner-rings-fragment",
     "sky-vertex",
-    "sky-fragment"
+    "sky-fragment",
+    "post-vertex",
+    "post-fragment"
 ]);
 
 var pointLightColor = new THREE.Vector3();
@@ -53,6 +55,7 @@ function InitMaterials()
     InitInnerRings();
     InitMetal();
     InitSkyBox();
+    InitPostMaterial();
 
     // Add material definitions to the materialVector
     materialVector.push(blueEmissive);  // 0
@@ -81,6 +84,7 @@ function InitMaterials()
     materialVector.push(ringsCopp1);    // 23
     materialVector.push(ringsGold1);    // 24
     materialVector.push(skyMaterial);   // Sky map
+    materialVector.push(postMaterial)   // Post processing
 
     // Load glsl shaders from file
     LoadGlsl("../../shaders/coil/vertex.glsl");
@@ -95,6 +99,8 @@ function InitMaterials()
     LoadGlsl("../../shaders/metal/fragment.glsl");
     LoadGlsl("../../shaders/skybox/vertex.glsl");
     LoadGlsl("../../shaders/skybox/fragment.glsl");
+    LoadGlsl("../../shaders/post-processing/vertex.glsl");
+    LoadGlsl("../../shaders/post-processing/fragment.glsl");
 }
 
 
@@ -132,4 +138,18 @@ function LoadTexture(filename)
     });
 
     return result;
+}
+
+function RenderEmissiveOnly()
+{
+    materialVector.forEach(mat =>{
+        mat.uniforms.diffOnly = 1.0;
+    })
+}
+
+function RenderAllMaterial()
+{
+    materialVector.forEach(mat =>{
+        mat.uniforms.diffOnly = 0.0;
+    })
 }

@@ -38,6 +38,11 @@ var loadedComponents = 0;
 var architecture;
 var glbLoaded = false, envmapLoaded = false, glslLoaded = false;
 
+// Post processing
+var renderTarget1, renderTarget2;
+var postCamera, postScene, postQuad;
+var postMaterial;
+
 /*
 * Init function
 */ 
@@ -48,6 +53,7 @@ function Init() {
 	InitStat();
 	InitScene();
 	InitInspectorScene();
+	InitPostProcessing();
 	InitMaterials();
 	InitCamera();
 
@@ -75,6 +81,11 @@ function Init() {
 	BindEvent(document, "loading-complete", function(){
 		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);
 		scene.add(skyMesh);
+
+		var postPlane = new THREE.PlaneBufferGeometry(2,2);
+		postQuad = new THREE.Mesh(postPlane, postMaterial);
+		postScene.add(postQuad);
+
 		Animate();
 		glslLoaded = true;
 		CheckLoadingState();
@@ -141,10 +152,39 @@ function Animate() {
 */
 function Render()
 {
+	RenderPass1();
+	RenderPass2();
+	RenderPass3();
+}
+
+function RenderPass1()
+{
+	//Render scene to first render target
 	if(!switchScene)
-		renderer.render( scene, camera );
+		renderer.render( scene, camera, renderTarget1 );
 	else
-		renderer.render( inspectorScene, camera );
+		renderer.render( inspectorScene, camera, renderTarget1 );	
+}
+
+function RenderPass2()
+{
+	//Modify materials
+	RenderEmissiveOnly();
+
+	//Render scene to second render target
+	if(!switchScene)
+		renderer.render( scene, camera, renderTarget2 );
+	else
+		renderer.render( inspectorScene, camera, renderTarget2 );
+	
+	//Reset material
+	RenderAllMaterial();
+}
+
+function RenderPass3()
+{
+	//Render post processing scene
+	renderer.render( postScene, postCamera);
 }
 
 
@@ -158,7 +198,34 @@ function InitRenderer(){
 	renderer.gammaOutput = true;
 	renderer.gammaInput = true;
 	renderer.shadowMap.enabled = true;
+	renderer.autoClear = true;
 	document.body.appendChild( renderer.domElement );
+}
+
+/*
+*	Post processing init
+*/
+function InitPostProcessing()
+{
+	postCamera = new THREE.OrthographicCamera( -1, 1, 1, -1, 0, 1);
+	postCamera.position.z = 1;
+	postScene = new THREE.Scene();
+
+	renderTarget1 = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight);
+	renderTarget1.texture.format = THREE.RGBAFormat;
+	renderTarget1.texture.minFilter = THREE.NearestFilter;
+	renderTarget1.texture.magFilter = THREE.NearestFilter;
+	renderTarget1.texture.generateMipmaps = false;
+	renderTarget1.stencilBuffer = false;
+	renderTarget1.depthBuffer = false;
+
+	renderTarget2 = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight);
+	renderTarget2.texture.format = THREE.RGBAFormat;
+	renderTarget2.texture.minFilter = THREE.NearestFilter;
+	renderTarget2.texture.magFilter = THREE.NearestFilter;
+	renderTarget2.texture.generateMipmaps = false;
+	renderTarget2.stencilBuffer = false;
+	renderTarget2.depthBuffer = false;
 }
 
 
@@ -199,6 +266,25 @@ function InitSkyBox()
 			fragmentShader: 'sky-fragment',
 			uniforms: {"skyMap": {type: "t", value: environmentMaps[0]}},
 			side: THREE.BackSide
+		}
+	)
+}
+
+/*
+*	Postprocessing material init
+*/
+function InitPostMaterial()
+{
+	postMaterial = new THREE.ShaderMaterial(
+		{
+			vertexShader: "post-vertex",
+			fragmentShader: "post-fragment",
+			uniforms: {
+				"tDiffuseScene": {type: "t", value: renderTarget1.texture},
+				"tDiffuseEmi": {type: "t", value: renderTarget2.texture},
+				"diffOnly": {type: "f", value: 0.0}
+			}
+
 		}
 	)
 }

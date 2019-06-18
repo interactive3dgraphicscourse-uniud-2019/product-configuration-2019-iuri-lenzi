@@ -19,7 +19,8 @@ function InitInnerRings(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'inner-rings-vertex',
             fragmentShader: 'inner-rings-fragment',
@@ -37,7 +38,8 @@ function InitInnerRings(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]},
+                
             },
             vertexShader: 'inner-rings-vertex',
             fragmentShader: 'inner-rings-fragment',

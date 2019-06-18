@@ -24,7 +24,8 @@ function InitGrid(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -44,7 +45,8 @@ function InitGrid(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -64,7 +66,8 @@ function InitGrid(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -84,7 +87,8 @@ function InitGrid(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'

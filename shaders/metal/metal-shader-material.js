@@ -18,7 +18,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'metal-vertex',
             fragmentShader: 'metal-fragment',
@@ -35,7 +36,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'metal-vertex',
             fragmentShader: "metal-fragment",
@@ -52,7 +54,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -69,7 +72,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(ironRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(ironRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -86,7 +90,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(ironRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(ironRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -103,7 +108,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -120,7 +126,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -137,7 +144,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -154,7 +162,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -171,7 +180,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: "metal-vertex",
             fragmentShader: "metal-fragment",
@@ -188,7 +198,8 @@ function InitMetal(){
                 "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
                 "pointLightColor": {type: "v3", value: pointLightColor},
                 "envLightColor": {type: "v3", value: envLightColor},
-                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]}
+                "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'metal-vertex',
             fragmentShader: 'metal-fragment'

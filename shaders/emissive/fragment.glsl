@@ -1,5 +1,6 @@
 //emissive-fragment
 uniform vec3 emissiveColor;
+uniform float diffOnly;
 
 void main()
 {

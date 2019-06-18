@@ -18,6 +18,7 @@ uniform vec3 pointLightWorldPosition;
 uniform vec3 pointLightColor;
 uniform vec3 envLightColor;
 uniform sampler2D envMap;
+uniform float diffOnly;
 
 vec3 FSchlick(float lDoth, vec3 baseColor) {
     return (baseColor + (vec3(1.0)-baseColor)*pow(1.0 - lDoth,5.0));
@@ -75,5 +76,8 @@ void main()
     vec3 indirLightRadiance = envLightColor * baseColor * texture2D(aoMap, vUV).rgb + refEnvColor;
 
     vec3 radiance = directLightRadiance + indirLightRadiance;
-    gl_FragColor = vec4(pow(radiance, vec3(1.0/2.2)), 1.0);
+    if(!(diffOnly == 1.0))
+        gl_FragColor = vec4(pow(radiance, vec3(1.0/2.2)), 1.0);
+    else
+        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }
