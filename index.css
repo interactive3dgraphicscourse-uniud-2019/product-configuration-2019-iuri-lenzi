@@ -60,6 +60,18 @@ html, body{
 }
 
 
+#loading-spinner{
+    position: absolute;
+    width: 82%;
+    height: 52%;
+    display: flex;
+    background-color: black;
+    padding-left: 38%
+}
+
+.spinner-border{
+    align-self: center;
+}
 .card{
     color: black; 
 }
@@ -83,6 +95,11 @@ article{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+
+.invisible{
+    display: none;
 }
 
 
