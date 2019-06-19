@@ -10,11 +10,11 @@
 /*
 * Required after a scene switch, to be consistent with the initial scene state
 */
-if(sceneLocked){
+if( sceneLocked ){
     Lock();
 }
 
 
-if(isExploded){
+if( isExploded ){
     Explode();
 }

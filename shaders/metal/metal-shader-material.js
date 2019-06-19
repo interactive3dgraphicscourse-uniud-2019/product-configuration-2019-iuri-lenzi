@@ -40,7 +40,7 @@ function InitMetal(){
                 "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'metal-vertex',
-            fragmentShader: "metal-fragment",
+            fragmentShader: 'metal-fragment',
         }
     )
 
@@ -57,8 +57,8 @@ function InitMetal(){
                 "envMap": {type:"t", value: environmentMaps[Math.floor(allRough * 8)]},
                 "diffOnly": {type: "f", value: 0.0}
             },
-            vertexShader: "metal-vertex",
-            fragmentShader: "metal-fragment",
+            vertexShader: 'metal-vertex',
+            fragmentShader: 'metal-fragment',
         }
     )
     
@@ -75,8 +75,8 @@ function InitMetal(){
                 "envMap": {type:"t", value: environmentMaps[Math.floor(ironRough * 8)]},
                 "diffOnly": {type: "f", value: 0.0}
             },
-            vertexShader: "metal-vertex",
-            fragmentShader: "metal-fragment",
+            vertexShader: 'metal-vertex',
+            fragmentShader: 'metal-fragment',
         }
     )
 
@@ -93,8 +93,8 @@ function InitMetal(){
                 "envMap": {type:"t", value: environmentMaps[Math.floor(ironRough * 8)]},
                 "diffOnly": {type: "f", value: 0.0}
             },
-            vertexShader: "metal-vertex",
-            fragmentShader: "metal-fragment",
+            vertexShader: 'metal-vertex',
+            fragmentShader: 'metal-fragment',
         }
     )
 
@@ -111,8 +111,8 @@ function InitMetal(){
                 "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]},
                 "diffOnly": {type: "f", value: 0.0}
             },
-            vertexShader: "metal-vertex",
-            fragmentShader: "metal-fragment",
+            vertexShader: 'metal-vertex',
+            fragmentShader: 'metal-fragment',
         }
     )
 
@@ -129,8 +129,8 @@ function InitMetal(){
                 "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]},
                 "diffOnly": {type: "f", value: 0.0}
             },
-            vertexShader: "metal-vertex",
-            fragmentShader: "metal-fragment",
+            vertexShader: 'metal-vertex',
+            fragmentShader: 'metal-fragment',
         }
     )
 
@@ -147,8 +147,8 @@ function InitMetal(){
                 "envMap": {type:"t", value: environmentMaps[Math.floor(goldRough * 8)]},
                 "diffOnly": {type: "f", value: 0.0}
             },
-            vertexShader: "metal-vertex",
-            fragmentShader: "metal-fragment",
+            vertexShader: 'metal-vertex',
+            fragmentShader: 'metal-fragment',
         }
     )
 
@@ -165,8 +165,8 @@ function InitMetal(){
                 "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]},
                 "diffOnly": {type: "f", value: 0.0}
             },
-            vertexShader: "metal-vertex",
-            fragmentShader: "metal-fragment",
+            vertexShader: 'metal-vertex',
+            fragmentShader: 'metal-fragment',
         }
     )
 
@@ -183,8 +183,8 @@ function InitMetal(){
                 "envMap": {type:"t", value: environmentMaps[Math.floor(copperRough * 8)]},
                 "diffOnly": {type: "f", value: 0.0}
             },
-            vertexShader: "metal-vertex",
-            fragmentShader: "metal-fragment",
+            vertexShader: 'metal-vertex',
+            fragmentShader: 'metal-fragment',
         }
     )
 

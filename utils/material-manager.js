@@ -111,11 +111,11 @@ var loadedMipmaps = 0;
 
 function LoadEnvMaps()
 {
-    for(var i = 0; i <= 8; i++)
+    for( var i = 0; i <= 8; i++ )
     {
-        var filename = "../../assets/textures/envmap_mip" + String(i) + ".png";
-        var thisTex = LoadTexture(filename);
-        environmentMaps.push(thisTex);
+        var filename = '../../assets/textures/envmap_mip' + String(i) + '.png';
+        var thisTex = LoadTexture( filename );
+        environmentMaps.push( thisTex );
     }
 }
 
@@ -123,15 +123,15 @@ function LoadEnvMaps()
 /*
 * Load texture
 */
-function LoadTexture(filename)
+function LoadTexture( filename )
 {
-    var result = new THREE.TextureLoader().load(filename, function(texture)
+    var result = new THREE.TextureLoader().load( filename, function( texture )
     {
         texture.minFilter = THREE.LinearMipMapLinearFilter;
         texture.magFilter = THREE.LinearFilter;
         texture.needsUpdate = true;    
         loadedMipmaps++;
-        if(loadedMipmaps == 15){
+        if( loadedMipmaps == 15 ){
             envmapLoaded = true;
             CheckLoadingState();
         }

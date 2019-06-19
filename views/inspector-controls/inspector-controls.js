@@ -23,8 +23,8 @@ var p = window.parent;
 /*
 * handler for mouse click on a cube event
 */
-function Trigger(component){
-	p.UpdateSceneMaterials(component.materialIndex)
+function Trigger( component ){
+	p.UpdateSceneMaterials( component.materialIndex );
 }
 
 
@@ -54,8 +54,8 @@ function Start() {
 
 	// load material choices (cubes)
 	var materials = p.inspectedObject.parameters.materials;
-	materials.forEach(function(material, i){
-		group.add( new BoxMaterial(material, new THREE.Vector3(
+	materials.forEach(function( material, i ){
+		group.add( new BoxMaterial( material, new THREE.Vector3(
 			(2 * i) - (((2 * materials.length) - 1)/2) - 1/2, 0, 0
 		)));
 	})
@@ -63,10 +63,10 @@ function Start() {
 	scene.add(CreateDirLight());
 
 	// setup event listeners
-	BindEvent(window, "click", OnDocumentMouseClick);
-	BindEvent(window, "mousemove", OnDocumentMouseMove);
-	BindEvent(window, 'message', function (event) {
-		UpdateQuaternion(event.data);
+	BindEvent(window, 'click', OnDocumentMouseClick );
+	BindEvent(window, 'mousemove', OnDocumentMouseMove );
+	BindEvent(window, 'message', function ( event ) {
+		UpdateQuaternion( event.data );
 	});
 	
 }
@@ -76,8 +76,8 @@ function Start() {
 * loop function 
 */
 function Update() {
-	requestAnimationFrame(Update);
-	renderer.render(scene, camera);
+	requestAnimationFrame( Update );
+	renderer.render( scene, camera );
 }
 
 
@@ -85,8 +85,8 @@ function Update() {
 * Apply an arbitrary rotation on the cubes
 */
 function UpdateQuaternion( rotation ){
-	group.children.forEach(function(box){
-		box.rotation.set(rotation._x, rotation._y, rotation._z);
+	group.children.forEach( function( box ){
+		box.rotation.set( rotation._x, rotation._y, rotation._z );
 	})
 }
 

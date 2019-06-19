@@ -49,7 +49,7 @@ var postMaterial;
 function Init() {
 
 	// loads arc-reactor-controls view
-	ApplyTemplate("../arc-reactor-controls/arc-reactor-controls.html");
+	ApplyTemplate( '../arc-reactor-controls/arc-reactor-controls.html' );
 	InitStat();
 	InitScene();
 	InitInspectorScene();
@@ -58,25 +58,25 @@ function Init() {
 	InitCamera();
 
 	// load architecture.json and add to the scene the components
-	LoadArchitecture("../../assets/models/architecture.json");
+	LoadArchitecture( '../../assets/models/architecture.json' );
 
 	// init scene and camera pose
-	group.rotation.z += Math.PI / 4
-	group.rotation.y += Math.PI / 2
-	camera.position.set(150,0,150)
-	scene.add(group);
+	group.rotation.z += Math.PI / 4;
+	group.rotation.y += Math.PI / 2;
+	camera.position.set( 150, 0, 150 );
+	scene.add( group );
 		
 	// desktop events
-	BindEvent(window, "mousemove", OnDocumentMouseMove );
-	BindEvent(document, "mousedown", OnMouseDown );
-	BindEvent(document, "mouseup", OnMouseUp );
+	BindEvent( window, 'mousemove', OnDocumentMouseMove );
+	BindEvent( document, 'mousedown', OnMouseDown );
+	BindEvent( document, 'mouseup', OnMouseUp );
 	// touch screen events
-	BindEvent(document, "touchmove", OnDocumentMouseMove );
-	BindEvent(document, "touchstart", OnMouseDown );
-	BindEvent(document, "touchend", OnMouseUp );
+	BindEvent( document, 'touchmove', OnDocumentMouseMove );
+	BindEvent( document, 'touchstart', OnMouseDown );
+	BindEvent( document, 'touchend', OnMouseUp );
 	// general events
-	BindEvent(window, "resize", OnWindowResize );
-	BindEvent(window, "click", OnDocumentMouseClick );
+	BindEvent( window, 'resize', OnWindowResize );
+	BindEvent( window, 'click', OnDocumentMouseClick );
 	// custom event triggered once the shader loading is completed
 	BindEvent(document, "loading-complete", function(){
 		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);
@@ -99,7 +99,7 @@ function Init() {
 * deserialize the json content and setup each component defined
 */ 
 function LoadArchitecture( file ) {
-	Read(file, function(content){
+	Read( file, function( content ){
 		architecture = JSON.parse(content);   
 		architecture.forEach(function(component){
 			SetupMesh(component);
@@ -115,15 +115,15 @@ function SetupMesh( parameters ) {
 	var loader = new THREE.GLTFLoader();
 	loader.load( parameters.url, function( gltf ) {
 		var gltfMesh = gltf.scene.children[ 0 ];
-		if(parameters.repeat > 0){
+		if( parameters.repeat > 0 ){
 			var component = new THREE.Group();
-			component.add(new AnimatedMesh(gltfMesh, parameters));
-			for(var i = 0; i < parameters.repeat; i++){
+			component.add( new AnimatedMesh( gltfMesh, parameters ) );
+			for( var i = 0; i < parameters.repeat; i++ ){
 				var new_component = component.clone();
-				group.add(new AnimatedGroup(new_component, ((2 * Math.PI * i) / 10)));
+				group.add(new AnimatedGroup( new_component, ( ( 2 * Math.PI * i ) / 10 ) ));
 			}
 		} else {
-			group.add(new AnimatedMesh(gltfMesh, parameters));
+			group.add(new AnimatedMesh( gltfMesh, parameters ));
 		}
 
 		loadedComponents ++;
@@ -308,8 +308,8 @@ function InitPostMaterial()
 * Check if every heavy asset is properly loaded
 */
 function CheckLoadingState(){
-	if(glbLoaded && glslLoaded && envmapLoaded){
-		window.parent.document.getElementById("loading-spinner").className += " invisible";
+	if( glbLoaded && glslLoaded && envmapLoaded ){
+		window.parent.document.getElementById('loading-spinner').className += ' invisible';
 	}
 }
 

@@ -10,9 +10,9 @@
 function InitGrid(){
     //Material 19: grid aluminum 1
     var gridRough = 0.1;
-    var gridMMap = LoadTexture("../../assets/models/grid/grid_alum_Metal.png");
-    var gridNMap = LoadTexture("../../assets/models/grid/grid_alum_NM.png");
-    var gridAOMap = LoadTexture("../../assets/models/grid/grid_alum_AO.png");
+    var gridMMap = LoadTexture('../../assets/models/grid/grid_alum_Metal.png');
+    var gridNMap = LoadTexture('../../assets/models/grid/grid_alum_NM.png');
+    var gridAOMap = LoadTexture('../../assets/models/grid/grid_alum_AO.png');
     gridAll1 = new THREE.ShaderMaterial(
         {
             uniforms: {

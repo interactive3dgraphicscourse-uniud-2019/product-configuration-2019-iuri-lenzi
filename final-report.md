@@ -182,6 +182,8 @@ for each view (stored in the [views](views/) folder) and integrate them using an
 <strong>Image 8</strong> - <em>The final site architecture is the following</em></div>
 <br/><br/>
 
+In order to achieve responsiveness we follow the bootstrap 4.2 best practices described in the [official documentation](https://getbootstrap.com/docs/4.2/getting-started/introduction/) and [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) layout where necessary. Moreover we integrate a parallax implemented following an online tutorial called [parallax-design-responsive](https://www.marchettidesign.net/demo/parallax-design-responsive/) and a [SlickNav](https://slicknav.io/) for mobile devices.
+
 
 ## Future improvements
 
