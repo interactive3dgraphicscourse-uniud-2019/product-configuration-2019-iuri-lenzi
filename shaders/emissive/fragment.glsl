@@ -4,6 +4,6 @@ uniform float diffOnly;
 
 void main()
 {
-    vec3 radiance = pow(emissiveColor, vec3(1.0/2.2));
+    vec3 radiance = emissiveColor;
     gl_FragColor = vec4(radiance, 1.0);
 }

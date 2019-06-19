@@ -60,7 +60,7 @@ void main()
 
     vec3 radiance = directLightRadiance + indirLightRadiance;
     if(diffOnly == 0.0)
-        gl_FragColor = vec4(pow(radiance, vec3(1.0/2.2)), 1.0);
+        gl_FragColor = vec4(radiance, 1.0);
     else
         gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }

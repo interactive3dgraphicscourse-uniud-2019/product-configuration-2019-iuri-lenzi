@@ -29,17 +29,17 @@ vec3 BlurTexture(sampler2D tex)
     vec3 sum = vec3(0.0);
 
     for(int i = 0; i < 9; i++)
-        sum += pow(texture2D(tex, vUV + offset[i]).rgb, vec3(2.2)) * kernel[i];
+        sum += texture2D(tex, vUV + offset[i]).rgb * kernel[i];
 
     return sum;
 }
 
 void main()
 {
-    vec3 emiDiff = pow(texture2D(tDiffuseEmi, vUV).rgb, vec3(2.2));
-    vec3 sceneDiff = pow(texture2D(tDiffuseScene, vUV).rgb, vec3(2.2));
+    vec3 emiDiff = texture2D(tDiffuseEmi, vUV).rgb;
+    vec3 sceneDiff = texture2D(tDiffuseScene, vUV).rgb;
     vec3 bleed = BlurTexture(tDiffuseEmi);
     vec3 diff = bleed - emiDiff;
     vec3 color = diff + 0.5*emiDiff + sceneDiff;
-    gl_FragColor = vec4(color, 1.0);
+    gl_FragColor = pow(vec4(color, 1.0), vec4(1.0/2.2));
 }

@@ -294,7 +294,7 @@ function InitPostMaterial()
 				"tDiffuseEmi": {type: "t", value: renderTarget2.texture},
 				"width": {type: "f", value: window.innerWidth},
 				"height": {type: "f", value: window.innerHeight},
-				"bloomRadius": {type: "i", value: 10},
+				"bloomRadius": {type: "i", value: 5},
 				"kernel": {type: "fv", value: gaussianKernel},
 				"diffOnly": {type: "f", value: 0.0},
 			}
