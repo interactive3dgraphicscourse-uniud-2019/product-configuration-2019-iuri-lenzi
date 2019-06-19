@@ -16,15 +16,16 @@ function InitGrid(){
     gridAll1 = new THREE.ShaderMaterial(
         {
             uniforms: {
-                'baseColor': {type: 'v3', value: new THREE.Vector3(0.913, 0.922, 0.924)},
-                'roughness': {type: 'f',  value: gridRough},
-                'normalMap': {type: 't', value: gridNMap},
-                'metalMap': {type: 't', value: gridMMap},
-                'AOMap': {type: 't', value: gridAOMap},
-                'pointLightWorldPosition': {type: 'v3', value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
-                'pointLightColor': {type: 'v3', value: pointLightColor},
-                'envLightColor': {type: 'v3', value: envLightColor},
-                'envMap': {type:'t', value: environmentMaps[Math.floor(gridRough * 8)]}
+                "baseColor": {type: "v3", value: new THREE.Vector3(0.913, 0.922, 0.924)},
+                "roughness": {type: "f",  value: gridRough},
+                "normalMap": {type: "t", value: gridNMap},
+                "metalMap": {type: "t", value: gridMMap},
+                "AOMap": {type: "t", value: gridAOMap},
+                "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
+                "pointLightColor": {type: "v3", value: pointLightColor},
+                "envLightColor": {type: "v3", value: envLightColor},
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -36,15 +37,16 @@ function InitGrid(){
     gridAll2 = new THREE.ShaderMaterial(
         {
             uniforms: {
-                'baseColor': {type: 'v3', value: new THREE.Vector3(0.913, 0.922, 0.924)},
-                'roughness': {type: 'f',  value: gridRough},
-                'normalMap': {type: 't', value: gridNMap},
-                'metalMap': {type: 't', value: gridMMap},
-                'AOMap': {type: 't', value: gridAOMap},
-                'pointLightWorldPosition': {type: 'v3', value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
-                'pointLightColor': {type: 'v3', value: pointLightColor},
-                'envLightColor': {type: 'v3', value: envLightColor},
-                'envMap': {type:'t', value: environmentMaps[Math.floor(gridRough * 8)]}
+                "baseColor": {type: "v3", value: new THREE.Vector3(0.913, 0.922, 0.924)},
+                "roughness": {type: "f",  value: gridRough},
+                "normalMap": {type: "t", value: gridNMap},
+                "metalMap": {type: "t", value: gridMMap},
+                "AOMap": {type: "t", value: gridAOMap},
+                "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
+                "pointLightColor": {type: "v3", value: pointLightColor},
+                "envLightColor": {type: "v3", value: envLightColor},
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -56,15 +58,16 @@ function InitGrid(){
     gridGold1 = new THREE.ShaderMaterial(
         {
             uniforms: {
-                'baseColor': {type: 'v3', value: new THREE.Vector3(1.0, 0.782, 0.344)},
-                'roughness': {type: 'f',  value: gridRough},
-                'normalMap': {type: 't', value: gridNMap},
-                'metalMap': {type: 't', value: gridMMap},
-                'AOMap': {type: 't', value: gridAOMap},
-                'pointLightWorldPosition': {type: 'v3', value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
-                'pointLightColor': {type: 'v3', value: pointLightColor},
-                'envLightColor': {type: 'v3', value: envLightColor},
-                'envMap': {type:'t', value: environmentMaps[Math.floor(gridRough * 8)]}
+                "baseColor": {type: "v3", value: new THREE.Vector3(1.0, 0.782, 0.344)},
+                "roughness": {type: "f",  value: gridRough},
+                "normalMap": {type: "t", value: gridNMap},
+                "metalMap": {type: "t", value: gridMMap},
+                "AOMap": {type: "t", value: gridAOMap},
+                "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
+                "pointLightColor": {type: "v3", value: pointLightColor},
+                "envLightColor": {type: "v3", value: envLightColor},
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'
@@ -76,15 +79,16 @@ function InitGrid(){
     gridGold2 = new THREE.ShaderMaterial(
         {
             uniforms: {
-                'baseColor': {type: 'v3', value: new THREE.Vector3(1.0, 0.782, 0.344)},
-                'roughness': {type: 'f',  value: gridRough},
-                'normalMap': {type: 't', value: gridNMap},
-                'metalMap': {type: 't', value: gridMMap},
-                'AOMap': {type: 't', value: gridAOMap},
-                'pointLightWorldPosition': {type: 'v3', value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
-                'pointLightColor': {type: 'v3', value: pointLightColor},
-                'envLightColor': {type: 'v3', value: envLightColor},
-                'envMap': {type:'t', value: environmentMaps[Math.floor(gridRough * 8)]}
+                "baseColor": {type: "v3", value: new THREE.Vector3(1.0, 0.782, 0.344)},
+                "roughness": {type: "f",  value: gridRough},
+                "normalMap": {type: "t", value: gridNMap},
+                "metalMap": {type: "t", value: gridMMap},
+                "AOMap": {type: "t", value: gridAOMap},
+                "pointLightWorldPosition": {type: "v3", value: new THREE.Vector3(dirLight.position.x, dirLight.position.y, dirLight.position.z)},
+                "pointLightColor": {type: "v3", value: pointLightColor},
+                "envLightColor": {type: "v3", value: envLightColor},
+                "envMap": {type:"t", value: environmentMaps[Math.floor(gridRough * 8)]},
+                "diffOnly": {type: "f", value: 0.0}
             },
             vertexShader: 'grid-vertex',
             fragmentShader: 'grid-fragment'

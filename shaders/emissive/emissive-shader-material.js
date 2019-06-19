@@ -11,7 +11,10 @@ function InitEmissive(){
     //Material 0: blue emissive
     blueEmissive = new THREE.ShaderMaterial(
         {
-            uniforms: {'emissiveColor': {type: 'v3', value: new THREE.Vector3(0.6, 0.8, 1.0)}},
+            uniforms: {
+                "emissiveColor": {type: "v3", value: new THREE.Vector3(0.6, 0.8, 1.0)},
+                "diffOnly": {type: "f", value: 0.0}
+            },
             vertexShader:   'emissive-vertex',
             fragmentShader: 'emissive-fragment'
         }
@@ -20,18 +23,24 @@ function InitEmissive(){
     //Material 1: red emissive
     redEmissive = new THREE.ShaderMaterial(
         {
-            uniforms: {'emissiveColor': {type: 'v3', value: new THREE.Vector3(1.0, 0.8, 0.6)}},
+            uniforms: {
+                "emissiveColor": {type: "v3", value: new THREE.Vector3(1.0, 0.8, 0.6)},
+                "diffOnly": {type: "f", value: 0.0}
+            },
             vertexShader:   'emissive-vertex',
-            fragmentShader: 'emissive-fragment'
+            fragmentShader: 'emissive-fragment',
         }
     );
 
     //Material 2: green emissive
     greenEmissive = new THREE.ShaderMaterial(
         {
-            uniforms: {'emissiveColor': {type: 'v3', value: new THREE.Vector3(0.6, 1.0, 0.8)}},
+            uniforms: {
+                "emissiveColor": {type: "v3", value: new THREE.Vector3(0.6, 1.0, 0.8)},
+                "diffOnly": {type: "f", value: 0.0}
+            },
             vertexShader:   'emissive-vertex',
-            fragmentShader: 'emissive-fragment'
+            fragmentShader: 'emissive-fragment',
         }
     );
 }

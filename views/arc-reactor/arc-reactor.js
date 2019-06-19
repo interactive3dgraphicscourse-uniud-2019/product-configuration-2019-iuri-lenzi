@@ -38,6 +38,11 @@ var loadedComponents = 0;
 var architecture;
 var glbLoaded = false, envmapLoaded = false, glslLoaded = false;
 
+// Post processing
+var renderTarget1, renderTarget2;
+var postCamera, postScene, postQuad;
+var postMaterial;
+
 /*
 * Init function
 */ 
@@ -48,6 +53,7 @@ function Init() {
 	InitStat();
 	InitScene();
 	InitInspectorScene();
+	InitPostProcessing();
 	InitMaterials();
 	InitCamera();
 
@@ -72,9 +78,14 @@ function Init() {
 	BindEvent( window, 'resize', OnWindowResize );
 	BindEvent( window, 'click', OnDocumentMouseClick );
 	// custom event triggered once the shader loading is completed
-	BindEvent( document, 'loading-complete', function(){
-		skyMesh = new THREE.Mesh( new THREE.SphereBufferGeometry( 500, 64, 64 ), skyMaterial );
-		scene.add( skyMesh );
+	BindEvent(document, "loading-complete", function(){
+		skyMesh = new THREE.Mesh(new THREE.SphereBufferGeometry(500, 64, 64), skyMaterial);
+		scene.add(skyMesh);
+
+		var postPlane = new THREE.PlaneBufferGeometry(2,2);
+		postQuad = new THREE.Mesh(postPlane, postMaterial);
+		postScene.add(postQuad);
+
 		Animate();
 		glslLoaded = true;
 		CheckLoadingState();
@@ -141,10 +152,45 @@ function Animate() {
 */
 function Render()
 {
+	RenderPass1();
+	RenderPass2();
+	RenderPass3();
+}
+
+function RenderPass1()
+{
+	renderer.setRenderTarget( renderTarget1 );
+
+	//Reset material
+	RenderAllMaterial();
+
+	//Render scene to first render target
 	if(!switchScene)
 		renderer.render( scene, camera );
 	else
-		renderer.render( inspectorScene, camera );
+		renderer.render( inspectorScene, camera );	
+}
+
+function RenderPass2()
+{
+	renderer.setRenderTarget( renderTarget2 );
+
+	//Modify materials
+	RenderEmissiveOnly();
+
+	//Render scene to second render target
+	if(!switchScene)
+		renderer.render( scene, camera);
+	else
+		renderer.render( inspectorScene, camera);
+}
+
+function RenderPass3()
+{
+	renderer.setRenderTarget( null );
+
+	//Render post processing scene
+	renderer.render( postScene, postCamera);
 }
 
 
@@ -159,6 +205,32 @@ function InitRenderer(){
 	renderer.gammaInput = true;
 	renderer.shadowMap.enabled = true;
 	document.body.appendChild( renderer.domElement );
+}
+
+/*
+*	Post processing init
+*/
+function InitPostProcessing()
+{
+	postCamera = new THREE.OrthographicCamera( -1, 1, 1, -1, 0, 1);
+	postCamera.position.z = 1;
+	postScene = new THREE.Scene();
+
+	renderTarget1 = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight);
+	renderTarget1.texture.format = THREE.RGBAFormat;
+	renderTarget1.texture.minFilter = THREE.NearestFilter;
+	renderTarget1.texture.magFilter = THREE.NearestFilter;
+	renderTarget1.texture.generateMipmaps = false;
+	renderTarget1.stencilBuffer = false;
+	renderTarget1.depthBuffer = true;
+
+	renderTarget2 = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight);
+	renderTarget2.texture.format = THREE.RGBAFormat;
+	renderTarget2.texture.minFilter = THREE.NearestFilter;
+	renderTarget2.texture.magFilter = THREE.NearestFilter;
+	renderTarget2.texture.generateMipmaps = false;
+	renderTarget2.stencilBuffer = false;
+	renderTarget2.depthBuffer = true;
 }
 
 
@@ -197,8 +269,36 @@ function InitSkyBox()
 		{
 			vertexShader: 'sky-vertex',
 			fragmentShader: 'sky-fragment',
-			uniforms: {'skyMap': {type: 't', value: environmentMaps[0]}},
+			uniforms: {
+				"skyMap": {type: "t", value: environmentMaps[0]},
+				"diffOnly": {type: "f", value: 0.0}
+			},
 			side: THREE.BackSide
+		}
+	)
+}
+
+/*
+*	Postprocessing material init
+*/
+function InitPostMaterial()
+{
+	var gaussianKernel = [0.0625, 0.125, 0.0625, 0.125, 0.25, 0.125, 0.0625, 0.125, 0.0625];
+
+	postMaterial = new THREE.ShaderMaterial(
+		{
+			vertexShader: "post-vertex",
+			fragmentShader: "post-fragment",
+			uniforms: {
+				"tDiffuseScene": {type: "t", value: renderTarget1.texture},
+				"tDiffuseEmi": {type: "t", value: renderTarget2.texture},
+				"width": {type: "f", value: window.innerWidth},
+				"height": {type: "f", value: window.innerHeight},
+				"bloomRadius": {type: "i", value: 5},
+				"kernel": {type: "fv", value: gaussianKernel},
+				"diffOnly": {type: "f", value: 0.0},
+			}
+
 		}
 	)
 }

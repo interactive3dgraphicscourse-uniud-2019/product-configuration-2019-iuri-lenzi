@@ -16,18 +16,20 @@ coilGold2, coilIron1, gridAll1, gridAll2, gridGold1, gridGold2, ringsCopp1, ring
 var environmentMaps = new Array();
 
 var todo = new Set([
-    'emissive-vertex', 
-    'emissive-fragment',
-    'metal-vertex',
-    'metal-fragment',
-    'coil-vertex',
-    'coil-fragment',
-    'grid-vertex',
-    'grid-fragment',
-    'inner-rings-vertex',
-    'inner-rings-fragment',
-    'sky-vertex',
-    'sky-fragment'
+    "emissive-vertex", 
+    "emissive-fragment",
+    "metal-vertex",
+    "metal-fragment",
+    "coil-vertex",
+    "coil-fragment",
+    "grid-vertex",
+    "grid-fragment",
+    "inner-rings-vertex",
+    "inner-rings-fragment",
+    "sky-vertex",
+    "sky-fragment",
+    "post-vertex",
+    "post-fragment"
 ]);
 
 var pointLightColor = new THREE.Vector3();
@@ -53,6 +55,7 @@ function InitMaterials()
     InitInnerRings();
     InitMetal();
     InitSkyBox();
+    InitPostMaterial();
 
     // Add material definitions to the materialVector
     materialVector.push(blueEmissive);  // 0
@@ -81,20 +84,23 @@ function InitMaterials()
     materialVector.push(ringsCopp1);    // 23
     materialVector.push(ringsGold1);    // 24
     materialVector.push(skyMaterial);   // Sky map
+    materialVector.push(postMaterial)   // Post processing
 
     // Load glsl shaders from file
-    LoadGlsl('../../shaders/coil/vertex.glsl');
-    LoadGlsl('../../shaders/coil/fragment.glsl');
-    LoadGlsl('../../shaders/emissive/vertex.glsl');
-    LoadGlsl('../../shaders/emissive/fragment.glsl');
-    LoadGlsl('../../shaders/grid/vertex.glsl');
-    LoadGlsl('../../shaders/grid/fragment.glsl');
-    LoadGlsl('../../shaders/inner-rings/vertex.glsl');
-    LoadGlsl('../../shaders/inner-rings/fragment.glsl');
-    LoadGlsl('../../shaders/metal/vertex.glsl');
-    LoadGlsl('../../shaders/metal/fragment.glsl');
-    LoadGlsl('../../shaders/skybox/vertex.glsl');
-    LoadGlsl('../../shaders/skybox/fragment.glsl');
+    LoadGlsl("../../shaders/coil/vertex.glsl");
+    LoadGlsl("../../shaders/coil/fragment.glsl");
+    LoadGlsl("../../shaders/emissive/vertex.glsl");
+    LoadGlsl("../../shaders/emissive/fragment.glsl");
+    LoadGlsl("../../shaders/grid/vertex.glsl");
+    LoadGlsl("../../shaders/grid/fragment.glsl");
+    LoadGlsl("../../shaders/inner-rings/vertex.glsl");
+    LoadGlsl("../../shaders/inner-rings/fragment.glsl");
+    LoadGlsl("../../shaders/metal/vertex.glsl");
+    LoadGlsl("../../shaders/metal/fragment.glsl");
+    LoadGlsl("../../shaders/skybox/vertex.glsl");
+    LoadGlsl("../../shaders/skybox/fragment.glsl");
+    LoadGlsl("../../shaders/post-processing/vertex.glsl");
+    LoadGlsl("../../shaders/post-processing/fragment.glsl");
 }
 
 
@@ -132,4 +138,22 @@ function LoadTexture( filename )
     });
 
     return result;
+}
+
+function RenderEmissiveOnly()
+{
+    for(var i = 0; i < materialVector.length; i++)
+    {
+        materialVector[i].uniforms.diffOnly.value = 1.0;
+        materialVector[i].uniforms.needsUpdate = true;
+    }
+}
+
+function RenderAllMaterial()
+{
+    for(var i = 0; i < materialVector.length; i++)
+    {
+        materialVector[i].uniforms.diffOnly.value = 0.0;
+        materialVector[i].uniforms.needsUpdate = true;
+    }
 }
